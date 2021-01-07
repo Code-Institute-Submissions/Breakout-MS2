@@ -30,6 +30,7 @@ class GameScene extends Scene {
     this.createPlayer();
     this.createBall();
     this.createCursors();
+    this.createBricks();
   }
 
   createPlayer() {
@@ -40,6 +41,58 @@ class GameScene extends Scene {
   }
   createCursors() {
     this.cursors = this.input.keyboard.createCursorKeys();
+  }
+
+  createBricks() {
+    this.blueBricks = this.physics.add.group({
+      key: "brick1",
+      repeat: 10,
+      setXY: {
+        x: 50,
+        y: 250,
+        stepX: 70,
+      },
+    });
+
+    this.greenBricks = this.physics.add.group({
+      key: "brick2",
+      repeat: 10,
+      setXY: {
+        x: 50,
+        y: 210,
+        stepX: 70,
+      },
+    });
+
+    this.purpleBricks = this.physics.add.group({
+      key: "brick3",
+      repeat: 10,
+      setXY: {
+        x: 50,
+        y: 170,
+        stepX: 70,
+      },
+    });
+
+    this.redBricks = this.physics.add.group({
+      key: "brick4",
+      repeat: 10,
+      setXY: {
+        x: 50,
+        y: 130,
+        stepX: 70,
+      },
+    });
+
+    this.yellowBricks = this.physics.add.group({
+      key: "brick5",
+      repeat: 10,
+      setXY: {
+        x: 50,
+        y: 90,
+        stepX: 70,
+      },
+    });
   }
 
   update() {
