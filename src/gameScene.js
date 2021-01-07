@@ -11,8 +11,11 @@ import ball from "./assets/images/white-ball.png";
 class GameScene extends Scene {
   constructor() {
     super("game");
+  }
 
+  init() {
     this.gameHasStarted = false;
+    this.score = 0;
   }
 
   preload() {
@@ -33,6 +36,12 @@ class GameScene extends Scene {
     this.createBricks();
     this.createWorldCollsion();
     this.createGameCollision();
+
+    this.gameScoreText = this.add.text(20, 20, `Score: ${this.score}`, {
+      fontSize: "32px",
+      fill: "#fafafa",
+      fontFamily: "Righteous, Tahoma, Geneva",
+    });
   }
 
   createPlayer() {
@@ -111,7 +120,6 @@ class GameScene extends Scene {
   }
 
   createGameCollision() {
-    //BALL/BRICK COLLIDE
     this.physics.add.collider(
       this.ball,
       this.blueBricks,
@@ -148,7 +156,7 @@ class GameScene extends Scene {
       this
     );
     this.physics.add.collider(this.ball, this.yellowBricks, null, this);
-    //BALL/PLAYER COLLIDE
+
     this.physics.add.collider(
       this.ball,
       this.player,
@@ -159,7 +167,6 @@ class GameScene extends Scene {
   }
 
   update() {
-    //Cursor Key Movement
     if (this.cursors.left.isDown) {
       this.player.setVelocityX(-500);
     } else if (this.cursors.right.isDown) {
@@ -168,7 +175,6 @@ class GameScene extends Scene {
       this.player.setVelocityX(0);
     }
 
-    //ball movement
     if (this.gameHasStarted === false) {
       this.ball.setX(this.player.x);
 
@@ -182,16 +188,16 @@ class GameScene extends Scene {
 
   smashBrick(ball, brick) {
     brick.disableBody(true, true);
+
+    this.score += 10;
+    this.gameScoreText.setText(`Score: ${this.score}`);
   }
 
   ballHitPlayer(ball, player) {
-    // Increase bal velocity after ball collides with player
     this.ball.setVelocityY(this.ball.body.velocity.y - 10);
 
-    // DEFLECT BALL IN DIRECTION DEPENDING ON PADDLE
     let SetNewVelocityX = Math.abs(this.ball.body.velocity.x) + 5;
 
-    // Move ball to left or right
     if (this.ball.x < this.player.x) {
       this.ball.setVelocityX(-SetNewVelocityX);
     } else {
