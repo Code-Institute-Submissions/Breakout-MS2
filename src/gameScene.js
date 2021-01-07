@@ -31,6 +31,7 @@ class GameScene extends Scene {
     this.createBall();
     this.createCursors();
     this.createBricks();
+    this.createWorldCollsion();
   }
 
   createPlayer() {
@@ -93,6 +94,13 @@ class GameScene extends Scene {
         stepX: 70,
       },
     });
+  }
+
+  createWorldCollsion() {
+    this.player.setCollideWorldBounds(true);
+    this.ball.setCollideWorldBounds(true);
+    this.physics.world.checkCollision.down = false;
+    this.ball.setBounce(1, 1);
   }
 
   update() {
