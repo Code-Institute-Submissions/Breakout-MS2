@@ -25,7 +25,8 @@ class GameScene extends Scene {
   }
 
   create() {
-    this.player = this.add.sprite(400, 560, "player");
+    this.player = this.physics.add.sprite(400, 560, "player");
+    this.ball = this.physics.add.sprite(400, 525, "ball");
   }
 
   update() {}
