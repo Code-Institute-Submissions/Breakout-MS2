@@ -48,6 +48,7 @@ class GameScene extends Scene {
   createBricks() {
     this.blueBricks = this.physics.add.group({
       key: "brick1",
+      immovable: true,
       repeat: 10,
       setXY: {
         x: 50,
@@ -58,6 +59,7 @@ class GameScene extends Scene {
 
     this.greenBricks = this.physics.add.group({
       key: "brick2",
+      immovable: true,
       repeat: 10,
       setXY: {
         x: 50,
@@ -68,6 +70,7 @@ class GameScene extends Scene {
 
     this.purpleBricks = this.physics.add.group({
       key: "brick3",
+      immovable: true,
       repeat: 10,
       setXY: {
         x: 50,
@@ -78,6 +81,7 @@ class GameScene extends Scene {
 
     this.redBricks = this.physics.add.group({
       key: "brick4",
+      immovable: true,
       repeat: 10,
       setXY: {
         x: 50,
@@ -88,6 +92,7 @@ class GameScene extends Scene {
 
     this.yellowBricks = this.physics.add.group({
       key: "brick5",
+      immovable: true,
       repeat: 10,
       setXY: {
         x: 50,
@@ -102,6 +107,7 @@ class GameScene extends Scene {
     this.ball.setCollideWorldBounds(true);
     this.physics.world.checkCollision.down = false;
     this.ball.setBounce(1, 1);
+    this.player.setImmovable(true);
   }
 
   createGameCollision() {
@@ -134,6 +140,13 @@ class GameScene extends Scene {
       null,
       this
     );
+    this.physics.add.collider(
+      this.ball,
+      this.yellowBricks,
+      this.smashBrick,
+      null,
+      this
+    );
     this.physics.add.collider(this.ball, this.yellowBricks, null, this);
     //BALL/PLAYER COLLIDE
     this.physics.add.collider(
@@ -161,7 +174,8 @@ class GameScene extends Scene {
 
       if (this.cursors.space.isDown) {
         this.gameHasStarted = true;
-        this.ball.setVelocityY(-200);
+        this.ball.setVelocityY(-250);
+        this.ball.setVelocityX(-250);
       }
     }
   }
@@ -169,8 +183,21 @@ class GameScene extends Scene {
   smashBrick(ball, brick) {
     brick.disableBody(true, true);
   }
-}
 
-//FUNCTIONS
+  ballHitPlayer(ball, player) {
+    // Increase bal velocity after ball collides with player
+    this.ball.setVelocityY(this.ball.body.velocity.y - 10);
+
+    // DEFLECT BALL IN DIRECTION DEPENDING ON PADDLE
+    let SetNewVelocityX = Math.abs(this.ball.body.velocity.x) + 5;
+
+    // Move ball to left or right
+    if (this.ball.x < this.player.x) {
+      this.ball.setVelocityX(-SetNewVelocityX);
+    } else {
+      this.ball.setVelocityX(SetNewVelocityX);
+    }
+  }
+}
 
 export default GameScene;
