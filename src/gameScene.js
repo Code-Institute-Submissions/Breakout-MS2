@@ -11,6 +11,8 @@ import ball from "./assets/images/white-ball.png";
 class GameScene extends Scene {
   constructor() {
     super("game");
+
+    this.gameHasStarted = false;
   }
 
   preload() {
@@ -25,11 +27,41 @@ class GameScene extends Scene {
   }
 
   create() {
-    this.player = this.physics.add.sprite(400, 560, "player");
-    this.ball = this.physics.add.sprite(400, 525, "ball");
+    this.createPlayer();
+    this.createBall();
+    this.createCursors();
   }
 
-  update() {}
+  createPlayer() {
+    this.player = this.physics.add.sprite(400, 560, "player");
+  }
+  createBall() {
+    this.ball = this.physics.add.sprite(400, 525, "ball");
+  }
+  createCursors() {
+    this.cursors = this.input.keyboard.createCursorKeys();
+  }
+
+  update() {
+    //Cursor Key Movement
+    if (this.cursors.left.isDown) {
+      this.player.setVelocityX(-500);
+    } else if (this.cursors.right.isDown) {
+      this.player.setVelocityX(500);
+    } else {
+      this.player.setVelocityX(0);
+    }
+
+    //ball movement
+    if (this.gameHasStarted === false) {
+      this.ball.setX(this.player.x);
+
+      if (this.cursors.space.isDown) {
+        this.gameHasStarted = true;
+        this.ball.setVelocityY(-200);
+      }
+    }
+  }
 }
 
 export default GameScene;
