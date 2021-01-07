@@ -32,6 +32,7 @@ class GameScene extends Scene {
     this.createCursors();
     this.createBricks();
     this.createWorldCollsion();
+    this.createGameCollision();
   }
 
   createPlayer() {
@@ -103,6 +104,47 @@ class GameScene extends Scene {
     this.ball.setBounce(1, 1);
   }
 
+  createGameCollision() {
+    //BALL/BRICK COLLIDE
+    this.physics.add.collider(
+      this.ball,
+      this.blueBricks,
+      this.smashBrick,
+      null,
+      this
+    );
+    this.physics.add.collider(
+      this.ball,
+      this.greenBricks,
+      this.smashBrick,
+      null,
+      this
+    );
+    this.physics.add.collider(
+      this.ball,
+      this.purpleBricks,
+      this.smashBrick,
+      null,
+      this
+    );
+    this.physics.add.collider(
+      this.ball,
+      this.redBricks,
+      this.smashBrick,
+      null,
+      this
+    );
+    this.physics.add.collider(this.ball, this.yellowBricks, null, this);
+    //BALL/PLAYER COLLIDE
+    this.physics.add.collider(
+      this.ball,
+      this.player,
+      this.ballHitPlayer,
+      null,
+      this
+    );
+  }
+
   update() {
     //Cursor Key Movement
     if (this.cursors.left.isDown) {
@@ -123,6 +165,12 @@ class GameScene extends Scene {
       }
     }
   }
+
+  smashBrick(ball, brick) {
+    brick.disableBody(true, true);
+  }
 }
+
+//FUNCTIONS
 
 export default GameScene;
