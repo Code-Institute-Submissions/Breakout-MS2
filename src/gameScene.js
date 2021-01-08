@@ -40,6 +40,20 @@ class GameScene extends Scene {
       fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
+
+    this.GameOverText = this.add.text(
+      400,
+      300,
+      "Game Over - try harder next time!",
+      {
+        fontSize: "50px",
+        fill: "#fafafa",
+        fontFamily: "Righteous, Tahoma, Geneva",
+      }
+    );
+
+    this.GameOverText.setOrigin(0.5);
+    this.GameOverText.setVisible(false);
   }
 
   createPlayer() {
@@ -188,6 +202,13 @@ class GameScene extends Scene {
   }
 
   update() {
+    if (this.gameLost() === true) {
+      this.GameOverText.setVisible(true);
+      this.ball.disableBody(true);
+      this.gameHasStarted = false;
+    }
+
+    //////////////////////////////////////////////////////
     if (this.cursors.left.isDown) {
       this.player.setVelocityX(-500);
     } else if (this.cursors.right.isDown) {
@@ -195,7 +216,7 @@ class GameScene extends Scene {
     } else {
       this.player.setVelocityX(0);
     }
-
+    //////////////////////////////////////////////////////
     if (this.gameHasStarted === false) {
       this.ball.setX(this.player.x);
 
@@ -233,6 +254,12 @@ class GameScene extends Scene {
       ball2.setBounce(1.1);
       ball2.setCollideWorldBounds(true);
       ball2.setVelocityY(-150);
+    }
+  }
+  // Lose the game
+  gameLost() {
+    if (this.ball.body.y > this.player.body.y) {
+      return true;
     }
   }
 }
