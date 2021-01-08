@@ -1,12 +1,4 @@
 import { Scene } from "phaser";
-import logoImg from "./assets/images/logo.png";
-import brick1 from "./assets/images/blue-brick.png";
-import brick2 from "./assets/images/green-brick.png";
-import brick3 from "./assets/images/purple-brick.png";
-import brick4 from "./assets/images/red-brick.png";
-import brick5 from "./assets/images/yellow-brick.png";
-import player from "./assets/images/player-paddle2.png";
-import ball from "./assets/images/white-ball.png";
 
 class GameScene extends Scene {
   constructor() {
@@ -19,17 +11,18 @@ class GameScene extends Scene {
   }
 
   preload() {
-    this.load.image("logo", logoImg);
-    this.load.image("brick1", brick1);
-    this.load.image("brick2", brick2);
-    this.load.image("brick3", brick3);
-    this.load.image("brick4", brick4);
-    this.load.image("brick5", brick5);
-    this.load.image("player", player);
-    this.load.image("ball", ball);
+    this.load.image("logoImg", "assets/images/logo.png");
+    this.load.image("brick1", "assets/images/blue-brick.png");
+    this.load.image("brick2", "assets/images/green-brick.png");
+    this.load.image("brick3", "assets/images/purple-brick.png");
+    this.load.image("brick4", "assets/images/red-brick.png");
+    this.load.image("brick5", "assets/images/yellow-brick.png");
+    this.load.image("player", "assets/images/player-paddle2.png");
+    this.load.image("ball", "assets/images/white-ball.png");
 
     this.load.audio("brickHitSound", "assets/audio/sound2.wav");
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");
+    this.load.image("ball2", "assets/images/diamond.png");
   }
 
   create() {
@@ -40,6 +33,7 @@ class GameScene extends Scene {
     this.createWorldCollsion();
     this.createGameCollision();
     this.createSounds();
+    this.createBall2();
 
     this.gameScoreText = this.add.text(20, 20, `Score: ${this.score}`, {
       fontSize: "32px",
@@ -170,6 +164,24 @@ class GameScene extends Scene {
     );
   }
 
+  createBall2() {
+    this.ball2s = this.physics.add.group();
+    this.physics.add.overlap(
+      this.player,
+      this.ball2s,
+      this.hitball2,
+      null,
+      this
+    );
+  }
+
+  hitball2(player, ball2) {
+    this.sound.play("brickHitSound");
+    this.score += 50;
+    this.gameScoreText.setText("Score: " + this.score);
+    ball2.disableBody(true, true);
+  }
+
   createSounds() {
     this.playerHitSound = "playerHit";
     this.brickHitSound = "brickHit";
@@ -213,6 +225,14 @@ class GameScene extends Scene {
       this.ball.setVelocityX(-SetNewVelocityX);
     } else {
       this.ball.setVelocityX(SetNewVelocityX);
+    }
+    if (this.blueBricks.countActive(true) < 8) {
+      const x = player.x;
+
+      const ball2 = this.ball2s.create(x, 20, "ball2");
+      ball2.setBounce(1.1);
+      ball2.setCollideWorldBounds(true);
+      ball2.setVelocityY(-150);
     }
   }
 }
