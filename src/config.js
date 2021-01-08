@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import PreloadScene from "./PreloadScene";
 import GameScene from "./GameScene";
 
 const config = {
@@ -6,7 +7,7 @@ const config = {
   parent: "Milestone 2",
   width: 800,
   height: 600,
-  scene: GameScene,
+  scene: [PreloadScene, GameScene],
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
