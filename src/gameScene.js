@@ -54,6 +54,15 @@ class GameScene extends Scene {
 
     this.GameOverText.setOrigin(0.5);
     this.GameOverText.setVisible(false);
+
+    this.gameWinText = this.add.text(400, 300, "You Won :)", {
+      fontSize: "50px",
+      fill: "#fafafa",
+      fontFamily: "Righteous, Tahoma, Geneva",
+    });
+
+    this.gameWinText.setOrigin(0.5);
+    this.gameWinText.setVisible(false);
   }
 
   createPlayer() {
@@ -206,6 +215,10 @@ class GameScene extends Scene {
       this.GameOverText.setVisible(true);
       this.ball.disableBody(true);
       this.gameHasStarted = false;
+    } else if (this.gameWon() === true) {
+      this.gameWinText.setVisible(true);
+      this.ball.disableBody(true);
+      this.gameHasStarted = false;
     }
 
     //////////////////////////////////////////////////////
@@ -259,6 +272,20 @@ class GameScene extends Scene {
   // Lose the game
   gameLost() {
     if (this.ball.body.y > this.player.body.y) {
+      return true;
+    }
+  }
+
+  // win the game
+  gameWon() {
+    const total =
+      this.blueBricks.countActive() +
+      this.greenBricks.countActive() +
+      this.purpleBricks.countActive() +
+      this.redBricks.countActive() +
+      this.yellowBricks.countActive();
+
+    if (total === 46) {
       return true;
     }
   }
