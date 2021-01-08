@@ -19,10 +19,10 @@ class GameScene extends Scene {
     this.load.image("brick5", "assets/images/yellow-brick.png");
     this.load.image("player", "assets/images/player-paddle2.png");
     this.load.image("ball", "assets/images/white-ball.png");
+    this.load.image("ball2", "assets/images/diamond.png");
 
     this.load.audio("brickHitSound", "assets/audio/sound2.wav");
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");
-    this.load.image("ball2", "assets/images/diamond.png");
   }
 
   create() {
@@ -259,11 +259,22 @@ class GameScene extends Scene {
   }
 
   smashBrick(ball, brick) {
-    brick.disableBody(true, true);
     this.sound.play("brickHitSound");
+    brick.disableBody(true, false);
 
     this.score += 10;
     this.gameScoreText.setText(`Score: ${this.score}`);
+
+    const tween = this.tweens.add({
+      targets: brick,
+      alpha: { from: 1, to: 0 },
+      ease: "Bounce",
+      duration: 100,
+      repeat: 3,
+      onComplete: () => {
+        brick.disableBody(true, true);
+      },
+    });
   }
 
   ballHitPlayer(ball, player) {
