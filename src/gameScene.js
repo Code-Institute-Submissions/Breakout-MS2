@@ -43,21 +43,6 @@ class GameScene extends Scene {
     });
 
     ////////////////////////////////////
-    this.GameOverText = this.add.text(
-      400,
-      300,
-      "Game Over - try harder next time!",
-      {
-        fontSize: "50px",
-        fill: "#fafafa",
-        fontFamily: "Righteous, Tahoma, Geneva",
-      }
-    );
-
-    this.GameOverText.setOrigin(0.5);
-    this.GameOverText.setVisible(false);
-
-    ////////////////////////////////////
     this.gameWinText = this.add.text(400, 300, "You Won :)", {
       fontSize: "50px",
       fill: "#fafafa",
@@ -228,9 +213,9 @@ class GameScene extends Scene {
 
   update() {
     if (this.gameLost() === true) {
-      this.GameOverText.setVisible(true);
       this.ball.disableBody(true);
       this.gameHasStarted = false;
+      this.scene.start("gameover");
     } else if (this.gameWon() === true) {
       this.gameWinText.setVisible(true);
       this.ball.disableBody(true);
