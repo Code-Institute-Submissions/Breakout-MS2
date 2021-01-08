@@ -43,16 +43,6 @@ class GameScene extends Scene {
     });
 
     ////////////////////////////////////
-    this.gameWinText = this.add.text(400, 300, "You Won :)", {
-      fontSize: "50px",
-      fill: "#fafafa",
-      fontFamily: "Righteous, Tahoma, Geneva",
-    });
-
-    this.gameWinText.setOrigin(0.5);
-    this.gameWinText.setVisible(false);
-
-    ////////////////////////////////////
     this.gameStartText = this.add.text(
       400,
       300,
@@ -217,9 +207,9 @@ class GameScene extends Scene {
       this.gameHasStarted = false;
       this.scene.start("gameover");
     } else if (this.gameWon() === true) {
-      this.gameWinText.setVisible(true);
       this.ball.disableBody(true);
       this.gameHasStarted = false;
+      this.scene.start("gamewon");
     }
 
     //////////////////////////////////////////////////////

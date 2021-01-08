@@ -1,21 +1,21 @@
 import { Scene } from "phaser";
 
-class levelCompleteScene extends Scene {
+class levelLostScene extends Scene {
   constructor() {
-    super("gamewon");
+    super("gameover");
   }
   preload() {}
   create() {
-    this.gameWinText = this.add.text(400, 300, "You Won :)", {
-      fontSize: "50px",
+    this.GameOverText = this.add.text(400, 300, "Game Over!", {
+      fontSize: "70px",
       fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
 
-    this.gameWinText.setOrigin(0.5);
+    this.GameOverText.setOrigin(0.5);
 
     this.input.on("pointerdown", () => this.scene.start("preload"));
   }
 }
 
-export default levelCompleteScene;
+export default levelLostScene;
