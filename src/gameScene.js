@@ -35,12 +35,14 @@ class GameScene extends Scene {
     this.createSounds();
     this.createBall2();
 
+    ////////////////////////////////////
     this.gameScoreText = this.add.text(20, 20, `Score: ${this.score}`, {
       fontSize: "32px",
       fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
 
+    ////////////////////////////////////
     this.GameOverText = this.add.text(
       400,
       300,
@@ -55,6 +57,7 @@ class GameScene extends Scene {
     this.GameOverText.setOrigin(0.5);
     this.GameOverText.setVisible(false);
 
+    ////////////////////////////////////
     this.gameWinText = this.add.text(400, 300, "You Won :)", {
       fontSize: "50px",
       fill: "#fafafa",
@@ -63,6 +66,19 @@ class GameScene extends Scene {
 
     this.gameWinText.setOrigin(0.5);
     this.gameWinText.setVisible(false);
+
+    ////////////////////////////////////
+    this.gameStartText = this.add.text(
+      400,
+      300,
+      "Press SPACEBAR to Start Game!",
+      {
+        fontSize: "50px",
+        fill: "#fafafa",
+        fontFamily: "Righteous, Tahoma, Geneva",
+      }
+    );
+    this.gameStartText.setOrigin(0.5);
   }
 
   createPlayer() {
@@ -237,6 +253,7 @@ class GameScene extends Scene {
         this.gameHasStarted = true;
         this.ball.setVelocityY(-250);
         this.ball.setVelocityX(-250);
+        this.gameStartText.setVisible(false);
       }
     }
   }
