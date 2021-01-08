@@ -27,6 +27,9 @@ class GameScene extends Scene {
     this.load.image("brick5", brick5);
     this.load.image("player", player);
     this.load.image("ball", ball);
+
+    this.load.audio("brickHitSound", "assets/audio/sound2.wav");
+    this.load.audio("playerHitSound", "assets/audio/sound1.wav");
   }
 
   create() {
@@ -36,6 +39,7 @@ class GameScene extends Scene {
     this.createBricks();
     this.createWorldCollsion();
     this.createGameCollision();
+    this.createSounds();
 
     this.gameScoreText = this.add.text(20, 20, `Score: ${this.score}`, {
       fontSize: "32px",
@@ -166,6 +170,11 @@ class GameScene extends Scene {
     );
   }
 
+  createSounds() {
+    this.playerHitSound = "playerHit";
+    this.brickHitSound = "brickHit";
+  }
+
   update() {
     if (this.cursors.left.isDown) {
       this.player.setVelocityX(-500);
@@ -188,12 +197,14 @@ class GameScene extends Scene {
 
   smashBrick(ball, brick) {
     brick.disableBody(true, true);
+    this.sound.play("brickHitSound");
 
     this.score += 10;
     this.gameScoreText.setText(`Score: ${this.score}`);
   }
 
   ballHitPlayer(ball, player) {
+    this.sound.play("playerHitSound");
     this.ball.setVelocityY(this.ball.body.velocity.y - 10);
 
     let SetNewVelocityX = Math.abs(this.ball.body.velocity.x) + 5;
