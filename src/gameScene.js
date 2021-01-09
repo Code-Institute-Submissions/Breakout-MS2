@@ -11,13 +11,17 @@ class GameScene extends Scene {
   }
 
   preload() {
-    this.load.image("background", "assets/images/background.png");
+    this.load.image("sunset", "assets/images/sunset.png");
+    this.load.image("space3", "assets/images/space3.png");
     this.load.image("logoImg", "assets/images/logo.png");
     this.load.image("brick1", "assets/images/blue-tile.png");
     this.load.image("brick2", "assets/images/green-tile.png");
     this.load.image("brick3", "assets/images/purple-tile.png");
     this.load.image("brick4", "assets/images/red-tile.png");
     this.load.image("brick5", "assets/images/orange-tile.png");
+    this.load.image("brick6", "assets/images/blue-block.png");
+    this.load.image("brick7", "assets/images/green-tile.png");
+    this.load.image("brick8", "assets/images/purple-tile.png");
     this.load.image("player", "assets/images/player-paddle.png");
     this.load.image("ball", "assets/images/blue-ball.png");
     this.load.image("ball2", "assets/images/diamond.png");
@@ -27,7 +31,7 @@ class GameScene extends Scene {
   }
 
   create() {
-    this.add.image(400, 300, "background");
+    this.add.image(400, 300, "sunset");
 
     this.createPlayer();
     this.createBall();
@@ -57,6 +61,14 @@ class GameScene extends Scene {
       }
     );
     this.gameStartText.setOrigin(0.5);
+
+    //////////////////////////////////////
+    //ADD LEVEL TEXT
+    this.levelText = this.add.text(670, 20, "Level: 1", {
+      fontSize: "32px",
+      fill: "#fafafa",
+      fontFamily: "Righteous, Tahoma, Geneva",
+    });
   }
 
   createPlayer() {
@@ -74,7 +86,7 @@ class GameScene extends Scene {
   }
 
   createBricks() {
-    this.blueBricks = this.physics.add.group({
+    this.brick1 = this.physics.add.group({
       key: "brick1",
       immovable: true,
       repeat: 2,
@@ -86,7 +98,7 @@ class GameScene extends Scene {
       },
     });
 
-    this.greenBricks = this.physics.add.group({
+    this.brick2 = this.physics.add.group({
       key: "brick2",
       immovable: true,
       repeat: 5,
@@ -98,7 +110,7 @@ class GameScene extends Scene {
       },
     });
 
-    this.purpleBricks = this.physics.add.group({
+    this.brick3 = this.physics.add.group({
       key: "brick3",
       immovable: true,
       repeat: 5,
@@ -110,7 +122,7 @@ class GameScene extends Scene {
       },
     });
 
-    this.redBricks = this.physics.add.group({
+    this.brick4 = this.physics.add.group({
       key: "brick4",
       immovable: true,
       repeat: 5,
@@ -122,7 +134,7 @@ class GameScene extends Scene {
       },
     });
 
-    this.yellowBricks = this.physics.add.group({
+    this.brick5 = this.physics.add.group({
       key: "brick5",
       immovable: true,
       setScale: { x: 0.25, y: 0.25 },
@@ -146,40 +158,40 @@ class GameScene extends Scene {
   createGameCollision() {
     this.physics.add.collider(
       this.ball,
-      this.blueBricks,
+      this.brick1,
       this.smashBrick,
       null,
       this
     );
     this.physics.add.collider(
       this.ball,
-      this.greenBricks,
+      this.brick2,
       this.smashBrick,
       null,
       this
     );
     this.physics.add.collider(
       this.ball,
-      this.purpleBricks,
+      this.brick3,
       this.smashBrick,
       null,
       this
     );
     this.physics.add.collider(
       this.ball,
-      this.redBricks,
+      this.brick4,
       this.smashBrick,
       null,
       this
     );
     this.physics.add.collider(
       this.ball,
-      this.yellowBricks,
+      this.brick5,
       this.smashBrick,
       null,
       this
     );
-    this.physics.add.collider(this.ball, this.yellowBricks, null, this);
+    this.physics.add.collider(this.ball, this.brick5, null, this);
 
     this.physics.add.collider(
       this.ball,
@@ -275,7 +287,7 @@ class GameScene extends Scene {
     } else {
       this.ball.setVelocityX(SetNewVelocityX);
     }
-    if (this.blueBricks.countActive(true) < 8) {
+    if (this.brick1.countActive(true) < 8) {
       const x = player.x;
 
       const ball2 = this.ball2s.create(x, 20, "ball2");
@@ -294,13 +306,13 @@ class GameScene extends Scene {
   // win the game
   gameWon() {
     const total =
-      this.blueBricks.countActive() +
-      this.greenBricks.countActive() +
-      this.purpleBricks.countActive() +
-      this.redBricks.countActive() +
-      this.yellowBricks.countActive();
+      this.brick1.countActive() +
+      this.brick2.countActive() +
+      this.brick3.countActive() +
+      this.brick4.countActive() +
+      this.brick5.countActive();
 
-    if (total === 22) {
+    if (total === 23) {
       return true;
     }
   }
