@@ -1,8 +1,8 @@
 import { Scene } from "phaser";
 
-class GameScene extends Scene {
+class Level2Scene extends Scene {
   constructor() {
-    super("game");
+    super("level2");
   }
 
   init() {
@@ -300,10 +300,10 @@ class GameScene extends Scene {
       this.redBricks.countActive() +
       this.yellowBricks.countActive();
 
-    if (total === 22) {
+    if (total === 0) {
       return true;
     }
   }
 }
 
-export default GameScene;
+export default Level2Scene;

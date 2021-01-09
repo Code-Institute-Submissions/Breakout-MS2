@@ -14,7 +14,7 @@ class levelCompleteScene extends Scene {
 
     this.gameWinText.setOrigin(0.5);
 
-    this.input.on("pointerdown", () => this.scene.start("preload"));
+    this.input.on("pointerdown", () => this.scene.start("level2"));
   }
 }
 
