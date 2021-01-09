@@ -7,6 +7,7 @@ class GameScene extends Scene {
 
   init() {
     this.gameHasStarted = false;
+    this.gameOver = false;
     this.score = 0;
   }
 
@@ -215,9 +216,7 @@ class GameScene extends Scene {
 
   hitball2(player, ball2) {
     this.sound.play("brickHitSound");
-    this.score += 50;
-    this.gameScoreText.setText("Score: " + this.score);
-    ball2.disableBody(true, true);
+    this.gameOver = true;
   }
 
   createSounds() {
@@ -287,10 +286,14 @@ class GameScene extends Scene {
     } else {
       this.ball.setVelocityX(SetNewVelocityX);
     }
-    if (this.brick1.countActive(true) < 8) {
-      const x = player.x;
 
-      const ball2 = this.ball2s.create(x, 20, "ball2");
+    if (this.brick1.countActive(true) < 3) {
+      const x =
+        player.x < 400
+          ? Phaser.Math.Between(400, 800)
+          : Phaser.Math.Between(0, 400);
+
+      const ball2 = this.ball2s.create(x, 15, "ball2");
       ball2.setBounce(1.1);
       ball2.setCollideWorldBounds(true);
       ball2.setVelocityY(-150);
@@ -298,7 +301,7 @@ class GameScene extends Scene {
   }
   // Lose the game
   gameLost() {
-    if (this.ball.body.y > this.player.body.y) {
+    if (this.ball.body.y > this.player.body.y || this.gameOver === true) {
       return true;
     }
   }
@@ -312,7 +315,7 @@ class GameScene extends Scene {
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 23) {
+    if (total === 0) {
       return true;
     }
   }

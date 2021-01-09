@@ -8,6 +8,7 @@ class Level2Scene extends Scene {
   init() {
     this.gameHasStarted = false;
     this.score = 0;
+    this.gameOver = false;
   }
 
   preload() {}
@@ -280,6 +281,18 @@ class Level2Scene extends Scene {
         brick.disableBody(true, true);
       },
     });
+
+    if (this.brick3.countActive(true) < 3) {
+      const x =
+        player.x < 400
+          ? Phaser.Math.Between(400, 800)
+          : Phaser.Math.Between(0, 400);
+
+      const ball2 = this.ball2s.create(x, 15, "ball2");
+      ball2.setBounce(1.1);
+      ball2.setCollideWorldBounds(true);
+      ball2.setVelocityY(-150);
+    }
   }
 
   ballHitPlayer(ball, player) {
@@ -293,10 +306,13 @@ class Level2Scene extends Scene {
     } else {
       this.ball.setVelocityX(SetNewVelocityX);
     }
-    if (this.brick7.countActive(true) < 8) {
-      const x = player.x;
+    if (this.brick3.countActive(true) < 3) {
+      const x =
+        player.x < 400
+          ? Phaser.Math.Between(400, 800)
+          : Phaser.Math.Between(0, 400);
 
-      const ball2 = this.ball2s.create(x, 20, "ball2");
+      const ball2 = this.ball2s.create(x, 15, "ball2");
       ball2.setBounce(1.1);
       ball2.setCollideWorldBounds(true);
       ball2.setVelocityY(-150);
@@ -304,7 +320,7 @@ class Level2Scene extends Scene {
   }
   // Lose the game
   gameLost() {
-    if (this.ball.body.y > this.player.body.y) {
+    if (this.ball.body.y > this.player.body.y || this.gameOver === true) {
       return true;
     }
   }
