@@ -11,14 +11,15 @@ class GameScene extends Scene {
   }
 
   preload() {
+    this.load.image("background", "assets/images/background.png");
     this.load.image("logoImg", "assets/images/logo.png");
-    this.load.image("brick1", "assets/images/blue-brick.png");
-    this.load.image("brick2", "assets/images/green-brick.png");
-    this.load.image("brick3", "assets/images/purple-brick.png");
-    this.load.image("brick4", "assets/images/red-brick.png");
-    this.load.image("brick5", "assets/images/yellow-brick.png");
-    this.load.image("player", "assets/images/player-paddle2.png");
-    this.load.image("ball", "assets/images/white-ball.png");
+    this.load.image("brick1", "assets/images/blue-tile.png");
+    this.load.image("brick2", "assets/images/green-tile.png");
+    this.load.image("brick3", "assets/images/purple-tile.png");
+    this.load.image("brick4", "assets/images/red-tile.png");
+    this.load.image("brick5", "assets/images/orange-tile.png");
+    this.load.image("player", "assets/images/player-paddle.png");
+    this.load.image("ball", "assets/images/blue-ball.png");
     this.load.image("ball2", "assets/images/diamond.png");
 
     this.load.audio("brickHitSound", "assets/audio/sound2.wav");
@@ -26,6 +27,8 @@ class GameScene extends Scene {
   }
 
   create() {
+    this.add.image(400, 300, "background");
+
     this.createPlayer();
     this.createBall();
     this.createCursors();
@@ -58,9 +61,13 @@ class GameScene extends Scene {
 
   createPlayer() {
     this.player = this.physics.add.sprite(400, 560, "player");
+    this.player.scaleX = 0.25;
+    this.player.scaleY = 0.25;
   }
   createBall() {
-    this.ball = this.physics.add.sprite(400, 525, "ball");
+    this.ball = this.physics.add.sprite(400, 515, "ball");
+    this.ball.scaleX = 0.25;
+    this.ball.scaleY = 0.25;
   }
   createCursors() {
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -70,55 +77,60 @@ class GameScene extends Scene {
     this.blueBricks = this.physics.add.group({
       key: "brick1",
       immovable: true,
-      repeat: 10,
+      repeat: 2,
+      setScale: { x: 0.25, y: 0.25 },
       setXY: {
-        x: 50,
+        x: 295,
         y: 250,
-        stepX: 70,
+        stepX: 100,
       },
     });
 
     this.greenBricks = this.physics.add.group({
       key: "brick2",
       immovable: true,
-      repeat: 10,
+      repeat: 5,
+      setScale: { x: 0.25, y: 0.25 },
       setXY: {
-        x: 50,
+        x: 150,
         y: 210,
-        stepX: 70,
+        stepX: 100,
       },
     });
 
     this.purpleBricks = this.physics.add.group({
       key: "brick3",
       immovable: true,
-      repeat: 10,
+      repeat: 5,
+      setScale: { x: 0.25, y: 0.25 },
       setXY: {
-        x: 50,
+        x: 150,
         y: 170,
-        stepX: 70,
+        stepX: 100,
       },
     });
 
     this.redBricks = this.physics.add.group({
       key: "brick4",
       immovable: true,
-      repeat: 10,
+      repeat: 5,
+      setScale: { x: 0.25, y: 0.25 },
       setXY: {
-        x: 50,
+        x: 150,
         y: 130,
-        stepX: 70,
+        stepX: 100,
       },
     });
 
     this.yellowBricks = this.physics.add.group({
       key: "brick5",
       immovable: true,
-      repeat: 10,
+      setScale: { x: 0.25, y: 0.25 },
+      repeat: 5,
       setXY: {
-        x: 50,
+        x: 150,
         y: 90,
-        stepX: 70,
+        stepX: 100,
       },
     });
   }
@@ -288,7 +300,7 @@ class GameScene extends Scene {
       this.redBricks.countActive() +
       this.yellowBricks.countActive();
 
-    if (total === 46) {
+    if (total === 0) {
       return true;
     }
   }
