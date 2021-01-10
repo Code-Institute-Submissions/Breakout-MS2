@@ -248,7 +248,7 @@ class Level2Scene extends Scene {
     } else if (this.gameWon() === true) {
       this.ball.disableBody(true);
       this.gameHasStarted = false;
-      this.scene.start("gamewon");
+      this.scene.start("preload");
     }
 
     //////////////////////////////////////////////////////

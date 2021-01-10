@@ -7,15 +7,25 @@ class PreloadScene extends Scene {
 
   preload() {}
   create() {
-    this.add.text(280, 250, "Level 1!", {
-      fontSize: 48,
+    this.gameStartText = this.add.text(400, 200, "Ready To Play?", {
+      fontSize: "50px",
+      fontFamily: "Righteous, Tahoma, Geneva",
     });
 
-    this.level1Text = this.add.text(75, 350, "Click anywhere to begin", {
-      fontSize: 48,
-    });
+    this.gameStartText.setOrigin(0.5);
 
-    this.input.on("pointerdown", () => this.scene.start("game"));
+    this.gameStartText = this.add.text(
+      400,
+      300,
+      "Press spacebar For Level 1!",
+      {
+        fontSize: "50px",
+        fontFamily: "Righteous, Tahoma, Geneva",
+      }
+    );
+    this.gameStartText.setOrigin(0.5);
+
+    this.input.keyboard.on("keydown", () => this.scene.start("game"));
   }
 }
 

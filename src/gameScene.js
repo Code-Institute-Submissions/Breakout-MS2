@@ -46,18 +46,16 @@ class GameScene extends Scene {
     ////////////////////////////////////
     this.gameScoreText = this.add.text(20, 20, `Score: ${this.score}`, {
       fontSize: "32px",
-      fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
 
     ////////////////////////////////////
     this.gameStartText = this.add.text(
       400,
-      300,
+      350,
       "Press SPACEBAR to Start Game!",
       {
         fontSize: "50px",
-        fill: "#fafafa",
         fontFamily: "Righteous, Tahoma, Geneva",
       }
     );
@@ -67,7 +65,6 @@ class GameScene extends Scene {
     //ADD LEVEL TEXT
     this.levelText = this.add.text(670, 20, "Level: 1", {
       fontSize: "32px",
-      fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
 
@@ -75,7 +72,6 @@ class GameScene extends Scene {
     //ADD LIVES TEXT
     this.livesText = this.add.text(670, 500, `Lives: ${this.lives}`, {
       fontSize: "32px",
-      fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
   }

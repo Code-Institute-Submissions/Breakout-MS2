@@ -6,15 +6,26 @@ class levelLostScene extends Scene {
   }
   preload() {}
   create() {
-    this.GameOverText = this.add.text(400, 300, "Game Over!", {
-      fontSize: "70px",
-      fill: "#fafafa",
+    this.GameOverText = this.add.text(400, 200, "GAME OVER!", {
+      fontSize: "50px",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
 
     this.GameOverText.setOrigin(0.5);
 
-    this.input.on("pointerdown", () => this.scene.start("preload"));
+    this.GameOverText = this.add.text(
+      400,
+      300,
+      "Press Spacebar To Try Again!",
+      {
+        fontSize: "50px",
+        fontFamily: "Righteous, Tahoma, Geneva",
+      }
+    );
+
+    this.GameOverText.setOrigin(0.5);
+
+    this.input.keyboard.on("keydown", () => this.scene.start("game"));
   }
 }
 
