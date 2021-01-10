@@ -15,7 +15,6 @@ class GameScene extends Scene {
   preload() {
     this.load.image("sunset", "assets/images/sunset.png");
     this.load.image("space3", "assets/images/space3.png");
-    this.load.image("logoImg", "assets/images/logo.png");
     this.load.image("brick1", "assets/images/blue-tile.png");
     this.load.image("brick2", "assets/images/green-tile.png");
     this.load.image("brick3", "assets/images/purple-tile.png");
