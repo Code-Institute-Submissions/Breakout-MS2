@@ -12,24 +12,7 @@ class GameScene extends Scene {
     this.lives = 3;
   }
 
-  preload() {
-    this.load.image("sunset", "assets/images/sunset.png");
-    this.load.image("space3", "assets/images/space3.png");
-    this.load.image("brick1", "assets/images/blue-tile.png");
-    this.load.image("brick2", "assets/images/green-tile.png");
-    this.load.image("brick3", "assets/images/purple-tile.png");
-    this.load.image("brick4", "assets/images/red-tile.png");
-    this.load.image("brick5", "assets/images/orange-tile.png");
-    this.load.image("brick6", "assets/images/blue-block.png");
-    this.load.image("brick7", "assets/images/green-tile.png");
-    this.load.image("brick8", "assets/images/purple-tile.png");
-    this.load.image("player", "assets/images/player-paddle.png");
-    this.load.image("ball", "assets/images/blue-ball.png");
-    this.load.image("ball2", "assets/images/diamond.png");
-
-    this.load.audio("brickHitSound", "assets/audio/sound2.wav");
-    this.load.audio("playerHitSound", "assets/audio/sound1.wav");
-  }
+  preload() {}
 
   create() {
     this.add.image(400, 300, "sunset");
@@ -42,14 +25,15 @@ class GameScene extends Scene {
     this.createGameCollision();
     this.createSounds();
     this.createBall2();
+    this.createGameText();
+  }
 
-    ////////////////////////////////////
+  createGameText() {
     this.gameScoreText = this.add.text(20, 20, `Score: ${this.score}`, {
       fontSize: "32px",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
 
-    ////////////////////////////////////
     this.gameStartText = this.add.text(
       400,
       350,
@@ -61,15 +45,11 @@ class GameScene extends Scene {
     );
     this.gameStartText.setOrigin(0.5);
 
-    //////////////////////////////////////
-    //ADD LEVEL TEXT
     this.levelText = this.add.text(670, 20, "Level: 1", {
       fontSize: "32px",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
 
-    //////////////////////////////////////
-    //ADD LIVES TEXT
     this.livesText = this.add.text(670, 500, `Lives: ${this.lives}`, {
       fontSize: "32px",
       fontFamily: "Righteous, Tahoma, Geneva",
@@ -336,7 +316,7 @@ class GameScene extends Scene {
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 22) {
+    if (total === 0) {
       return true;
     }
   }

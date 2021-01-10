@@ -25,38 +25,33 @@ class Level2Scene extends Scene {
     this.createGameCollision();
     this.createSounds();
     this.createBall2();
+    this.createGameText();
+  }
 
-    ////////////////////////////////////
+  createGameText() {
     this.gameScoreText = this.add.text(20, 20, `Score: ${this.score}`, {
       fontSize: "32px",
-      fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
 
-    ////////////////////////////////////
     this.gameStartText = this.add.text(
       400,
-      400,
+      350,
       "Press SPACEBAR to Start Game!",
       {
         fontSize: "50px",
-        fill: "#fafafa",
         fontFamily: "Righteous, Tahoma, Geneva",
       }
     );
     this.gameStartText.setOrigin(0.5);
 
-    //ADD LEVEL TEXT
-    this.levelText = this.add.text(670, 20, "Level: 2", {
+    this.levelText = this.add.text(670, 20, "Level: 1", {
       fontSize: "32px",
-      fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
-    //////////////////////////////////////
-    //ADD LIVES TEXT
+
     this.livesText = this.add.text(670, 500, `Lives: ${this.lives}`, {
       fontSize: "32px",
-      fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
   }
@@ -304,7 +299,7 @@ class Level2Scene extends Scene {
 
     if (this.brick3.countActive(true) < 3) {
       const x =
-        player.x < 400
+        this.player.x < 400
           ? Phaser.Math.Between(400, 800)
           : Phaser.Math.Between(0, 400);
 

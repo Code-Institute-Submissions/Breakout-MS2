@@ -16,7 +16,7 @@ class levelLostScene extends Scene {
     this.GameOverText = this.add.text(
       400,
       300,
-      "Press Spacebar To Try Again!",
+      "Click Anywhere To Try Again!",
       {
         fontSize: "50px",
         fontFamily: "Righteous, Tahoma, Geneva",
@@ -25,7 +25,7 @@ class levelLostScene extends Scene {
 
     this.GameOverText.setOrigin(0.5);
 
-    this.input.keyboard.on("keydown", () => this.scene.start("game"));
+    this.input.on("pointerdown", () => this.scene.start("game"));
   }
 }
 
