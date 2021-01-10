@@ -45,7 +45,7 @@ class Level2Scene extends Scene {
     );
     this.gameStartText.setOrigin(0.5);
 
-    this.levelText = this.add.text(670, 20, "Level: 1", {
+    this.levelText = this.add.text(670, 20, "Level: 2", {
       fontSize: "32px",
       fontFamily: "Righteous, Tahoma, Geneva",
     });
@@ -225,9 +225,7 @@ class Level2Scene extends Scene {
 
   hitball2(player, ball2) {
     this.sound.play("brickHitSound");
-    this.score += 50;
-    this.gameScoreText.setText("Score: " + this.score);
-    ball2.disableBody(true, true);
+    this.gameOver = true;
   }
 
   createSounds() {
@@ -296,32 +294,26 @@ class Level2Scene extends Scene {
         brick.disableBody(true, true);
       },
     });
-
-    if (this.brick3.countActive(true) < 3) {
-      const x =
-        this.player.x < 400
-          ? Phaser.Math.Between(400, 800)
-          : Phaser.Math.Between(0, 400);
-
-      const ball2 = this.ball2s.create(x, 15, "ball2");
-      ball2.setBounce(1.1);
-      ball2.setCollideWorldBounds(true);
-      ball2.setVelocityY(-150);
-    }
   }
 
   ballHitPlayer(ball, player) {
     this.sound.play("playerHitSound");
-    this.ball.setVelocityY(this.ball.body.velocity.y - 10);
+    this.ball.setVelocityY(this.ball.body.velocity.y - 15);
 
-    let SetNewVelocityX = Math.abs(this.ball.body.velocity.x) + 5;
+    let SetNewVelocityX = Math.abs(this.ball.body.velocity.x) + 15;
 
     if (this.ball.x < this.player.x) {
       this.ball.setVelocityX(-SetNewVelocityX);
     } else {
       this.ball.setVelocityX(SetNewVelocityX);
     }
-    if (this.brick3.countActive(true) < 3) {
+    const total =
+      this.brick1.countActive() +
+      this.brick2.countActive() +
+      this.brick3.countActive() +
+      this.brick4.countActive() +
+      this.brick5.countActive();
+    if (total < 15) {
       const x =
         player.x < 400
           ? Phaser.Math.Between(400, 800)
@@ -330,7 +322,7 @@ class Level2Scene extends Scene {
       const ball2 = this.ball2s.create(x, 15, "ball2");
       ball2.setBounce(1.1);
       ball2.setCollideWorldBounds(true);
-      ball2.setVelocityY(-150);
+      ball2.setVelocityY(-250);
     }
   }
 

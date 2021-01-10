@@ -24,6 +24,8 @@ class PreloadScene extends Scene {
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");
   }
   create() {
+    this.add.image(400, 300, "sunset");
+
     this.gameStartText = this.add.text(400, 200, "Ready To Play?", {
       fontSize: "50px",
       fontFamily: "Righteous, Tahoma, Geneva",

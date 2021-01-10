@@ -6,6 +6,8 @@ class levelCompleteScene extends Scene {
   }
   preload() {}
   create() {
+    this.add.image(400, 300, "space3");
+
     this.gameWinText = this.add.text(400, 200, "Congratulations! You Rock!", {
       fontSize: "50px",
       fontFamily: "Righteous, Tahoma, Geneva",

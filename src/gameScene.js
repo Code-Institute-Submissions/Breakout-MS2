@@ -221,9 +221,9 @@ class GameScene extends Scene {
 
     //////////////////////////////////////////////////////
     if (this.cursors.left.isDown) {
-      this.player.setVelocityX(-500);
+      this.player.setVelocityX(-700);
     } else if (this.cursors.right.isDown) {
-      this.player.setVelocityX(500);
+      this.player.setVelocityX(700);
     } else {
       this.player.setVelocityX(0);
     }
@@ -275,15 +275,20 @@ class GameScene extends Scene {
     this.sound.play("playerHitSound");
     this.ball.setVelocityY(this.ball.body.velocity.y - 10);
 
-    let SetNewVelocityX = Math.abs(this.ball.body.velocity.x) + 5;
+    let SetNewVelocityX = Math.abs(this.ball.body.velocity.x) + 10;
 
     if (this.ball.x < this.player.x) {
       this.ball.setVelocityX(-SetNewVelocityX);
     } else {
       this.ball.setVelocityX(SetNewVelocityX);
     }
-
-    if (this.brick1.countActive(true) < 3) {
+    const total =
+      this.brick1.countActive() +
+      this.brick2.countActive() +
+      this.brick3.countActive() +
+      this.brick4.countActive() +
+      this.brick5.countActive();
+    if (total < 15) {
       const x =
         player.x < 400
           ? Phaser.Math.Between(400, 800)
@@ -292,7 +297,7 @@ class GameScene extends Scene {
       const ball2 = this.ball2s.create(x, 15, "ball2");
       ball2.setBounce(1.1);
       ball2.setCollideWorldBounds(true);
-      ball2.setVelocityY(-150);
+      ball2.setVelocityY(-250);
     }
   }
 
