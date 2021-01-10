@@ -9,6 +9,7 @@ class GameScene extends Scene {
     this.gameHasStarted = false;
     this.gameOver = false;
     this.score = 0;
+    this.lives = 3;
   }
 
   preload() {
@@ -66,6 +67,14 @@ class GameScene extends Scene {
     //////////////////////////////////////
     //ADD LEVEL TEXT
     this.levelText = this.add.text(670, 20, "Level: 1", {
+      fontSize: "32px",
+      fill: "#fafafa",
+      fontFamily: "Righteous, Tahoma, Geneva",
+    });
+
+    //////////////////////////////////////
+    //ADD LIVES TEXT
+    this.livesText = this.add.text(670, 500, `Lives: ${this.lives}`, {
       fontSize: "32px",
       fill: "#fafafa",
       fontFamily: "Righteous, Tahoma, Geneva",
@@ -254,6 +263,18 @@ class GameScene extends Scene {
         this.gameStartText.setVisible(false);
       }
     }
+    //////////////////////////////////////////////////////
+    if (this.ball.y > this.player.y) {
+      this.lives--;
+      {
+        if (this.lives > 0) {
+          this.livesText.setText(`Lives: ${this.lives}`);
+          this.ballReset();
+        } else {
+          this.gameOver = true;
+        }
+      }
+    }
   }
 
   smashBrick(ball, brick) {
@@ -299,14 +320,19 @@ class GameScene extends Scene {
       ball2.setVelocityY(-150);
     }
   }
-  // Lose the game
+
+  ballReset() {
+    this.ball.setVelocity(0);
+    this.ball.setPosition(this.player.x, 515);
+    this.gameHasStarted = false;
+  }
+
   gameLost() {
-    if (this.ball.body.y > this.player.body.y || this.gameOver === true) {
+    if (this.gameOver === true) {
       return true;
     }
   }
 
-  // win the game
   gameWon() {
     const total =
       this.brick1.countActive() +
@@ -315,7 +341,7 @@ class GameScene extends Scene {
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 0) {
+    if (total === 22) {
       return true;
     }
   }
