@@ -11,7 +11,7 @@ class levelCompleteScene extends Scene {
   }
   preload() {}
   create() {
-    this.add.image(400, 300, "space3");
+    this.add.image(400, 400, "background");
 
     this.gameWinText = this.add.text(
       400,

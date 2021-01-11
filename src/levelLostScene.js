@@ -11,6 +11,8 @@ class levelLostScene extends Scene {
   }
   preload() {}
   create() {
+    this.add.image(400, 400, "background");
+
     this.GameOverText = this.add.text(400, 200, "GAME OVER!", this.fontStyle);
 
     this.GameOverText.setOrigin(0.5);
