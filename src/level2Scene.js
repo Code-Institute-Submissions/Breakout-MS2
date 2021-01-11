@@ -10,6 +10,10 @@ class Level2Scene extends Scene {
     this.gameOver = false;
     this.score = 0;
     this.lives = 3;
+    this.fontStyle = {
+      fontSize: "32px",
+      fontFamily: "Righteous, Tahoma, Geneva",
+    };
   }
 
   preload() {}
@@ -29,31 +33,29 @@ class Level2Scene extends Scene {
   }
 
   createGameText() {
-    this.gameScoreText = this.add.text(20, 20, `Score: ${this.score}`, {
-      fontSize: "32px",
-      fontFamily: "Righteous, Tahoma, Geneva",
-    });
+    this.gameScoreText = this.add.text(
+      20,
+      20,
+      `Score: ${this.score}`,
+      this.fontStyle
+    );
 
     this.gameStartText = this.add.text(
       400,
       350,
       "Press SPACEBAR to Start Game!",
-      {
-        fontSize: "50px",
-        fontFamily: "Righteous, Tahoma, Geneva",
-      }
+      this.fontStyle
     );
     this.gameStartText.setOrigin(0.5);
 
-    this.levelText = this.add.text(670, 20, "Level: 2", {
-      fontSize: "32px",
-      fontFamily: "Righteous, Tahoma, Geneva",
-    });
+    this.levelText = this.add.text(670, 20, "Level: 2", this.fontStyle);
 
-    this.livesText = this.add.text(670, 500, `Lives: ${this.lives}`, {
-      fontSize: "32px",
-      fontFamily: "Righteous, Tahoma, Geneva",
-    });
+    this.livesText = this.add.text(
+      670,
+      500,
+      `Lives: ${this.lives}`,
+      this.fontStyle
+    );
   }
 
   createPlayer() {
@@ -154,7 +156,14 @@ class Level2Scene extends Scene {
   createGameCollision() {
     this.physics.add.collider(
       this.ball,
-      this.brick2,
+      this.brick7,
+      this.smashBrick,
+      null,
+      this
+    );
+    this.physics.add.collider(
+      this.ball,
+      this.brick8,
       this.smashBrick,
       null,
       this
@@ -187,21 +196,8 @@ class Level2Scene extends Scene {
       null,
       this
     );
-    this.physics.add.collider(
-      this.ball,
-      this.brick7,
-      this.smashBrick,
-      null,
-      this
-    );
-    this.physics.add.collider(
-      this.ball,
-      this.brick8,
-      this.smashBrick,
-      null,
-      this
-    );
-    this.physics.add.collider(this.ball, this.brick5, null, this);
+
+    // this.physics.add.collider(this.ball, this.brick5, null, this);
 
     this.physics.add.collider(
       this.ball,
@@ -308,11 +304,13 @@ class Level2Scene extends Scene {
       this.ball.setVelocityX(SetNewVelocityX);
     }
     const total =
-      this.brick1.countActive() +
-      this.brick2.countActive() +
+      this.brick7.countActive() +
+      this.brick8.countActive() +
+      this.brick6.countActive() +
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();
+
     if (total < 15) {
       const x =
         player.x < 400
@@ -342,7 +340,7 @@ class Level2Scene extends Scene {
     const total =
       this.brick7.countActive() +
       this.brick8.countActive() +
-      this.brick8.countActive() +
+      this.brick6.countActive() +
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();

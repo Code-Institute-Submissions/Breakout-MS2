@@ -3,6 +3,11 @@ import { Scene } from "phaser";
 class PreloadScene extends Scene {
   constructor() {
     super("preload");
+
+    this.fontStyle = {
+      fontSize: "32px",
+      fontFamily: "Righteous, Tahoma, Geneva",
+    };
   }
 
   preload() {
@@ -19,6 +24,7 @@ class PreloadScene extends Scene {
     this.load.image("player", "assets/images/player-paddle.png");
     this.load.image("ball", "assets/images/blue-ball.png");
     this.load.image("ball2", "assets/images/diamond.png");
+    this.load.image("boom", "assets/images/boom.png");
 
     this.load.audio("brickHitSound", "assets/audio/sound2.wav");
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");
@@ -26,10 +32,12 @@ class PreloadScene extends Scene {
   create() {
     this.add.image(400, 300, "sunset");
 
-    this.gameStartText = this.add.text(400, 200, "Ready To Play?", {
-      fontSize: "50px",
-      fontFamily: "Righteous, Tahoma, Geneva",
-    });
+    this.gameStartText = this.add.text(
+      400,
+      200,
+      "Ready To Play?",
+      this.fontStyle
+    );
 
     this.gameStartText.setOrigin(0.5);
 
@@ -37,10 +45,7 @@ class PreloadScene extends Scene {
       400,
       300,
       "Click Anywhere For Level 1!",
-      {
-        fontSize: "50px",
-        fontFamily: "Righteous, Tahoma, Geneva",
-      }
+      this.fontStyle
     );
     this.gameStartText.setOrigin(0.5);
 

@@ -10,6 +10,10 @@ class GameScene extends Scene {
     this.gameOver = false;
     this.score = 0;
     this.lives = 3;
+    this.fontStyle = {
+      fontSize: "32px",
+      fontFamily: "Righteous, Tahoma, Geneva",
+    };
   }
 
   preload() {}
@@ -29,31 +33,29 @@ class GameScene extends Scene {
   }
 
   createGameText() {
-    this.gameScoreText = this.add.text(20, 20, `Score: ${this.score}`, {
-      fontSize: "32px",
-      fontFamily: "Righteous, Tahoma, Geneva",
-    });
+    this.gameScoreText = this.add.text(
+      20,
+      20,
+      `Score: ${this.score}`,
+      this.fontStyle
+    );
 
     this.gameStartText = this.add.text(
       400,
       350,
       "Press SPACEBAR to Start Game!",
-      {
-        fontSize: "50px",
-        fontFamily: "Righteous, Tahoma, Geneva",
-      }
+      this.fontStyle
     );
     this.gameStartText.setOrigin(0.5);
 
-    this.levelText = this.add.text(670, 20, "Level: 1", {
-      fontSize: "32px",
-      fontFamily: "Righteous, Tahoma, Geneva",
-    });
+    this.levelText = this.add.text(670, 20, "Level: 1", this.fontStyle);
 
-    this.livesText = this.add.text(670, 500, `Lives: ${this.lives}`, {
-      fontSize: "32px",
-      fontFamily: "Righteous, Tahoma, Geneva",
-    });
+    this.livesText = this.add.text(
+      670,
+      500,
+      `Lives: ${this.lives}`,
+      this.fontStyle
+    );
   }
 
   createPlayer() {
@@ -234,7 +236,7 @@ class GameScene extends Scene {
       if (this.cursors.space.isDown) {
         this.gameHasStarted = true;
         this.ball.setVelocityY(-250);
-        this.ball.setVelocityX(-250);
+        this.ball.setVelocityX(250);
         this.gameStartText.setVisible(false);
       }
     }
@@ -253,18 +255,18 @@ class GameScene extends Scene {
   }
 
   smashBrick(ball, brick) {
-    this.sound.play("brickHitSound");
-    brick.disableBody(true, false);
-
     this.score += 10;
     this.gameScoreText.setText(`Score: ${this.score}`);
 
-    const tween = this.tweens.add({
+    brick.setTexture("boom");
+    this.sound.play("brickHitSound");
+    brick.disableBody(true, false);
+
+    this.tweens.add({
       targets: brick,
-      alpha: { from: 1, to: 0 },
-      ease: "Bounce",
-      duration: 100,
-      repeat: 3,
+      scaleX: 1,
+      scaleY: 1,
+      duration: 1000,
       onComplete: () => {
         brick.disableBody(true, true);
       },
