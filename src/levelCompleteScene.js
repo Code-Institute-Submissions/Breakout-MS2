@@ -5,13 +5,13 @@ class levelCompleteScene extends Scene {
     super("gamewon");
 
     this.fontStyle = {
-      fontSize: "32px",
+      fontSize: "5rem",
       fontFamily: "Righteous, Tahoma, Geneva",
     };
   }
   preload() {}
   create() {
-    this.add.image(400, 400, "background");
+    this.add.image(400, 420, "background");
 
     this.gameWinText = this.add.text(
       400,

@@ -7,7 +7,7 @@ import level2Scene from "./level2Scene";
 
 const config = {
   type: Phaser.AUTO,
-  parent: "Milestone 2",
+  parent: "game",
   width: 800,
   height: 600,
   scene: [

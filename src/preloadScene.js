@@ -5,13 +5,14 @@ class PreloadScene extends Scene {
     super("preload");
 
     this.fontStyle = {
-      fontSize: "32px",
+      fontSize: "5rem",
       fontFamily: "Righteous, Tahoma, Geneva",
     };
   }
 
   preload() {
     this.load.image("sky", "assets/images/sky3.png");
+    this.load.image("sky3", "assets/images/sky3.png");
     this.load.image("background", "assets/images/background2.png");
     this.load.image("space3", "assets/images/space3.png");
     this.load.image("brick1", "assets/images/blue-tile.png");
@@ -31,7 +32,7 @@ class PreloadScene extends Scene {
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");
   }
   create() {
-    this.add.image(400, 400, "background");
+    this.add.image(400, 420, "background");
 
     this.gameStartText = this.add.text(
       400,

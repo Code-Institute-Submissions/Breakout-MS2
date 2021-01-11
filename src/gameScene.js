@@ -12,14 +12,14 @@ class GameScene extends Scene {
     this.lives = 3;
     this.fontStyle = {
       fontSize: "32px",
-      fontFamily: "Righteous, Tahoma, Geneva",
+      fontFamily: "Righteous, sans-serif",
     };
   }
 
   preload() {}
 
   create() {
-    this.add.image(400, 300, "sky");
+    this.add.image(400, 300, "sky3");
 
     this.createPlayer();
     this.createBall();
