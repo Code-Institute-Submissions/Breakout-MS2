@@ -11,7 +11,7 @@ class PreloadScene extends Scene {
   }
 
   preload() {
-    this.load.image("sunset", "assets/images/sunset.png");
+    this.load.image("sky", "assets/images/sky3.png");
     this.load.image("space3", "assets/images/space3.png");
     this.load.image("brick1", "assets/images/blue-tile.png");
     this.load.image("brick2", "assets/images/green-tile.png");
@@ -23,14 +23,14 @@ class PreloadScene extends Scene {
     this.load.image("brick8", "assets/images/purple-tile.png");
     this.load.image("player", "assets/images/player-paddle.png");
     this.load.image("ball", "assets/images/blue-ball.png");
-    this.load.image("ball2", "assets/images/diamond.png");
+    this.load.image("bomb", "assets/images/bomb.png");
     this.load.image("boom", "assets/images/boom.png");
 
     this.load.audio("brickHitSound", "assets/audio/sound2.wav");
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");
   }
   create() {
-    this.add.image(400, 300, "sunset");
+    this.add.image(400, 300, "sky");
 
     this.gameStartText = this.add.text(
       400,

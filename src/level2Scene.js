@@ -28,7 +28,7 @@ class Level2Scene extends Scene {
     this.createWorldCollsion();
     this.createGameCollision();
     this.createSounds();
-    this.createBall2();
+    this.createKillerBrick();
     this.createGameText();
   }
 
@@ -197,8 +197,6 @@ class Level2Scene extends Scene {
       this
     );
 
-    // this.physics.add.collider(this.ball, this.brick5, null, this);
-
     this.physics.add.collider(
       this.ball,
       this.player,
@@ -208,18 +206,18 @@ class Level2Scene extends Scene {
     );
   }
 
-  createBall2() {
-    this.ball2s = this.physics.add.group();
+  createKillerBrick() {
+    this.killerBrick = this.physics.add.group();
     this.physics.add.overlap(
       this.player,
-      this.ball2s,
+      this.killerBrick,
       this.hitball2,
       null,
       this
     );
   }
 
-  hitball2(player, ball2) {
+  hitKillerBrick(player, killerBrick) {
     this.sound.play("brickHitSound");
     this.gameOver = true;
   }
@@ -230,36 +228,35 @@ class Level2Scene extends Scene {
   }
 
   update() {
-    if (this.gameLost() === true) {
-      this.ball.disableBody(true);
-      this.gameHasStarted = false;
-      this.scene.start("gameover");
-    } else if (this.gameWon() === true) {
-      this.ball.disableBody(true);
-      this.gameHasStarted = false;
-      this.scene.start("preload");
-    }
-
-    //////////////////////////////////////////////////////
-    if (this.cursors.left.isDown) {
-      this.player.setVelocityX(-500);
-    } else if (this.cursors.right.isDown) {
-      this.player.setVelocityX(500);
-    } else {
-      this.player.setVelocityX(0);
-    }
-    //////////////////////////////////////////////////////
+    this.updateBallMoves();
+    this.updatePlayerMoves();
+    this.updateWinLose();
+    this.updateLoseLives();
+  }
+  updateBallMoves() {
     if (this.gameHasStarted === false) {
       this.ball.setX(this.player.x);
 
       if (this.cursors.space.isDown) {
         this.gameHasStarted = true;
         this.ball.setVelocityY(-250);
-        this.ball.setVelocityX(-250);
+        this.ball.setVelocityX(250);
         this.gameStartText.setVisible(false);
       }
     }
-    //////////////////////////////////////////////////////
+  }
+
+  updatePlayerMoves() {
+    if (this.cursors.left.isDown) {
+      this.player.setVelocityX(-700);
+    } else if (this.cursors.right.isDown) {
+      this.player.setVelocityX(700);
+    } else {
+      this.player.setVelocityX(0);
+    }
+  }
+
+  updateLoseLives() {
     if (this.ball.y > this.player.y) {
       this.lives--;
       {
@@ -273,19 +270,31 @@ class Level2Scene extends Scene {
     }
   }
 
-  smashBrick(ball, brick) {
-    this.sound.play("brickHitSound");
-    brick.disableBody(true, false);
+  updateWinLose() {
+    if (this.gameLost() === true) {
+      this.ball.disableBody(true);
+      this.gameHasStarted = false;
+      this.scene.start("gameover");
+    } else if (this.gameWon() === true) {
+      this.ball.disableBody(true);
+      this.gameHasStarted = false;
+      this.scene.start("gamewon");
+    }
+  }
 
+  smashBrick(ball, brick) {
     this.score += 10;
     this.gameScoreText.setText(`Score: ${this.score}`);
 
-    const tween = this.tweens.add({
+    brick.setTexture("boom");
+    this.sound.play("brickHitSound");
+    brick.disableBody(true, false);
+
+    this.tweens.add({
       targets: brick,
-      alpha: { from: 1, to: 0 },
-      ease: "Bounce",
-      duration: 100,
-      repeat: 3,
+      scaleX: 1,
+      scaleY: 1,
+      duration: 1000,
       onComplete: () => {
         brick.disableBody(true, true);
       },
@@ -317,11 +326,16 @@ class Level2Scene extends Scene {
           ? Phaser.Math.Between(400, 800)
           : Phaser.Math.Between(0, 400);
 
-      const ball2 = this.ball2s.create(x, 15, "ball2");
-      ball2.setBounce(1.1);
-      ball2.setCollideWorldBounds(true);
-      ball2.setVelocityY(-250);
+      const killerBrick = this.killerBrick.create(x, 15, "bomb");
+      killerBrick.setBounce(1.1);
+      killerBrick.setCollideWorldBounds(true);
+      killerBrick.setVelocityY(-250);
     }
+  }
+
+  hitKillerBrick(player, killerBrick) {
+    this.sound.play("brickHitSound");
+    this.gameOver = true;
   }
 
   ballReset() {
