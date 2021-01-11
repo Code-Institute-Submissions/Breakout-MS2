@@ -26,7 +26,15 @@ class levelLostScene extends Scene {
 
     this.GameOverText.setOrigin(0.5);
 
-    this.input.on("pointerdown", () => this.scene.start("game"));
+    this.input.on("pointerdown", () => {
+      this.cameras.main.fadeOut(1000, 0, 0, 0);
+    });
+    this.cameras.main.once(
+      Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
+      (cam, effect) => {
+        this.scene.start("game");
+      }
+    );
   }
 }
 

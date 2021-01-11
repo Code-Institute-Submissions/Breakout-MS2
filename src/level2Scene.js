@@ -20,6 +20,7 @@ class Level2Scene extends Scene {
 
   create() {
     this.add.image(400, 300, "space3");
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
 
     this.createPlayer();
     this.createBall();

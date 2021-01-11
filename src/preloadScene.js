@@ -18,14 +18,14 @@ class PreloadScene extends Scene {
     this.load.image("brick1", "assets/images/blue-tile.png");
     this.load.image("brick2", "assets/images/green-tile.png");
     this.load.image("brick3", "assets/images/purple-tile.png");
-    this.load.image("brick4", "assets/images/red-tile.png");
+    this.load.image("brick4", "assets/images/yellow-tile.png");
     this.load.image("brick5", "assets/images/orange-tile.png");
     this.load.image("brick6", "assets/images/blue-block.png");
     this.load.image("brick7", "assets/images/green-tile.png");
     this.load.image("brick8", "assets/images/purple-tile.png");
     this.load.image("player", "assets/images/player-paddle.png");
     this.load.image("ball", "assets/images/blue-ball.png");
-    this.load.image("killer", "assets/images/killerBrick.png");
+    this.load.image("killer", "assets/images/red-brick.png");
     this.load.image("boom", "assets/images/boom.png");
 
     this.load.audio("brickHitSound", "assets/audio/sound2.wav");
@@ -51,7 +51,15 @@ class PreloadScene extends Scene {
     );
     this.gameStartText.setOrigin(0.5);
 
-    this.input.on("pointerdown", () => this.scene.start("game"));
+    this.input.on("pointerdown", () => {
+      this.cameras.main.fadeOut(1000, 0, 0, 0);
+    });
+    this.cameras.main.once(
+      Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
+      (cam, effect) => {
+        this.scene.start("game");
+      }
+    );
   }
 }
 
