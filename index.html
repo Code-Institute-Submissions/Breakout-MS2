@@ -2,11 +2,83 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>MS2</title>
   </head>
   <body>
     <h1>Brick Game</h1>
     <div id="game"></div>
+    <section>
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn-bg--charcoal btn modal-content text-center stretched-link"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        <p>Click here for Game Instructions!</p>
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">How to Play</h5>
+              <button
+                type="button"
+                class="modal-close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul>
+                <li>Lorem ipsum, dolor sit amet</li>
+                <li>Lorem ipsum, dolor sit amet</li>
+                <li>Lorem ipsum, dolor sit amet</li>
+                <li>Lorem ipsum, dolor sit amet</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Bootstrap Javascript-->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+    ></script>
+    <!-- /.Bootstrap Javascript-->
   </body>
 </html>
