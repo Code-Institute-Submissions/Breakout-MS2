@@ -326,7 +326,7 @@ class Level2Scene extends Scene {
           ? Phaser.Math.Between(400, 800)
           : Phaser.Math.Between(0, 400);
 
-      const killerBrick = this.killerBrick.create(x, 15, "bomb");
+      const killerBrick = this.killerBrick.create(x, 15, "killer");
       killerBrick.setBounce(1.1);
       killerBrick.setCollideWorldBounds(true);
       killerBrick.setVelocityY(-250);
