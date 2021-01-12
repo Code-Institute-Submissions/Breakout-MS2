@@ -19,7 +19,7 @@ class GameScene extends Scene {
   preload() {}
 
   create() {
-    this.add.image(400, 300, "sky3");
+    this.add.image(300, 220, "sky4");
     this.cameras.main.fadeIn(1000, 0, 0, 0);
 
     this.createPlayer();
@@ -296,7 +296,7 @@ class GameScene extends Scene {
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();
-    if (total < 15) {
+    if (total < 20) {
       const x =
         player.x < 400
           ? Phaser.Math.Between(400, 800)
@@ -334,7 +334,7 @@ class GameScene extends Scene {
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 0) {
+    if (total === 15) {
       return true;
     }
   }

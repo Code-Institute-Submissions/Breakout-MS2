@@ -13,6 +13,7 @@ class PreloadScene extends Scene {
   preload() {
     this.load.image("sky", "assets/images/sky3.png");
     this.load.image("sky3", "assets/images/sky3.png");
+    this.load.image("sky4", "assets/images/evening-sky.png");
     this.load.image("background", "assets/images/background2.png");
     this.load.image("space3", "assets/images/space3.png");
     this.load.image("brick1", "assets/images/blue-tile.png");

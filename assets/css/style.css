@@ -8,7 +8,7 @@
 
 html {
   background-color: #ffffff;
-  color: rgb(0, 0, 0);
+  color: #270424;
   margin: 0 auto;
   padding: 0;
   background: url("../images/background-brick.png");
@@ -33,7 +33,7 @@ h2 {
 }
 
 .btn-bg--charcoal {
-  background: #000000;
+  background: #270424;
   border: none;
   color: #ffffff;
 }
@@ -41,8 +41,9 @@ h2 {
 .modal-content {
   font-family: "Righteous", sans-serif;
   text-transform: uppercase;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 1.75rem;
+  /* text-align: center; */
 }
 
 .modal-content p {
@@ -54,22 +55,16 @@ h2 {
   padding-top: 1rem;
 }
 
-.modal-body {
-  font-family: "Righteous", sans-serif;
-  text-transform: uppercase;
-  font-size: 4rem;
-}
-
 .modal-body li {
   font-family: "Righteous", sans-serif;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .modal-title {
   font-family: "Righteous", sans-serif;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
 }
 
@@ -79,7 +74,7 @@ h2 {
 }
 
 .btn:hover {
-  background: #270424;
+  background: rgb(0, 0, 0);
   color: #ffffff;
 }
 

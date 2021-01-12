@@ -8,6 +8,11 @@ class levelCompleteScene extends Scene {
       fontSize: "5rem",
       fontFamily: "Righteous, Tahoma, Geneva",
     };
+
+    this.smallFont = {
+      fontSize: "3rem",
+      fontFamily: "Righteous, Tahoma, Geneva",
+    };
   }
   preload() {}
   create(data) {
@@ -26,7 +31,7 @@ class levelCompleteScene extends Scene {
       400,
       300,
       `You Scored ${data} Points`,
-      this.fontStyle
+      this.smallFont
     );
 
     this.gameWinText.setOrigin(0.5);
@@ -34,8 +39,8 @@ class levelCompleteScene extends Scene {
     this.gameWinText = this.add.text(
       400,
       400,
-      "Click Anywhere For Level 2!",
-      this.fontStyle
+      "Click Anywhere For The Next Level!",
+      this.smallFont
     );
 
     this.gameWinText.setOrigin(0.5);

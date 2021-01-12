@@ -321,7 +321,7 @@ class Level2Scene extends Scene {
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total < 15) {
+    if (total < 25) {
       const x =
         player.x < 400
           ? Phaser.Math.Between(400, 800)

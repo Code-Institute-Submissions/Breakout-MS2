@@ -8,6 +8,10 @@ class levelLostScene extends Scene {
       fontSize: "5rem",
       fontFamily: "Righteous, Tahoma, Geneva",
     };
+    this.smallFont = {
+      fontSize: "3rem",
+      fontFamily: "Righteous, Tahoma, Geneva",
+    };
   }
   preload() {}
   create(data) {
@@ -21,7 +25,7 @@ class levelLostScene extends Scene {
       400,
       300,
       `You Scored ${data} Points`,
-      this.fontStyle
+      this.smallFont
     );
 
     this.GameOverText.setOrigin(0.5);
@@ -30,7 +34,7 @@ class levelLostScene extends Scene {
       400,
       400,
       "Click Anywhere To Try Again!",
-      this.fontStyle
+      this.smallFont
     );
 
     this.GameOverText.setOrigin(0.5);
