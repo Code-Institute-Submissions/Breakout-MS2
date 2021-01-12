@@ -191,7 +191,7 @@ class GameScene extends Scene {
 
   createKillerBrick() {
     this.killerBrick = this.physics.add.group();
-    this.physics.add.overlap(
+    this.physics.add.collider(
       this.player,
       this.killerBrick,
       this.hitKillerBrick,
@@ -334,7 +334,7 @@ class GameScene extends Scene {
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 15) {
+    if (total === 10) {
       return true;
     }
   }
