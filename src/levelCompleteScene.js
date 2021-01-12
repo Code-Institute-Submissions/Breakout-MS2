@@ -10,7 +10,7 @@ class levelCompleteScene extends Scene {
     };
   }
   preload() {}
-  create() {
+  create(data) {
     this.add.image(400, 420, "background");
 
     this.gameWinText = this.add.text(
@@ -25,6 +25,15 @@ class levelCompleteScene extends Scene {
     this.gameWinText = this.add.text(
       400,
       300,
+      `You Scored ${data} Points`,
+      this.fontStyle
+    );
+
+    this.gameWinText.setOrigin(0.5);
+
+    this.gameWinText = this.add.text(
+      400,
+      400,
       "Click Anywhere For Level 2!",
       this.fontStyle
     );

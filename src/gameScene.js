@@ -252,11 +252,11 @@ class GameScene extends Scene {
     if (this.gameLost() === true) {
       this.ball.disableBody(true);
       this.gameHasStarted = false;
-      this.scene.start("gameover");
+      this.scene.start("gameover", this.score);
     } else if (this.gameWon() === true) {
       this.ball.disableBody(true);
       this.gameHasStarted = false;
-      this.scene.start("gamewon");
+      this.scene.start("gamewon", this.score);
     }
   }
 

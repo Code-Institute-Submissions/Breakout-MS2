@@ -10,7 +10,7 @@ class levelLostScene extends Scene {
     };
   }
   preload() {}
-  create() {
+  create(data) {
     this.add.image(400, 420, "background");
 
     this.GameOverText = this.add.text(400, 200, "GAME OVER!", this.fontStyle);
@@ -20,6 +20,15 @@ class levelLostScene extends Scene {
     this.GameOverText = this.add.text(
       400,
       300,
+      `You Scored ${data} Points`,
+      this.fontStyle
+    );
+
+    this.GameOverText.setOrigin(0.5);
+
+    this.GameOverText = this.add.text(
+      400,
+      400,
       "Click Anywhere To Try Again!",
       this.fontStyle
     );
