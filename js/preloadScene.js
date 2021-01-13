@@ -1,15 +1,14 @@
-import { Scene } from "phaser";
-
-class PreloadScene extends Scene {
-  constructor() {
-    super("preload");
-
+const PreloadScene = new Phaser.Class({
+  Extends: Phaser.Scene,
+  initialize: function () {
+    Phaser.Scene.call(this, { key: "PreloadScene" });
+  },
+  init() {
     this.fontStyle = {
       fontSize: "5rem",
       fontFamily: "Righteous, Tahoma, Geneva",
     };
-  }
-
+  },
   preload() {
     this.load.image("sky", "assets/images/sky3.png");
     this.load.image("sky3", "assets/images/sky3.png");
@@ -31,9 +30,9 @@ class PreloadScene extends Scene {
 
     this.load.audio("brickHitSound", "assets/audio/sound2.wav");
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");
-  }
+  },
   create() {
-    this.add.image(400, 420, "background");
+    this.add.image(400, 450, "background");
 
     this.gameStartText = this.add.text(
       400,
@@ -58,10 +57,9 @@ class PreloadScene extends Scene {
     this.cameras.main.once(
       Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
       (cam, effect) => {
-        this.scene.start("game");
+        this.scene.start("gameScene");
       }
     );
-  }
-}
-
-export default PreloadScene;
+  },
+  update() {},
+});

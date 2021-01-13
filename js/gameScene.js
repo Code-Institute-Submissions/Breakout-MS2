@@ -1,10 +1,8 @@
-import { Scene } from "phaser";
-
-class Level2Scene extends Scene {
-  constructor() {
-    super("level2");
-  }
-
+const gameScene = new Phaser.Class({
+  Extends: Phaser.Scene,
+  initialize: function () {
+    Phaser.Scene.call(this, { key: "gameScene" });
+  },
   init() {
     this.gameHasStarted = false;
     this.gameOver = false;
@@ -12,16 +10,17 @@ class Level2Scene extends Scene {
     this.lives = 3;
     this.fontStyle = {
       fontSize: "32px",
-      fontFamily: "Righteous, Tahoma, Geneva",
+      fontFamily: "Righteous, sans-serif",
     };
-  }
-
-  preload() {}
-
+  },
+  preload() {
+    this.load.image("sky4", "assets/images/evening-sky.png");
+  },
   create() {
-    this.add.image(400, 300, "space3");
+    this.add.image(300, 220, "sky4");
     this.cameras.main.fadeIn(1000, 0, 0, 0);
 
+    this.createGameText();
     this.createPlayer();
     this.createBall();
     this.createCursors();
@@ -30,8 +29,7 @@ class Level2Scene extends Scene {
     this.createGameCollision();
     this.createSounds();
     this.createKillerBrick();
-    this.createGameText();
-  }
+  },
 
   createGameText() {
     this.gameScoreText = this.add.text(
@@ -49,7 +47,7 @@ class Level2Scene extends Scene {
     );
     this.gameStartText.setOrigin(0.5);
 
-    this.levelText = this.add.text(670, 20, "Level: 2", this.fontStyle);
+    this.levelText = this.add.text(670, 20, "Level: 1", this.fontStyle);
 
     this.livesText = this.add.text(
       670,
@@ -57,65 +55,52 @@ class Level2Scene extends Scene {
       `Lives: ${this.lives}`,
       this.fontStyle
     );
-  }
-
+  },
   createPlayer() {
     this.player = this.physics.add.sprite(400, 560, "player");
     this.player.scaleX = 0.25;
     this.player.scaleY = 0.25;
-  }
+  },
   createBall() {
     this.ball = this.physics.add.sprite(400, 515, "ball");
     this.ball.scaleX = 0.25;
     this.ball.scaleY = 0.25;
-  }
+  },
   createCursors() {
     this.cursors = this.input.keyboard.createCursorKeys();
-  }
-
+  },
   createBricks() {
-    this.brick7 = this.physics.add.group({
-      key: "brick7",
+    this.brick1 = this.physics.add.group({
+      key: "brick1",
       immovable: true,
-      repeat: 5,
+      repeat: 2,
       setScale: { x: 0.25, y: 0.25 },
       setXY: {
-        x: 150,
-        y: 290,
-        stepX: 100,
-      },
-    });
-    this.brick8 = this.physics.add.group({
-      key: "brick8",
-      immovable: true,
-      repeat: 6,
-      setScale: { x: 0.25, y: 0.25 },
-      setXY: {
-        x: 100,
+        x: 295,
         y: 250,
         stepX: 100,
       },
     });
 
-    this.brick6 = this.physics.add.group({
-      key: "brick6",
+    this.brick2 = this.physics.add.group({
+      key: "brick2",
       immovable: true,
-      repeat: 18,
+      repeat: 5,
       setScale: { x: 0.25, y: 0.25 },
       setXY: {
-        x: 40,
+        x: 150,
         y: 210,
-        stepX: 40,
+        stepX: 100,
       },
     });
 
     this.brick3 = this.physics.add.group({
       key: "brick3",
       immovable: true,
-      repeat: 6,
+      repeat: 5,
       setScale: { x: 0.25, y: 0.25 },
       setXY: {
-        x: 100,
+        x: 150,
         y: 170,
         stepX: 100,
       },
@@ -136,42 +121,33 @@ class Level2Scene extends Scene {
     this.brick5 = this.physics.add.group({
       key: "brick5",
       immovable: true,
-      setScale: { x: 0.35, y: 0.25 },
-      repeat: 2,
+      setScale: { x: 0.25, y: 0.25 },
+      repeat: 5,
       setXY: {
-        x: 260,
+        x: 150,
         y: 90,
-        stepX: 140,
+        stepX: 100,
       },
     });
-  }
-
+  },
   createWorldCollsion() {
     this.player.setCollideWorldBounds(true);
     this.ball.setCollideWorldBounds(true);
     this.physics.world.checkCollision.down = false;
     this.ball.setBounce(1, 1);
     this.player.setImmovable(true);
-  }
-
+  },
   createGameCollision() {
     this.physics.add.collider(
       this.ball,
-      this.brick7,
+      this.brick1,
       this.smashBrick,
       null,
       this
     );
     this.physics.add.collider(
       this.ball,
-      this.brick8,
-      this.smashBrick,
-      null,
-      this
-    );
-    this.physics.add.collider(
-      this.ball,
-      this.brick6,
+      this.brick2,
       this.smashBrick,
       null,
       this
@@ -205,35 +181,28 @@ class Level2Scene extends Scene {
       null,
       this
     );
-  }
-
+  },
+  createSounds() {
+    this.playerHitSound = "playerHit";
+    this.brickHitSound = "brickHit";
+  },
   createKillerBrick() {
     this.killerBrick = this.physics.add.group();
     this.physics.add.overlap(
       this.player,
       this.killerBrick,
-      this.hitball2,
+      this.hitKillerBrick,
       null,
       this
     );
-  }
-
-  hitKillerBrick(player, killerBrick) {
-    this.sound.play("brickHitSound");
-    this.gameOver = true;
-  }
-
-  createSounds() {
-    this.playerHitSound = "playerHit";
-    this.brickHitSound = "brickHit";
-  }
+  },
 
   update() {
     this.updateBallMoves();
     this.updatePlayerMoves();
-    this.updateWinLose();
     this.updateLoseLives();
-  }
+    this.updateWinLose();
+  },
   updateBallMoves() {
     if (this.gameHasStarted === false) {
       this.ball.setX(this.player.x);
@@ -245,8 +214,7 @@ class Level2Scene extends Scene {
         this.gameStartText.setVisible(false);
       }
     }
-  }
-
+  },
   updatePlayerMoves() {
     if (this.cursors.left.isDown) {
       this.player.setVelocityX(-700);
@@ -255,8 +223,7 @@ class Level2Scene extends Scene {
     } else {
       this.player.setVelocityX(0);
     }
-  }
-
+  },
   updateLoseLives() {
     if (this.ball.y > this.player.y) {
       this.lives--;
@@ -269,20 +236,24 @@ class Level2Scene extends Scene {
         }
       }
     }
-  }
-
+  },
   updateWinLose() {
     if (this.gameLost() === true) {
-      this.ball.disableBody(true);
+      this.ball.disableBody(true, true);
       this.gameHasStarted = false;
-      this.scene.start("gameover", this.score);
+      this.time.addEvent({
+        delay: 1500,
+        loop: false,
+        callback: () => {
+          this.scene.start("levelLost", this.score);
+        },
+      });
     } else if (this.gameWon() === true) {
       this.ball.disableBody(true);
       this.gameHasStarted = false;
-      this.scene.start("gamewon", this.score);
+      this.scene.start("levelComplete", this.score);
     }
-  }
-
+  },
   smashBrick(ball, brick) {
     this.score += 10;
     this.gameScoreText.setText(`Score: ${this.score}`);
@@ -300,28 +271,18 @@ class Level2Scene extends Scene {
         brick.disableBody(true, true);
       },
     });
-  }
-
+  },
   ballHitPlayer(ball, player) {
     this.sound.play("playerHitSound");
-    this.ball.setVelocityY(this.ball.body.velocity.y - 15);
+    this.ball.setVelocityY(this.ball.body.velocity.y - 10);
 
-    let SetNewVelocityX = Math.abs(this.ball.body.velocity.x) + 15;
-
-    if (this.ball.x < this.player.x) {
-      this.ball.setVelocityX(-SetNewVelocityX);
-    } else {
-      this.ball.setVelocityX(SetNewVelocityX);
-    }
     const total =
-      this.brick7.countActive() +
-      this.brick8.countActive() +
-      this.brick6.countActive() +
+      this.brick1.countActive() +
+      this.brick2.countActive() +
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();
-
-    if (total < 30) {
+    if (total < 20) {
       const x =
         player.x < 400
           ? Phaser.Math.Between(400, 800)
@@ -332,38 +293,33 @@ class Level2Scene extends Scene {
       killerBrick.setCollideWorldBounds(true);
       killerBrick.setVelocityY(-250);
     }
-  }
-
+  },
   hitKillerBrick(player, killerBrick) {
-    this.sound.play("brickHitSound");
+    killerBrick.setTexture("boom");
+    this.physics.pause();
+    killerBrick.disableBody(true);
     this.gameOver = true;
-  }
-
+  },
   ballReset() {
     this.ball.setVelocity(0);
     this.ball.setPosition(this.player.x, 515);
     this.gameHasStarted = false;
-  }
-
+  },
   gameLost() {
     if (this.gameOver === true) {
       return true;
     }
-  }
-
+  },
   gameWon() {
     const total =
-      this.brick7.countActive() +
-      this.brick8.countActive() +
-      this.brick6.countActive() +
+      this.brick1.countActive() +
+      this.brick2.countActive() +
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 0) {
+    if (total === 10) {
       return true;
     }
-  }
-}
-
-export default Level2Scene;
+  },
+});

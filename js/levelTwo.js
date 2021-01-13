@@ -1,10 +1,8 @@
-import { Scene } from "phaser";
-
-class GameScene extends Scene {
-  constructor() {
-    super("game");
-  }
-
+const levelTwo = new Phaser.Class({
+  Extends: Phaser.Scene,
+  initialize: function () {
+    Phaser.Scene.call(this, { key: "levelTwo" });
+  },
   init() {
     this.gameHasStarted = false;
     this.gameOver = false;
@@ -14,14 +12,13 @@ class GameScene extends Scene {
       fontSize: "32px",
       fontFamily: "Righteous, sans-serif",
     };
-  }
-
-  preload() {}
-
+  },
+  preload() {},
   create() {
-    this.add.image(300, 220, "sky4");
+    this.add.image(400, 300, "space3");
     this.cameras.main.fadeIn(1000, 0, 0, 0);
 
+    this.createGameText();
     this.createPlayer();
     this.createBall();
     this.createCursors();
@@ -30,8 +27,7 @@ class GameScene extends Scene {
     this.createGameCollision();
     this.createSounds();
     this.createKillerBrick();
-    this.createGameText();
-  }
+  },
 
   createGameText() {
     this.gameScoreText = this.add.text(
@@ -49,7 +45,7 @@ class GameScene extends Scene {
     );
     this.gameStartText.setOrigin(0.5);
 
-    this.levelText = this.add.text(670, 20, "Level: 1", this.fontStyle);
+    this.levelText = this.add.text(670, 20, "Level: 2", this.fontStyle);
 
     this.livesText = this.add.text(
       670,
@@ -57,54 +53,63 @@ class GameScene extends Scene {
       `Lives: ${this.lives}`,
       this.fontStyle
     );
-  }
-
+  },
   createPlayer() {
     this.player = this.physics.add.sprite(400, 560, "player");
     this.player.scaleX = 0.25;
     this.player.scaleY = 0.25;
-  }
+  },
   createBall() {
     this.ball = this.physics.add.sprite(400, 515, "ball");
     this.ball.scaleX = 0.25;
     this.ball.scaleY = 0.25;
-  }
+  },
   createCursors() {
     this.cursors = this.input.keyboard.createCursorKeys();
-  }
-
+  },
   createBricks() {
-    this.brick1 = this.physics.add.group({
-      key: "brick1",
-      immovable: true,
-      repeat: 2,
-      setScale: { x: 0.25, y: 0.25 },
-      setXY: {
-        x: 295,
-        y: 250,
-        stepX: 100,
-      },
-    });
-
-    this.brick2 = this.physics.add.group({
-      key: "brick2",
+    this.brick7 = this.physics.add.group({
+      key: "brick7",
       immovable: true,
       repeat: 5,
       setScale: { x: 0.25, y: 0.25 },
       setXY: {
         x: 150,
-        y: 210,
+        y: 290,
         stepX: 100,
+      },
+    });
+    this.brick8 = this.physics.add.group({
+      key: "brick8",
+      immovable: true,
+      repeat: 6,
+      setScale: { x: 0.25, y: 0.25 },
+      setXY: {
+        x: 100,
+        y: 250,
+        stepX: 100,
+      },
+    });
+
+    this.brick6 = this.physics.add.group({
+      key: "brick6",
+      immovable: true,
+      repeat: 18,
+      setScale: { x: 0.25, y: 0.25 },
+      setXY: {
+        x: 40,
+        y: 210,
+        stepX: 40,
       },
     });
 
     this.brick3 = this.physics.add.group({
       key: "brick3",
       immovable: true,
-      repeat: 5,
+      repeat: 6,
       setScale: { x: 0.25, y: 0.25 },
       setXY: {
-        x: 150,
+        x: 100,
         y: 170,
         stepX: 100,
       },
@@ -125,35 +130,40 @@ class GameScene extends Scene {
     this.brick5 = this.physics.add.group({
       key: "brick5",
       immovable: true,
-      setScale: { x: 0.25, y: 0.25 },
-      repeat: 5,
+      setScale: { x: 0.35, y: 0.25 },
+      repeat: 2,
       setXY: {
-        x: 150,
+        x: 260,
         y: 90,
-        stepX: 100,
+        stepX: 140,
       },
     });
-  }
-
+  },
   createWorldCollsion() {
     this.player.setCollideWorldBounds(true);
     this.ball.setCollideWorldBounds(true);
     this.physics.world.checkCollision.down = false;
     this.ball.setBounce(1, 1);
     this.player.setImmovable(true);
-  }
-
+  },
   createGameCollision() {
     this.physics.add.collider(
       this.ball,
-      this.brick1,
+      this.brick7,
       this.smashBrick,
       null,
       this
     );
     this.physics.add.collider(
       this.ball,
-      this.brick2,
+      this.brick8,
+      this.smashBrick,
+      null,
+      this
+    );
+    this.physics.add.collider(
+      this.ball,
+      this.brick6,
       this.smashBrick,
       null,
       this
@@ -187,8 +197,11 @@ class GameScene extends Scene {
       null,
       this
     );
-  }
-
+  },
+  createSounds() {
+    this.playerHitSound = "playerHit";
+    this.brickHitSound = "brickHit";
+  },
   createKillerBrick() {
     this.killerBrick = this.physics.add.group();
     this.physics.add.collider(
@@ -198,19 +211,14 @@ class GameScene extends Scene {
       null,
       this
     );
-  }
-
-  createSounds() {
-    this.playerHitSound = "playerHit";
-    this.brickHitSound = "brickHit";
-  }
+  },
 
   update() {
     this.updateBallMoves();
     this.updatePlayerMoves();
-    this.updateWinLose();
     this.updateLoseLives();
-  }
+    this.updateWinLose();
+  },
   updateBallMoves() {
     if (this.gameHasStarted === false) {
       this.ball.setX(this.player.x);
@@ -222,8 +230,7 @@ class GameScene extends Scene {
         this.gameStartText.setVisible(false);
       }
     }
-  }
-
+  },
   updatePlayerMoves() {
     if (this.cursors.left.isDown) {
       this.player.setVelocityX(-700);
@@ -232,8 +239,7 @@ class GameScene extends Scene {
     } else {
       this.player.setVelocityX(0);
     }
-  }
-
+  },
   updateLoseLives() {
     if (this.ball.y > this.player.y) {
       this.lives--;
@@ -246,20 +252,24 @@ class GameScene extends Scene {
         }
       }
     }
-  }
-
+  },
   updateWinLose() {
     if (this.gameLost() === true) {
-      this.ball.disableBody(true);
+      this.ball.disableBody(true, true);
       this.gameHasStarted = false;
-      this.scene.start("gameover", this.score);
+      this.time.addEvent({
+        delay: 1500,
+        loop: false,
+        callback: () => {
+          this.scene.start("levelLost", this.score);
+        },
+      });
     } else if (this.gameWon() === true) {
-      this.ball.disableBody(true);
+      this.ball.disableBody(true, true);
       this.gameHasStarted = false;
-      this.scene.start("gamewon", this.score);
+      this.scene.start("levelComplete", this.score);
     }
-  }
-
+  },
   smashBrick(ball, brick) {
     this.score += 10;
     this.gameScoreText.setText(`Score: ${this.score}`);
@@ -277,26 +287,19 @@ class GameScene extends Scene {
         brick.disableBody(true, true);
       },
     });
-  }
-
+  },
   ballHitPlayer(ball, player) {
     this.sound.play("playerHitSound");
-    this.ball.setVelocityY(this.ball.body.velocity.y - 10);
+    this.ball.setVelocityY(this.ball.body.velocity.y - 15);
 
-    let SetNewVelocityX = Math.abs(this.ball.body.velocity.x) + 10;
-
-    if (this.ball.x < this.player.x) {
-      this.ball.setVelocityX(-SetNewVelocityX);
-    } else {
-      this.ball.setVelocityX(SetNewVelocityX);
-    }
     const total =
-      this.brick1.countActive() +
-      this.brick2.countActive() +
+      this.brick7.countActive() +
+      this.brick8.countActive() +
+      this.brick6.countActive() +
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();
-    if (total < 20) {
+    if (total < 30) {
       const x =
         player.x < 400
           ? Phaser.Math.Between(400, 800)
@@ -307,37 +310,34 @@ class GameScene extends Scene {
       killerBrick.setCollideWorldBounds(true);
       killerBrick.setVelocityY(-250);
     }
-  }
-
+  },
   hitKillerBrick(player, killerBrick) {
-    this.sound.play("brickHitSound");
+    killerBrick.setTexture("boom");
+    this.physics.pause();
+    killerBrick.disableBody(true);
     this.gameOver = true;
-  }
-
+  },
   ballReset() {
     this.ball.setVelocity(0);
     this.ball.setPosition(this.player.x, 515);
     this.gameHasStarted = false;
-  }
-
+  },
   gameLost() {
     if (this.gameOver === true) {
       return true;
     }
-  }
-
+  },
   gameWon() {
     const total =
-      this.brick1.countActive() +
-      this.brick2.countActive() +
+      this.brick7.countActive() +
+      this.brick8.countActive() +
+      this.brick6.countActive() +
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 10) {
+    if (total === 0) {
       return true;
     }
-  }
-}
-
-export default GameScene;
+  },
+});

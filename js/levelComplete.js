@@ -1,22 +1,21 @@
-import { Scene } from "phaser";
-
-class levelCompleteScene extends Scene {
-  constructor() {
-    super("gamewon");
-
+const levelComplete = new Phaser.Class({
+  Extends: Phaser.Scene,
+  initialize: function () {
+    Phaser.Scene.call(this, { key: "levelComplete" });
+  },
+  init() {
     this.fontStyle = {
       fontSize: "5rem",
       fontFamily: "Righteous, Tahoma, Geneva",
     };
-
     this.smallFont = {
       fontSize: "3rem",
       fontFamily: "Righteous, Tahoma, Geneva",
     };
-  }
-  preload() {}
+  },
+  preload() {},
   create(data) {
-    this.add.image(400, 420, "background");
+    this.add.image(400, 450, "background");
 
     this.gameWinText = this.add.text(
       400,
@@ -51,10 +50,9 @@ class levelCompleteScene extends Scene {
     this.cameras.main.once(
       Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
       (cam, effect) => {
-        this.scene.start("level2");
+        this.scene.start("levelTwo");
       }
     );
-  }
-}
-
-export default levelCompleteScene;
+  },
+  update() {},
+});

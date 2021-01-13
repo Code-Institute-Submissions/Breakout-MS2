@@ -1,9 +1,9 @@
-import { Scene } from "phaser";
-
-class levelLostScene extends Scene {
-  constructor() {
-    super("gameover");
-
+const levelLost = new Phaser.Class({
+  Extends: Phaser.Scene,
+  initialize: function () {
+    Phaser.Scene.call(this, { key: "levelLost" });
+  },
+  init() {
     this.fontStyle = {
       fontSize: "5rem",
       fontFamily: "Righteous, Tahoma, Geneva",
@@ -12,10 +12,10 @@ class levelLostScene extends Scene {
       fontSize: "3rem",
       fontFamily: "Righteous, Tahoma, Geneva",
     };
-  }
-  preload() {}
+  },
+  preload() {},
   create(data) {
-    this.add.image(400, 420, "background");
+    this.add.image(400, 450, "background");
 
     this.GameOverText = this.add.text(400, 200, "GAME OVER!", this.fontStyle);
 
@@ -45,10 +45,9 @@ class levelLostScene extends Scene {
     this.cameras.main.once(
       Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
       (cam, effect) => {
-        this.scene.start("game");
+        this.scene.start("gameScene");
       }
     );
-  }
-}
-
-export default levelLostScene;
+  },
+  update() {},
+});
