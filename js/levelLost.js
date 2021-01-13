@@ -48,7 +48,7 @@ const levelLost = new Phaser.Class({
     this.cameras.main.once(
       Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
       (cam, effect) => {
-        this.scene.start("gameScene");
+        this.scene.start("levelOne");
       }
     );
   },
