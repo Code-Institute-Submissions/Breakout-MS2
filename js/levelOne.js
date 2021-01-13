@@ -1,7 +1,10 @@
-const gameScene = new Phaser.Class({
+"strict";
+/*jshint esversion: 6 */
+
+var levelOne = new Phaser.Class({
   Extends: Phaser.Scene,
   initialize: function () {
-    Phaser.Scene.call(this, { key: "gameScene" });
+    Phaser.Scene.call(this, { key: "levelOne" });
   },
   init() {
     this.gameHasStarted = false;

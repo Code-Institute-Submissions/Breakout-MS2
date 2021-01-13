@@ -1,3 +1,6 @@
+"strict";
+/*jshint esversion: 6 */
+
 const levelLost = new Phaser.Class({
   Extends: Phaser.Scene,
   initialize: function () {
