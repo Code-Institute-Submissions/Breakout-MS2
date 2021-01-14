@@ -7,11 +7,12 @@
 }
 
 html {
-  background-color: rgb(255, 255, 255);
   color: #270424;
   margin: 0 auto;
   padding: 0;
-  /* background: url("images/background-brick.png"); */
+}
+body {
+  background-color: rgb(219, 199, 233);
 }
 
 h1 {

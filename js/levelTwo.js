@@ -324,7 +324,7 @@ var levelTwo = new Phaser.Class({
 
   ballReset() {
     this.ball.setVelocity(0);
-    this.ball.setPosition(this.player.x, 515);
+    this.ball.setPosition(this.player.x, 565);
     this.gameHasStarted = false;
   },
 

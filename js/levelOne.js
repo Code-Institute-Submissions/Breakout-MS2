@@ -210,7 +210,7 @@ var levelOne = new Phaser.Class({
     if (this.gameHasStarted === false) {
       this.ball.setX(this.player.x);
 
-      if (this.cursors.space.isDown) {
+      if (this.cursors.space.isDown || this.game.input.onDown) {
         this.gameHasStarted = true;
         this.ball.setVelocityY(-250);
         this.ball.setVelocityX(250);
@@ -306,7 +306,7 @@ var levelOne = new Phaser.Class({
   },
   ballReset() {
     this.ball.setVelocity(0);
-    this.ball.setPosition(this.player.x, 515);
+    this.ball.setPosition(this.player.x, 565);
     this.gameHasStarted = false;
   },
 
