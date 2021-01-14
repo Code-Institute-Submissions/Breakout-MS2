@@ -244,6 +244,7 @@ var levelOne = new Phaser.Class({
     if (this.gameLost() === true) {
       this.ball.disableBody(true, true);
       this.gameHasStarted = false;
+      this.player.setTint(0xff1111);
       this.time.addEvent({
         delay: 1500,
         loop: false,
@@ -308,6 +309,7 @@ var levelOne = new Phaser.Class({
     this.ball.setPosition(this.player.x, 515);
     this.gameHasStarted = false;
   },
+
   gameLost() {
     if (this.gameOver === true) {
       return true;
@@ -321,7 +323,7 @@ var levelOne = new Phaser.Class({
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 10) {
+    if (total === 0) {
       return true;
     }
   },

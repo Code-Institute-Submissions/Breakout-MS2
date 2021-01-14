@@ -260,6 +260,7 @@ var levelTwo = new Phaser.Class({
     if (this.gameLost() === true) {
       this.ball.disableBody(true, true);
       this.gameHasStarted = false;
+      this.player.setTint(0xff1111);
       this.time.addEvent({
         delay: 1500,
         loop: false,
@@ -320,11 +321,13 @@ var levelTwo = new Phaser.Class({
     killerBrick.disableBody(true);
     this.gameOver = true;
   },
+
   ballReset() {
     this.ball.setVelocity(0);
     this.ball.setPosition(this.player.x, 515);
     this.gameHasStarted = false;
   },
+
   gameLost() {
     if (this.gameOver === true) {
       return true;
