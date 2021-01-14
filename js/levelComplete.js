@@ -18,7 +18,7 @@ var levelComplete = new Phaser.Class({
   },
   preload() {},
   create(data) {
-    this.add.image(400, 450, "background");
+    this.add.image(400, 520, "background");
 
     this.gameWinText = this.add.text(
       400,
@@ -57,5 +57,4 @@ var levelComplete = new Phaser.Class({
       }
     );
   },
-  update() {},
 });

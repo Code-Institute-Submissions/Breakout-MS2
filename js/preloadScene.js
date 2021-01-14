@@ -35,7 +35,7 @@ var PreloadScene = new Phaser.Class({
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");
   },
   create() {
-    this.add.image(400, 450, "background");
+    this.add.image(400, 520, "background");
 
     this.gameStartText = this.add.text(
       400,
@@ -64,5 +64,4 @@ var PreloadScene = new Phaser.Class({
       }
     );
   },
-  update() {},
 });

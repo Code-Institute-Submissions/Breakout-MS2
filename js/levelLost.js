@@ -18,7 +18,7 @@ const levelLost = new Phaser.Class({
   },
   preload() {},
   create(data) {
-    this.add.image(400, 450, "background");
+    this.add.image(400, 520, "background");
 
     this.GameOverText = this.add.text(400, 200, "GAME OVER!", this.fontStyle);
 
@@ -52,5 +52,4 @@ const levelLost = new Phaser.Class({
       }
     );
   },
-  update() {},
 });

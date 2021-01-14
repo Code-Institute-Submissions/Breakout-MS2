@@ -12,7 +12,7 @@ var levelOne = new Phaser.Class({
     this.score = 0;
     this.lives = 3;
     this.fontStyle = {
-      fontSize: "32px",
+      fontSize: "3.2rem",
       fontFamily: "Righteous, sans-serif",
     };
   },
@@ -20,7 +20,7 @@ var levelOne = new Phaser.Class({
     this.load.image("sky4", "assets/images/evening-sky.png");
   },
   create() {
-    this.add.image(300, 220, "sky4");
+    this.add.image(300, 350, "sky4");
     this.cameras.main.fadeIn(1000, 0, 0, 0);
 
     this.createGameText();
@@ -44,7 +44,7 @@ var levelOne = new Phaser.Class({
 
     this.gameStartText = this.add.text(
       400,
-      350,
+      400,
       "Press SPACEBAR to Start Game!",
       this.fontStyle
     );
@@ -54,18 +54,18 @@ var levelOne = new Phaser.Class({
 
     this.livesText = this.add.text(
       670,
-      500,
+      600,
       `Lives: ${this.lives}`,
       this.fontStyle
     );
   },
   createPlayer() {
-    this.player = this.physics.add.sprite(400, 560, "player");
+    this.player = this.physics.add.sprite(400, 620, "player");
     this.player.scaleX = 0.25;
     this.player.scaleY = 0.25;
   },
   createBall() {
-    this.ball = this.physics.add.sprite(400, 515, "ball");
+    this.ball = this.physics.add.sprite(400, 565, "ball");
     this.ball.scaleX = 0.25;
     this.ball.scaleY = 0.25;
   },
