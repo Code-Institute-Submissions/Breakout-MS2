@@ -146,8 +146,6 @@ var levelTwo = new Phaser.Class({
     this.player.setCollideWorldBounds(true);
     this.ball.setCollideWorldBounds(true);
     this.physics.world.checkCollision.down = false;
-    this.ball.setBounce(1, 1);
-    this.player.setImmovable(true);
   },
   createGameCollision() {
     this.physics.add.collider(
@@ -228,11 +226,13 @@ var levelTwo = new Phaser.Class({
 
       if (this.cursors.space.isDown) {
         this.gameHasStarted = true;
-        this.ball.setVelocityY(-250);
-        this.ball.setVelocityX(250);
+        this.ball.setVelocityY(-350);
+        this.ball.setVelocityX(350);
         this.gameStartText.setVisible(false);
       }
     }
+    this.ball.setBounce(1, 1);
+    this.ball.setFriction(0, 0);
   },
   updatePlayerMoves() {
     if (this.cursors.left.isDown) {
@@ -242,6 +242,7 @@ var levelTwo = new Phaser.Class({
     } else {
       this.player.setVelocityX(0);
     }
+    this.player.setImmovable(true);
   },
   updateLoseLives() {
     if (this.ball.y > this.player.y) {
