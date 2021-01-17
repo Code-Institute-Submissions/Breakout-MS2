@@ -209,7 +209,24 @@ I felt this font gave the game font a nice retro feel which was important in ord
 
 ### Languages
 
+- HTML5
+- CSS3
+- JavaScript
+
 ### Frameworks and Libraries
+
+- [Phaser](https://labs.phaser.io/) - I used phaser as my core game development library.
+- [Phaser Labs](https://phaser.io/) - Used to understand how various components of phaser worked, including animations etc.
+- [Node JS](https://nodejs.org/) - Used during the initial development of the game due to having installed the phaser 3 master template.
+- [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/) - was used for the modal structure that contains the game instructions.
+- [Google Fonts](https://fonts.google.com/) - used to select the text font to be used throughout the site.
+- [VS code](https://code.visualstudio.com/) - used as my IDE.
+- [Git](https://git-scm.com/) - used for version control via VS code by providing regular commits to Git, and pushing to GitHub.
+- [GitHub](https://github.com/) - for my Git repository.
+- [Balsamic](https://balsamiq.com/) - used to create the website wireframes.
+- [W3schools HTML Colour Picker] - used to pick the colour theme for the website.
+- [Tinyjpg](https://tinyjpg.com/) - used for image resizing.
+- [Favicon Generator](https://favicon.io/favicon-converter/) - used for generating the site favicon.
 
 ---
 
