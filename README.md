@@ -364,6 +364,48 @@ After retesting, the SEO score improved to 100
 
 ### <p align="center"> Fixed Bugs
 
+| Bug                                                                                                                                                            | Fix                                                                                                                                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Game Canvas position was pulling below the screen, pulling the game objects out of user view                                                                   | Updated the game parameters in CSS using the ‘game’ id and added in Phaser ‘Scale’ Settings to config.js to center and resize the canvas on screen.                                                                                                                                      |
+| When refactoring code, I added a fontStyle variable using ‘let’ in the global scope. However, the game was throwing an error in the console log as undefined.  | Updated the ‘let’ variable and assigned ‘this’ as the owner. This resolved the error. I then updated each variable to ‘this.fontStyle’ - example on line 42 in levelOne.js                                                                                                               |
+| On screen text was not displaying as expected even after setting the X & Y parameters. The text was flowing off screen                                         | Added the ‘setOrigin’ object to the createGameText method, which aligned the text nicely in the centre by setting the origin to 0.5                                                                                                                                                      |
+| The assets used for the game were displaying extremely large on screen. I found it challenging to find exactly how to resize them.                             | Searching stackoverflow, I found instructions that enabled me to resize the scale of any assets / game objects using the ‘Scale Manager Class in phaser 3. Example: line 65/65 & line 80 in levelOne.js                                                                                  |
+| When I enabled falling bricks into the game, an error was returning in the console log when the brick / player impact event returned true                      | From the phaser documentation, I found that by changing the physics parameters from ‘collider’ to ‘overlap’, this resolved the problem.                                                                                                                                                  |
+| When I created the new scenes, the functionality was behaving as expected, but when the new game was presented, the ability to start would not work.           | After a lot of debugging and troubleshooting, I realised that the gameHasStarted syntax was written incorrectly. this.gameHasStarted === false, was written as this.gameHasStarted = false                                                                                               |
+| Explosion animation that occurs on the ball/brick collision event was not working after I had added animation parameters.                                      | Using the phaser documentation, I found the ‘setTexture’method. Adding this displayed the explosion sprite immediately after the brick visibility function removed the brick from the game                                                                                               |
+| When the game over logic returned true, the next scene started immediately. I felt this was a poor user experience due to the speed at which the game changed. | Using a tutorial from Ourcade (game development website), I was able to find instructions on how to add a time delay to each scene - for both starting and ending. I implemented this across all scene to enhance UX                                                                     |
+| When the delay functionality was added, the game felt very static during the set timed delay.                                                                  | Added the phaser physics property ‘pause’ which pauses all items on the screen. I then added the physics ‘tint’ property to the function which changed the colour of the player to red when the game over logic returned true. This provided a nicer flow to the next scene in the game. |
+| When the game over logic returned true, the ball would freeze in its current position.                                                                         | To avoid this, I updated the game lost function by disabling the ball body when the function was called - this then changed the ball visibility to false, removing it from the screen completely.                                                                                        |
+| When I added the player lives function, the ball would disappear from the screen, effectively disabling the player from continuing.                            | I created a new ballReset() method that when caled set the balls position to the original y axis when the game started, and to the x axis of the player. This then meant the ball would always return to the top of the paddle - no matter where the paddle was onscreen.                |
+
+---
+
+### Deployment Issues:
+
+When I was preparing for my first game deploy, a sizable issue was discovered.
+
+When setting up the game, I used the [phaser three master template](https://github.com/photonstorm/phaser3-project-template). This required Node.js to install all dependencies and run scripts via `npm` this required me to do the following:
+
+To set the project template up, I followed the following steps:
+
+1. Cloned the phaser 3 template repo
+1. Run `npm install` in the terminal
+1. Run `npm start`
+
+Running npm start allowed me to see the project http://localhost:8080 - which I used for testing fromout the game development.
+
+As I moved toward the end of the project, in order to deploy my site I had to run another npm command - `npm run build`. This packaged all of my code into a single bundle located in a `dist` folder.
+
+The `dist` folder contained the code for the game, but not the assets. After lots of troubleshooting and verifying my path directories I could not find a way to effectively get the assets into the `dist` folder. This would prevent me from deploying my site on GitHub Pages.
+
+Anyone else who had cloned my project at this stage would also not be able to see the project in any live web server without running the 'npm start' command
+
+As a workaround, I recreated the game using the phaser 3 jsDelivr CDN `<script src="//cdn.jsdelivr.net/npm/phaser@3.52.0/dist/phaser.min.js"></script>`
+
+I was able to get the game working in the same way. I then removed all `phaser 3 project template files`, `node modules` and the installed `webpack` and reconfigured the game accordingly.
+
+The changes I made to the project set up can be seen on this [commit](https://github.com/scotty-james/Breakout-MS2/commit/7d16611cfc24d363713970230c3874debe766f5f)
+
 ---
 
 ## <p align="center">Version Control Management

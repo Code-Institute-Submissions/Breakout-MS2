@@ -9,7 +9,7 @@ this.PreloadScene = new this.Phaser.Class({
   init() {
     this.fontStyle = {
       fontSize: "5rem",
-      fontFamily: "Righteous, Tahoma, Geneva",
+      fontFamily: "Righteous, sans-serif",
     };
   },
   preload() {

@@ -9,11 +9,11 @@ levelLost = new Phaser.Class({
   init() {
     this.fontStyle = {
       fontSize: "5rem",
-      fontFamily: "Righteous, Tahoma, Geneva",
+      fontFamily: "Righteous, sans-serif",
     };
     this.smallFont = {
       fontSize: "3rem",
-      fontFamily: "Righteous, Tahoma, Geneva",
+      fontFamily: "Righteous, sans-serif",
     };
   },
   preload() {},

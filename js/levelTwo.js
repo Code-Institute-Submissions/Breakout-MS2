@@ -313,7 +313,7 @@ levelTwo = new Phaser.Class({
       const killerBrick = this.killerBrick.create(x, 15, "killer");
       killerBrick.setBounce(1.1);
       killerBrick.setCollideWorldBounds(true);
-      killerBrick.setVelocityY(-250);
+      killerBrick.setVelocityY(-300);
     }
   },
   hitKillerBrick(player, killerBrick) {
