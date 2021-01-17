@@ -315,6 +315,35 @@ The site scored low on SEO mainly due the HTML file not having an appropriate me
 
 `<meta name="description" content="Multiple Level DeskTop Game">`
 
+After retesting, the SEO score improved to 100
+
+![lightouse site report 2](assets/readme_images/lighthouse-report2.png)
+
+### Manual Game Testing
+
+| Functionality                                                                                    | UAT Result |
+| ------------------------------------------------------------------------------------------------ | ---------- |
+| Preload screen moves to level on screen on click                                                 | PASS       |
+| Ball is released on pressing SPACEBAR                                                            | PASS       |
+| SPACEBAR text visibility disappears when spacebar keyboard input event occurs                    | PASS       |
+| Explosion animation on ball / brick collision event                                              | PASS       |
+| Brick visibility disappears on ball/brick collision event                                        | PASS       |
+| Ball bounces off all game boundaries except bottom boundary                                      | PASS       |
+| Score logic increases dynamically on ball / brick collision event                                | PASS       |
+| Lives logic decreases by one when ball falls below bottom game boundary                          | PASS       |
+| Ball position reset on top of player paddle immediately after falling below bottom game boundary | PASS       |
+| Falling brick functionality begins at predefined logic                                           | PASS       |
+| Falling bricks fall from random areas of the game                                                | PASS       |
+| Player colour turns red on falling brick/player collision event                                  | PASS       |
+| Game pauses for 1500 ms on game over event before moving to the next scene automatically.        | PASS       |
+| Game Over Scene appears after game over logic returns true on both level 1 & level 2             | PASS       |
+| Level Complete Scene appears after game won logic returns true in both level 1 & level 2         | PASS       |
+| Level 1 appears after an on click event on the Game Over Scene                                   | PASS       |
+| Level 2 appears after an on click event on the Level Complete Scene                              | PASS       |
+| Ball disappears from screen immediately when game over logic returns true                        | PASS       |
+| Level 2 text returns when user enters level 2                                                    | PASS       |
+| Final user score displays correctly in both Game Over and Level Complete Scenes                  | PASS       |
+
 ---
 
 ### <p align="center"> Fixed Bugs
