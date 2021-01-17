@@ -1,4 +1,4 @@
-/* -------------------------------------------GImported Google Fonts */
+/* -------------------------------------------Imported Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Righteous&display=swap");
 
 /* -------------------------------------------Global Font-Size set to 10px */
@@ -6,6 +6,7 @@
   font-size: 10px;
 }
 
+/*-------------------------------------------General*/
 html {
   color: #270424;
   margin: 0 auto;
@@ -24,7 +25,7 @@ h1 {
   text-align: center;
   color: #5a1354;
 }
-
+/*-------------------------------------------Modal*/
 .btn-bg {
   background: #270424;
   border: none;
@@ -36,11 +37,10 @@ h1 {
   text-transform: uppercase;
   font-size: 2rem;
   margin-top: 1.75rem;
-  backdrop-filter: blur(3px);
   padding: 1rem;
 }
 
-.modal-content p {
+.modal-content span {
   font-family: "Righteous", sans-serif;
   text-transform: uppercase;
   font-size: 3rem;
@@ -53,6 +53,7 @@ h1 {
   font-family: "Righteous", sans-serif;
   text-transform: uppercase;
   font-size: 1.5rem;
+  padding-top: 2rem;
 }
 
 .modal-title {
@@ -66,7 +67,7 @@ h1 {
   background: rgb(0, 0, 0);
   color: #ffffff;
 }
-
+/*-------------------------------------------Phaser Game Canvas*/
 #game {
   margin: auto;
   padding: 0;

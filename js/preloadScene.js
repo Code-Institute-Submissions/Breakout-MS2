@@ -1,8 +1,8 @@
 "strict";
 /*jshint esversion: 6 */
 
-var PreloadScene = new Phaser.Class({
-  Extends: Phaser.Scene,
+this.PreloadScene = new this.Phaser.Class({
+  Extends: this.Phaser.Scene,
   initialize: function () {
     Phaser.Scene.call(this, { key: "PreloadScene" });
   },

@@ -232,6 +232,89 @@ I felt this font gave the game font a nice retro feel which was important in ord
 
 ## <p align="center">Testing
 
+### W3C Validation
+
+- index.html: No errors or warnings to show.
+  ![HTML Validation](assets/readme_images/HTML_validation_results.png)
+
+  style.css: Congratulations! No Error Found.
+  ![CSS Validation](assets/readme_images/CSS_validation-results.png)
+
+### JSHint
+
+The following files were passed through JSHint with no warnings detected.
+
+`/*jshint esversion: 6 */` was placed at the top of each file to ensure JSHint doesn't raise unnecessary warnings.
+
+- config.js
+- preloadScene.js
+- levelOne.js
+- levelTwo.js
+- levelLost.js
+- levelComplete.js
+
+### User Story Testing Validation
+
+_As a player, I want to see the game instructions before I play, so that my game experience is fun and enjoyable._
+
+- I’ve included a game instruction tab in the form of a modal which is embedded outside the game canvas and within the HTML structure.
+- To ensure consistency as the player moves through the game, the game instructions tab remains in the same place as the player navigates from level to level.
+  ![User Story 1](assets/readme_images/UX-game-instructions.png)
+
+_As a player, I want to be able to see my score as a play, so that I can feel a sense of competition against myself._
+
+- I have added a player score at the left top corner of the game.
+- The score is dynamic and increases each time the user smashes a brick.
+- To achieve the highest score, the player must destroy all bricks before losing all lives!
+
+![User Story 2](assets/readme_images/UX-player-score.png)
+
+_As a player, I want to play a game that adds further challenge in each level so that I can remain interested in the game as I master each level._
+
+- I have created a second level to the game that includes the following additional challenge:
+- - Increased brick count.
+- - Bricks positioned at a lower point in the screen which will increase the impact count of the ball.
+- - On each impact, the ball velocity increases slightly.
+- - The general starting speed of the ball movement has been increased compared to level one.
+
+![User Story 3](assets/readme_images/UX-level-two.png)
+
+_As a player, I want to see my final score even when I lose the game, so that I can aim to beat that score next time._
+
+- The final score is pulled into both game over and level complete scenes. - This allows the user to see their overall final score for their previous attempt.
+
+### Game Over Scene
+
+![User Story 4](assets/readme_images/UX-final-score.png)
+
+### Level Complete Scene
+
+![User Story 4](assets/readme_images/UX-final-score2.png)
+
+_As a player, I want the game to be unpredictable in some way, so that the game doesn't become too static or boring._
+
+- I have added some randomness to the game in the form of falling bricks, these bricks will kill the player instantly on impact and appear randomly throughout the game.
+- The speed of these falling bricks increase as the player progresses through each level.
+
+![User Story 5](assets/readme_images/UX-player-challange.png)
+
+### Browser Validation
+
+In addition to testing on google chrome, I tested the game fully on the Safari and Firefox browsers.
+
+- Firefox: All tests successful.
+- Safari: Game would not load in safari. Investigation to be completed to find the issues.
+
+### Site Performance Validation
+
+To test the sites performance I used Lighthouse in Chrome Dev Tools:
+
+![lightouse site report](assets/readme_images/lighthouse-report.png)
+
+The site scored low on SEO mainly due the HTML file not having an appropriate meta description for the site's purpose. To solve this I added the following meta description:
+
+`<meta name="description" content="Multiple Level DeskTop Game">`
+
 ---
 
 ### <p align="center"> Fixed Bugs

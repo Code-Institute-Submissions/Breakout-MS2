@@ -15,7 +15,7 @@ const phaserConfig = {
     default: "arcade",
     arcade: {
       gravity: false,
-      debug: false,
+      debug: true,
     },
   },
 };

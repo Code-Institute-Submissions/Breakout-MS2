@@ -1,7 +1,7 @@
 "strict";
 /*jshint esversion: 6 */
 
-var levelComplete = new Phaser.Class({
+levelComplete = new Phaser.Class({
   Extends: Phaser.Scene,
   initialize: function () {
     Phaser.Scene.call(this, { key: "levelComplete" });
