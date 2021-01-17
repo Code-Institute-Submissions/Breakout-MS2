@@ -1,6 +1,4 @@
-# <p align="center">Breakout Revenge
-
-![Responsive Designs](assets/readme_images/readme-imagelogo.png)
+<span style="display:block;text-align:center">![Image Logo](assets/readme_images/breakout-revenge.png)</span>
 
 <p align="center">I built this game for my second milestone project for the Code Institutes Full Stack Software Development Course. The goal of the project was to build an interactive frontend game where users could play against themselves in a battle to win the game. The game is a clone of the original Atari Breakout game but with a twist. In order to win the game, the player must smash all bricks without losing the ball. The player has three lives within each level - to make it little easier for them. 
 <p align="center">The twist to the game involves a bit of fight back. At some point in each game, Killer Red bricks will start to fall from the sky in a bit to kill the player. If the player gets hit by a brick - it’s instant GAME OVER! The bricks will fall from random points so it’s impossible to predict their next move.
@@ -8,7 +6,7 @@
 
 ![Responsive Designs](assets/readme_images/readme-image1.png)
 
-<p align="center">The image above is a visual of the site displayed on different devices using [I Am Responsive](http://ami.responsivedesign.is/#)
+### <p align="center">The image above is a visual of the site displayed on different devices using [I Am Responsive](http://ami.responsivedesign.is/#)
 
 ### <p align="center">You can view the live site here: [www.breakout-revenge.com](https://scotty-james.github.io/Breakout-MS2/)
 
@@ -140,13 +138,21 @@ The structure of information of the game will follow a simple approach with 5 ga
 
 All wireframes were created using [Balsamic](https://balsamiq.com/).
 
-[The PDF version of these wireframes can be found here]
+[The PDF version of these wireframes can be found here](https://github.com/scotty-james/Breakout-MS2/blob/master/assets/docs/game-wireframes.pdf)
 
 ### Surface
 
 #### Design
 
 The game design is inspired by 1970’s retro game Atari Breakout and the aim was to retain this classic retro feel, although for the game design I have added background scenes that change with each level. Inspiration from the background scenes came in the form of different Sky settings - for level 1, I choose an evening sky, for level 2, the background is in the stars.
+
+Level One Background
+
+![background 1](assets/images/evening-sky.png)
+
+Level Two Background
+
+![background 1](assets/images/space3.png)
 
 #### Colour
 
@@ -159,7 +165,11 @@ The game is varied in colour due to the presence of background scenes however th
 
 #### Typography
 
-In line with games simplicity I have only used one font throughout the game - Righteous! I felt this font gave the game font a nice retro feel which was important in order to flow with the simplistic and retro design.
+In line with games simplicity I have only used one font throughout the game - Righteous. This font was obtained from [Google Fonts](https://fonts.google.com/specimen/Righteous?preview.text=Righteous&preview.text_type=custom)
+
+![Google Fonts](assets/readme_images/readme-googlefonts.png)
+
+I felt this font gave the game font a nice retro feel which was important in order to flow with the simplistic and retro design.
 
 ---
 
@@ -167,7 +177,31 @@ In line with games simplicity I have only used one font throughout the game - Ri
 
 ### Existing Features
 
+- Game Instructions Modal displayed below the game canvas to ensure easy accessibility for the user to to understand how to operate the game.
+- A game introduction scene before the game begins, to help build anticipation.
+- Ability to start game when the user is ready in the form of start game text on screen and functionality for game to begin ‘on click’
+- Dynamic score count which increases in points each time the user achieves points.
+- A dynamic player lives count which starts at 3 and depreciates in values of 1 each time the player loses the ball.
+- Animation events for when the player collides with objects in the game. This is in the form of an explosion animation when the player smashes a brick. This animation also plays on the event the player is hit by a falling brick.
+- Sound effects that trigger on specific collision events.
+- A dynamic game-over scene which displays when the user loses the game, this scene displays the user's high score for the previous game session.
+- A dynamic level complete scene which displays when the user completes a level successfully, displaying the users high score for the previous level and allows entry into the next level on user action.
+- - Two levels both with different levels of challenge. Level 2 has the following:
+- - Increased brick count
+- - Ball moves at a faster speed
+- - Killer bricks fall at a faster speed
+
 ### Features Left to Implement
+
+- More levels with varying degrees of complexity - for example, adding an additional ball to make the game much more challenging as the user improves their game skillset.
+- Better high score functionality where the data is stored as an overall high score so the player can visually see their best.
+- Ability to gain extra lives to keep the user engaged longer.
+- Ability to score bonus points for hitting specific objects within the game.
+- Stronger dynamically appearing animation to support bring the game more to life as each level progresses.
+- Ability to play the game on mobile.
+- Adding in additional user methods for controlling the game, such as using the mouse as well as the keyboard.
+- Tiles sprite sheets to enable easier design and build of brick structures within the game.
+- More sound animations to support user engagement and anticipation levels as they progress through the game.
 
 ---
 

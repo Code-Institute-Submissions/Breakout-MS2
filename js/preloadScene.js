@@ -13,8 +13,6 @@ var PreloadScene = new Phaser.Class({
     };
   },
   preload() {
-    this.load.image("sky", "assets/images/sky3.png");
-    this.load.image("sky3", "assets/images/sky3.png");
     this.load.image("sky4", "assets/images/evening-sky.png");
     this.load.image("background", "assets/images/background2.png");
     this.load.image("space3", "assets/images/space3.png");
@@ -29,7 +27,11 @@ var PreloadScene = new Phaser.Class({
     this.load.image("player", "assets/images/player-paddle.png");
     this.load.image("ball", "assets/images/blue-ball.png");
     this.load.image("killer", "assets/images/red-brick.png");
-    this.load.image("boom", "assets/images/boom.png");
+    this.load.spritesheet("boom", "assets/images/boom.png", {
+      frameWidth: 64,
+      frameHeight: 64,
+      endFrame: 11,
+    });
 
     this.load.audio("brickHitSound", "assets/audio/sound2.wav");
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");

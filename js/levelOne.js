@@ -305,6 +305,7 @@ var levelOne = new Phaser.Class({
     killerBrick.disableBody(true);
     this.gameOver = true;
   },
+
   ballReset() {
     this.ball.setVelocity(0);
     this.ball.setPosition(this.player.x, 565);
