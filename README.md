@@ -371,13 +371,12 @@ After retesting, the SEO score improved to 100
 I used Git for version control on this project.
 
 - All code was written in VS Code.
-- At regular intervals and when new features were added to the site, I added my files to the staging environment using the git add . command.
-  I then committed to the local repository using the git -m command.
-  I then pushed the local git to my GitHub repository using the git push command.
+- At regular intervals and when new features were added to the site, I added all changes to the staging environment using source control panel in VS code.
+- I then committed to the local repository using commit functionality in VS code.
 
-Throughout the development lifecycle of the site, I used commit messages that were in the imperative language:
+Throughout the development lifecycle of the site, I used commit messages that were in the imperative language!
 
-I then used the git push command to push local git to git repository (GitHub)
+- I then used the git push command to push the local git to my git repository (GitHub)
 
 ## <p align="center">Deployment
 
