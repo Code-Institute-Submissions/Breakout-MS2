@@ -344,6 +344,22 @@ After retesting, the SEO score improved to 100
 | Level 2 text returns when user enters level 2                                                    | PASS       |
 | Final user score displays correctly in both Game Over and Level Complete Scenes                  | PASS       |
 
+### Debugging
+
+#### Phaser Debugging Tool:
+
+- As phaser uses a built in physics library to handle and resolve sprite collisions, movement etc. When setting the game config up, there is a debug option that when set to `true`, it displays boxes around each object in the game - the box is the physics body which determines collision impact points.
+
+- Moving objects will also display a green line when moving, this shows the direction the object is moving.
+
+- This allowed me to test all collision impacts to ensure they were impacting as expected. Phaser has a setCircle function that allows the developer to manipulate the collision parameters. For this game, I was happy that all impact collisions were performing as expected and felt no need to change these. Example below of the physics debugging tool.
+
+![phaser debug](assets/readme_images/phaser_debug_tool.png)
+
+#### Console Log:
+
+- For general debugging throughout the game development I primarily used Console Log & Dev Tools Console
+
 ---
 
 ### <p align="center"> Fixed Bugs
@@ -356,7 +372,30 @@ After retesting, the SEO score improved to 100
 
 ### Deployment Steps
 
+The following steps were taken to deploy this website to Github pages from it’s main Github repository. Log into my Github account.
+
+1. Navigate to the site’s repository.
+1. Under the site repositories name, click ‘Settings’
+   ![phaser debug](assets/readme_images/deployment-step1.png)
+
+1. Scroll down the page to ‘GitHub Pages section’
+1. Under Source, click on the dropdown tab that is defaulted to ‘None’
+   Select ‘Branch: Master, then hit Save.
+   ![phaser debug](assets/readme_images/deployment-step2.png)
+
+1. At this point, the page is automatically refreshed and the website is deployed.
+1. Scroll back down to the GitHub pages section to obtain the url to the newly published site.
+   ![phaser debug](assets/readme_images/deployment-step3.png)
+
 ### How To run this Project Locally
+
+1. [Click here to access the site's repository](https://github.com/scotty-james/Breakout-MS2)
+1. Underneath the repository name, click ‘Code’ which will open a drop down menu.
+1. Click the HTTPs section (a red line should be displayed underneath).
+1. To clone the repository using HTTPS, under "Clone with HTTPS", click the clipboard icon.
+1. Open your IDE terminal
+1. Type ‘git clone’ and paste in the url you just copied - it should look like this `$ git clone https://github.com/scotty-james/Breakout-MS2.git`
+1. Press enter which will then create your local clone.
 
 ---
 
