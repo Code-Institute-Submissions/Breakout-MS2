@@ -354,7 +354,7 @@ After retesting, the SEO score improved to 100
 
 - This allowed me to test all collision impacts to ensure they were impacting as expected. Phaser has a setCircle function that allows the developer to manipulate the collision parameters. For this game, I was happy that all impact collisions were performing as expected and felt no need to change these. Example below of the physics debugging tool.
 
-![phaser debug](assets/readme_images/phaser_debug_tool.png)
+![phaser debug](assets/readme_images/Phaser_debug_tool.png)
 
 #### Console Log:
 
@@ -367,6 +367,17 @@ After retesting, the SEO score improved to 100
 ---
 
 ## <p align="center">Version Control Management
+
+I used Git for version control on this project.
+
+- All code was written in VS Code.
+- At regular intervals and when new features were added to the site, I added my files to the staging environment using the git add . command.
+  I then committed to the local repository using the git -m command.
+  I then pushed the local git to my GitHub repository using the git push command.
+
+Throughout the development lifecycle of the site, I used commit messages that were in the imperative language:
+
+I then used the git push command to push local git to git repository (GitHub)
 
 ## <p align="center">Deployment
 
