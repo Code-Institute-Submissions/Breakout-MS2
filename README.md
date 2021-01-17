@@ -421,6 +421,19 @@ The following steps were taken to deploy this website to Github pages from it’
 
 ## <p align="center">Resources
 
+Resources used for general learning / problem solving
+
+- Phaser Documentation
+- Phaser Git Hub Library
+- Phaser Game Development Tutorials
+- Code Institute Slack Community
+- Code Institute Course Content completed to date
+- Youtube - mostly [Ourcade](https://www.youtube.com/channel/UCJyrgLkI9LcwzUhZXxrwpyA) for phaser 3 tutorials and walk throughs
+- W3schools
+- Stackoverflow
+- Jonas Schmedtmann JS Udemy Course
+- MDN Mozilla
+
 ---
 
 ## <p align="center"> Acknowledgements
