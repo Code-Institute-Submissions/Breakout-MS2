@@ -281,13 +281,13 @@ levelOne = new Phaser.Class({
     this.sound.play("playerHitSound");
     this.ball.setVelocityY(this.ball.body.velocity.y - 10);
 
-    const total =
+    const totalBricks =
       this.brick1.countActive() +
       this.brick2.countActive() +
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();
-    if (total < 20) {
+    if (totalBricks < 20) {
       const x =
         player.x < 400
           ? Phaser.Math.Between(400, 800)
@@ -318,14 +318,14 @@ levelOne = new Phaser.Class({
     }
   },
   gameWon() {
-    const total =
+    const totalBricks =
       this.brick1.countActive() +
       this.brick2.countActive() +
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 0) {
+    if (totalBricks === 0) {
       return true;
     }
   },

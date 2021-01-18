@@ -297,14 +297,14 @@ levelTwo = new Phaser.Class({
     this.sound.play("playerHitSound");
     this.ball.setVelocityY(this.ball.body.velocity.y - 15);
 
-    const total =
+    const totalBricks =
       this.brick7.countActive() +
       this.brick8.countActive() +
       this.brick6.countActive() +
       this.brick3.countActive() +
       this.brick4.countActive() +
       this.brick5.countActive();
-    if (total < 30) {
+    if (totalBricks < 30) {
       const x =
         player.x < 400
           ? Phaser.Math.Between(400, 800)
@@ -335,7 +335,7 @@ levelTwo = new Phaser.Class({
     }
   },
   gameWon() {
-    const total =
+    const totalBricks =
       this.brick7.countActive() +
       this.brick8.countActive() +
       this.brick6.countActive() +
@@ -343,7 +343,7 @@ levelTwo = new Phaser.Class({
       this.brick4.countActive() +
       this.brick5.countActive();
 
-    if (total === 0) {
+    if (totalBricks === 0) {
       return true;
     }
   },

@@ -51,6 +51,8 @@
 - [**Resources**](#resources)
 - [**Acknowledgements**](#acknowledgements)
 
+---
+
 ## <p align="center"> UX
 
 ### User Stories
@@ -303,6 +305,7 @@ _As a player, I want the game to be unpredictable in some way, so that the game 
 In addition to testing on google chrome, I tested the game fully on the Safari and Firefox browsers.
 
 - Firefox: All tests successful.
+- Microsoft Explorer: All tests successful.
 - Safari: Game would not load in safari. Investigation to be completed to find the issues.
 
 ### Site Performance Validation
@@ -380,7 +383,11 @@ After retesting, the SEO score improved to 100
 
 ---
 
-### Deployment Issues:
+### Remaining Bugs:
+
+The explosion animation that triggers on the ball / brick collision event is not working as intended. Although the animation does look like an explosion, the spritesheet used should bundle all frames togethers, giving a single explosion animation effect. This will be fixed in a future release.
+
+### Deployment issues encountered:
 
 When I was preparing for my first game deploy, a sizable issue was discovered.
 
@@ -420,6 +427,8 @@ Throughout the development lifecycle of the site, I used commit messages that we
 
 - I then used the git push command to push the local git to my git repository (GitHub)
 
+---
+
 ## <p align="center">Deployment
 
 ### Deployment Steps
@@ -455,9 +464,23 @@ The following steps were taken to deploy this website to Github pages from it’
 
 ### Content
 
+All content on the site was written by the website developer.
+
 ### Media
 
+- [Canva.com](www.canva.com) was used to design my README.md logo.
+- [Open Game Art](https://opengameart.org/content/breakout-brick-breaker-tile-set-free) + [Kenny Puzzle Pack Assets](https://www.kenney.nl/assets/puzzle-pack): I used both these free asset packs for my game assets.
+- [Phaser GitHub Assets:](https://github.com/photonstorm/phaser3-examples/tree/master/public/assets) Used for all other assets in the game
+
 ### Code
+
+- [Phaser 3 Project Template:](https://github.com/photonstorm/phaser3-project-template) This template provided the basic building blocks for the game, including the code written in the config.js file.
+- [Stackabuse Tutorial:](https://stackabuse.com/introduction-to-phaser-3-building-breakout/) I used this tutorial to build my first basic breakout game before starting my project.
+- [Switching between scenes:](https://www.thepolyglotdeveloper.com/2020/09/switch-between-scenes-phaser-game/) I used this tutorial to enable me to switch between scenes in the game when using the CDN instead of the uploaded project files I had used in the early part of developing the game.
+- [Phaser 3 Game Tutorial:](https://phaser.io/tutorials/making-your-first-phaser-3-game/part10) I used the code in this tutorial to create the parameters for the falling bricks within the game - the code was modified to suit this particular game. I also used this tutorial to build my first phaser 3 game as part of my prior learning before building the breakout clone.
+- [Stackoverflow:](https://stackoverflow.com/questions/57566322/how-do-i-scale-a-group-in-phaser-3) I used the instructions from this stackoverflow to set the scale/size of sprites within my game.
+- [Stackoverflow:](https://stackoverflow.com/questions/56612028/how-can-i-pass-data-from-a-scene-to-another-in-phaser-3/56612898#56612898) Using this stackoverflow question, I was able to figure out how to pass the user score data from one scene to another, enabling me to display the high score on both the level complete and game over scenes.
+- [Ourcade Blog:](https://blog.ourcade.co/posts/2020/phaser-3-fade-out-scene-transition/) I used the code from this blog to enable a fade out effect during game scene transition.
 
 ---
 
@@ -465,17 +488,23 @@ The following steps were taken to deploy this website to Github pages from it’
 
 Resources used for general learning / problem solving
 
-- Phaser Documentation
-- Phaser Git Hub Library
-- Phaser Game Development Tutorials
+- [Phaser Documentation](https://photonstorm.github.io/phaser3-docs/index.html)
+- [Phaser Git Hub Library](https://github.com/photonstorm/phaser3-examples/tree/master/public/assets)
+- [Phaser Game Development Tutorials](https://phaser.io/tutorials/making-your-first-phaser-3-game/part1)
+- [Phaser Labs](http://labs.phaser.io/)
 - Code Institute Slack Community
 - Code Institute Course Content completed to date
-- Youtube - mostly [Ourcade](https://www.youtube.com/channel/UCJyrgLkI9LcwzUhZXxrwpyA) for phaser 3 tutorials and walk throughs
+- Youtube - mostly [Ourcade](https://www.youtube.com/playlist?list=PLumYWZ2t7CRudKWUMB2X9ZavtfpJ-yu7Q) for phaser 3 tutorials and walk throughs which I found very useful
+- [Ourcade Game Development Blog](https://blog.ourcade.co/)
 - W3schools
 - Stackoverflow
+- Stackabuse
 - Jonas Schmedtmann JS Udemy Course
 - MDN Mozilla
 
 ---
 
 ## <p align="center"> Acknowledgements
+
+- I would like to thank and acknowledge my mentor Spencer Barriball for the kind words of encouragement right from my very first planning call, and for providing inspiration for the project development and guidance throughout - thank you!
+- The Code Institute Slack Community which continues to be a huge treasure trove of knowledge when troubleshooting issues or looking for inspiration.
