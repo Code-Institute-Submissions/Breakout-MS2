@@ -27,10 +27,10 @@ this.PreloadScene = new this.Phaser.Class({
     this.load.image("player", "assets/images/player-paddle.png");
     this.load.image("ball", "assets/images/blue-ball.png");
     this.load.image("killer", "assets/images/red-brick.png");
-    this.load.spritesheet("boom", "assets/images/boom.png", {
+    this.load.spritesheet("boom", "assets/images/explosion.png", {
       frameWidth: 64,
       frameHeight: 64,
-      endFrame: 11,
+      endFrame: 23,
     });
 
     this.load.audio("brickHitSound", "assets/audio/sound2.wav");
@@ -39,22 +39,13 @@ this.PreloadScene = new this.Phaser.Class({
   create() {
     this.add.image(400, 520, "background");
 
-    this.gameStartText = this.add.text(
-      400,
-      200,
-      "Ready To Play?",
-      this.fontStyle
-    );
+    this.gameStartText = this.add
+      .text(400, 200, "Ready To Play?", this.fontStyle)
+      .setOrigin(0.5);
 
-    this.gameStartText.setOrigin(0.5);
-
-    this.gameStartText = this.add.text(
-      400,
-      300,
-      "Click Anywhere For Level 1!",
-      this.fontStyle
-    );
-    this.gameStartText.setOrigin(0.5);
+    this.gameStartText = this.add
+      .text(400, 300, "Click Anywhere For Level 1!", this.fontStyle)
+      .setOrigin(0.5);
 
     this.input.on("pointerdown", () => {
       this.cameras.main.fadeOut(1000, 0, 0, 0);

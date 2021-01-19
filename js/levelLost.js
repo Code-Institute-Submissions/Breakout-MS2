@@ -20,27 +20,17 @@ levelLost = new Phaser.Class({
   create(data) {
     this.add.image(400, 520, "background");
 
-    this.GameOverText = this.add.text(400, 200, "GAME OVER!", this.fontStyle);
+    this.GameOverText = this.add
+      .text(400, 200, "GAME OVER!", this.fontStyle)
+      .setOrigin(0.5);
 
-    this.GameOverText.setOrigin(0.5);
+    this.GameOverText = this.add
+      .text(400, 300, `You Scored ${data} Points`, this.smallFont)
+      .setOrigin(0.5);
 
-    this.GameOverText = this.add.text(
-      400,
-      300,
-      `You Scored ${data} Points`,
-      this.smallFont
-    );
-
-    this.GameOverText.setOrigin(0.5);
-
-    this.GameOverText = this.add.text(
-      400,
-      400,
-      "Click Anywhere To Try Again!",
-      this.smallFont
-    );
-
-    this.GameOverText.setOrigin(0.5);
+    this.GameOverText = this.add
+      .text(400, 400, "Click Anywhere To Try Again!", this.smallFont)
+      .setOrigin(0.5);
 
     this.input.on("pointerdown", () => {
       this.cameras.main.fadeOut(1000, 0, 0, 0);

@@ -15,6 +15,7 @@ levelOne = new Phaser.Class({
       fontSize: "3.2rem",
       fontFamily: "Righteous, sans-serif",
     };
+    this.scale = 0.25;
   },
   preload() {
     this.load.image("sky4", "assets/images/evening-sky.png");
@@ -32,6 +33,13 @@ levelOne = new Phaser.Class({
     this.createGameCollision();
     this.createSounds();
     this.createKillerBrick();
+
+    this.activeBricks = () =>
+      this.brick1.countActive() +
+      this.brick2.countActive() +
+      this.brick3.countActive() +
+      this.brick4.countActive() +
+      this.brick5.countActive();
   },
 
   createGameText() {
@@ -42,13 +50,9 @@ levelOne = new Phaser.Class({
       this.fontStyle
     );
 
-    this.gameStartText = this.add.text(
-      400,
-      400,
-      "Press SPACEBAR to Start Game!",
-      this.fontStyle
-    );
-    this.gameStartText.setOrigin(0.5);
+    this.gameStartText = this.add
+      .text(400, 400, "Press SPACEBAR to Start Game!", this.fontStyle)
+      .setOrigin(0.5);
 
     this.levelText = this.add.text(670, 20, "Level: 1", this.fontStyle);
 
@@ -61,13 +65,13 @@ levelOne = new Phaser.Class({
   },
   createPlayer() {
     this.player = this.physics.add.sprite(400, 620, "player");
-    this.player.scaleX = 0.25;
-    this.player.scaleY = 0.25;
+    this.player.scaleX = this.scale;
+    this.player.scaleY = this.scale;
   },
   createBall() {
     this.ball = this.physics.add.sprite(400, 565, "ball");
-    this.ball.scaleX = 0.25;
-    this.ball.scaleY = 0.25;
+    this.ball.scaleX = this.scale;
+    this.ball.scaleY = this.scale;
   },
   createCursors() {
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -77,7 +81,7 @@ levelOne = new Phaser.Class({
       key: "brick1",
       immovable: true,
       repeat: 2,
-      setScale: { x: 0.25, y: 0.25 },
+      setScale: { x: this.scale, y: this.scale },
       setXY: {
         x: 295,
         y: 250,
@@ -89,7 +93,7 @@ levelOne = new Phaser.Class({
       key: "brick2",
       immovable: true,
       repeat: 5,
-      setScale: { x: 0.25, y: 0.25 },
+      setScale: { x: this.scale, y: this.scale },
       setXY: {
         x: 150,
         y: 210,
@@ -101,7 +105,7 @@ levelOne = new Phaser.Class({
       key: "brick3",
       immovable: true,
       repeat: 5,
-      setScale: { x: 0.25, y: 0.25 },
+      setScale: { x: this.scale, y: this.scale },
       setXY: {
         x: 150,
         y: 170,
@@ -113,7 +117,7 @@ levelOne = new Phaser.Class({
       key: "brick4",
       immovable: true,
       repeat: 5,
-      setScale: { x: 0.25, y: 0.25 },
+      setScale: { x: this.scale, y: this.scale },
       setXY: {
         x: 150,
         y: 130,
@@ -124,7 +128,7 @@ levelOne = new Phaser.Class({
     this.brick5 = this.physics.add.group({
       key: "brick5",
       immovable: true,
-      setScale: { x: 0.25, y: 0.25 },
+      setScale: { x: this.scale, y: this.scale },
       repeat: 5,
       setXY: {
         x: 150,
@@ -199,16 +203,24 @@ levelOne = new Phaser.Class({
   },
 
   update() {
+    this.updatedCursorMoves();
     this.updateBallMoves();
     this.updatePlayerMoves();
     this.updateLoseLives();
     this.updateWinLose();
   },
+
+  updatedCursorMoves() {
+    this.PlayerMoveleft = this.cursors.left.isDown;
+    this.PlayerMoveRight = this.cursors.right.isDown;
+    this.spacebarIsDown = this.cursors.space.isDown;
+  },
+
   updateBallMoves() {
     if (this.gameHasStarted === false) {
       this.ball.setX(this.player.x);
 
-      if (this.cursors.space.isDown || this.game.input.onDown) {
+      if (this.spacebarIsDown) {
         this.gameHasStarted = true;
         this.ball.setVelocityY(-350);
         this.ball.setVelocityX(350);
@@ -219,9 +231,9 @@ levelOne = new Phaser.Class({
     this.ball.setFriction(0, 0);
   },
   updatePlayerMoves() {
-    if (this.cursors.left.isDown) {
+    if (this.PlayerMoveleft) {
       this.player.setVelocityX(-700);
-    } else if (this.cursors.right.isDown) {
+    } else if (this.PlayerMoveRight) {
       this.player.setVelocityX(700);
     } else {
       this.player.setVelocityX(0);
@@ -259,35 +271,27 @@ levelOne = new Phaser.Class({
       this.scene.start("levelComplete", this.score);
     }
   },
+
   smashBrick(ball, brick) {
-    this.score += 10;
+    this.score += 25;
     this.gameScoreText.setText(`Score: ${this.score}`);
-
-    brick.setTexture("boom");
     this.sound.play("brickHitSound");
-    brick.disableBody(true, false);
+    brick.disableBody(true, true);
 
-    this.tweens.add({
-      targets: brick,
-      scaleX: 1,
-      scaleY: 1,
-      duration: 1000,
-      onComplete: () => {
-        brick.disableBody(true, true);
-      },
-    });
+    const explode = {
+      key: "explode1",
+      frames: "boom",
+      frameRate: 20,
+    };
+
+    this.anims.create(explode);
+    this.brickExplode();
   },
   ballHitPlayer(ball, player) {
     this.sound.play("playerHitSound");
     this.ball.setVelocityY(this.ball.body.velocity.y - 10);
 
-    const totalBricks =
-      this.brick1.countActive() +
-      this.brick2.countActive() +
-      this.brick3.countActive() +
-      this.brick4.countActive() +
-      this.brick5.countActive();
-    if (totalBricks < 20) {
+    if (this.activeBricks() < 20) {
       const x =
         player.x < 400
           ? Phaser.Math.Between(400, 800)
@@ -300,9 +304,9 @@ levelOne = new Phaser.Class({
     }
   },
   hitKillerBrick(player, killerBrick) {
-    killerBrick.setTexture("boom");
+    this.playerExplode();
     this.physics.pause();
-    killerBrick.disableBody(true);
+    killerBrick.disableBody(true, true);
     this.gameOver = true;
   },
 
@@ -312,20 +316,21 @@ levelOne = new Phaser.Class({
     this.gameHasStarted = false;
   },
 
+  brickExplode() {
+    this.add.sprite(this.ball.x, this.ball.y, "boom").play("explode1");
+  },
+
+  playerExplode() {
+    this.add.sprite(this.player.x, this.player.y, "boom").play("explode1");
+  },
+
   gameLost() {
     if (this.gameOver === true) {
       return true;
     }
   },
   gameWon() {
-    const totalBricks =
-      this.brick1.countActive() +
-      this.brick2.countActive() +
-      this.brick3.countActive() +
-      this.brick4.countActive() +
-      this.brick5.countActive();
-
-    if (totalBricks === 0) {
+    if (this.activeBricks() === 10) {
       return true;
     }
   },
