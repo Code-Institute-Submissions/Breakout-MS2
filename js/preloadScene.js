@@ -1,6 +1,8 @@
 "strict";
 /*jshint esversion: 6 */
 
+/* code from line 4 to line 9 taken from https://www.thepolyglotdeveloper.com/2020/09/switch-between-scenes-phaser-game/ to enable scene movement*/
+
 this.PreloadScene = new this.Phaser.Class({
   Extends: this.Phaser.Scene,
   initialize: function () {
@@ -33,8 +35,11 @@ this.PreloadScene = new this.Phaser.Class({
       endFrame: 23,
     });
 
-    this.load.audio("brickHitSound", "assets/audio/sound2.wav");
+    this.load.audio("brickHitSound", "assets/audio/sound4.wav");
     this.load.audio("playerHitSound", "assets/audio/sound1.wav");
+    this.load.audio("gameLostSound", "assets/audio/game-lost.wav");
+    this.load.audio("lifeLostSound", "assets/audio/life-lost.wav");
+    this.load.audio("gameWonSound", "assets/audio/game-won.wav");
   },
   create() {
     this.add.image(400, 520, "background");
@@ -48,6 +53,7 @@ this.PreloadScene = new this.Phaser.Class({
       .setOrigin(0.5);
 
     this.input.on("pointerdown", () => {
+      /* code from line 54 to line 58 taken from https://blog.ourcade.co/posts/2020/phaser-3-fade-out-scene-transition*/
       this.cameras.main.fadeOut(1000, 0, 0, 0);
     });
     this.cameras.main.once(

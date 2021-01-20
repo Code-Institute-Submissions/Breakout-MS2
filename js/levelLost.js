@@ -1,6 +1,8 @@
 "strict";
 /*jshint esversion: 6 */
 
+/* code from line 6 to line 9 taken from https://www.thepolyglotdeveloper.com/2020/09/switch-between-scenes-phaser-game/ to enable scene movement*/
+
 levelLost = new Phaser.Class({
   Extends: Phaser.Scene,
   initialize: function () {
@@ -33,6 +35,7 @@ levelLost = new Phaser.Class({
       .setOrigin(0.5);
 
     this.input.on("pointerdown", () => {
+      /* code from line 39 to line 43 taken from https://blog.ourcade.co/posts/2020/phaser-3-fade-out-scene-transition*/
       this.cameras.main.fadeOut(1000, 0, 0, 0);
     });
     this.cameras.main.once(

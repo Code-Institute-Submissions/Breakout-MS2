@@ -226,7 +226,7 @@ I felt this font gave the game font a nice retro feel which was important in ord
 - [Git](https://git-scm.com/) - used for version control via VS code by providing regular commits to Git, and pushing to GitHub.
 - [GitHub](https://github.com/) - for my Git repository.
 - [Balsamic](https://balsamiq.com/) - used to create the website wireframes.
-- [W3schools HTML Colour Picker] - used to pick the colour theme for the website.
+- [W3schools HTML Colour Picker](https://www.w3schools.com/colors/colors_picker.asp) - used to pick the colour theme for the website.
 - [Tinyjpg](https://tinyjpg.com/) - used for image resizing.
 - [Favicon Generator](https://favicon.io/favicon-converter/) - used for generating the site favicon.
 
@@ -339,6 +339,7 @@ After retesting, the SEO score improved to 100
 | Falling bricks fall from random areas of the game                                                | PASS       |
 | Player colour turns red on falling brick/player collision event                                  | PASS       |
 | Game pauses for 1500 ms on game over event before moving to the next scene automatically.        | PASS       |
+| Game displays a fade in/out effect when transitioning between game scenes                        | PASS       |
 | Game Over Scene appears after game over logic returns true on both level 1 & level 2             | PASS       |
 | Level Complete Scene appears after game won logic returns true in both level 1 & level 2         | PASS       |
 | Level 1 appears after an on click event on the Game Over Scene                                   | PASS       |
@@ -385,7 +386,7 @@ After retesting, the SEO score improved to 100
 
 ### Remaining Bugs:
 
-The explosion animation that triggers on the ball / brick collision event is not working as intended. Although the animation does look like an explosion, the spritesheet used should bundle all frames togethers, giving a single explosion animation effect. This will be fixed in a future release.
+The explosion animation that triggers on the ball / brick collision event is not working as intended. Although the animation does look like an explosion, the spritesheet used should bundle all frames togethers, giving a single explosion animation effect. This will be fixed in a future release. FIX DEPLOYED 19/01/20
 
 ### Deployment issues encountered:
 

@@ -1,6 +1,8 @@
 "strict";
 /*jshint esversion: 6 */
 
+/* code from line 6 to line 9 taken from https://www.thepolyglotdeveloper.com/2020/09/switch-between-scenes-phaser-game/ to enable scene movement*/
+
 levelTwo = new Phaser.Class({
   Extends: Phaser.Scene,
   initialize: function () {
@@ -19,7 +21,9 @@ levelTwo = new Phaser.Class({
   },
   preload() {},
   create() {
+    /* Load the scene background and create all game methods within the create function*/
     this.add.image(400, 350, "space3");
+    /* code from line 27 taken from https://blog.ourcade.co/posts/2020/phaser-3-fade-out-scene-transition*/
     this.cameras.main.fadeIn(1000, 0, 0, 0);
 
     this.createGameText();
@@ -32,6 +36,7 @@ levelTwo = new Phaser.Class({
     this.createSounds();
     this.createKillerBrick();
 
+    /* function counts all active brricks - used to determine game won log*/
     this.activeBricks = () =>
       this.brick7.countActive() +
       this.brick8.countActive() +
@@ -44,6 +49,7 @@ levelTwo = new Phaser.Class({
       this.add.sprite(this.ball.x, this.ball.y, "boom").play("explode1");
   },
 
+  /*Creates & positions all game displayed text for this scene*/
   createGameText() {
     this.gameScoreText = this.add.text(
       20,
@@ -65,19 +71,26 @@ levelTwo = new Phaser.Class({
       this.fontStyle
     );
   },
+  /* Creates and positions player starting point*/
   createPlayer() {
     this.player = this.physics.add.sprite(400, 620, "player");
     this.player.scaleX = this.scale;
     this.player.scaleY = this.scale;
   },
+
+  /* Creates and positions ball starting point*/
   createBall() {
     this.ball = this.physics.add.sprite(400, 565, "ball");
     this.ball.scaleX = this.scale;
     this.ball.scaleY = this.scale;
   },
+
+  /* Method to enable keyboard curser keys for game movement*/
   createCursors() {
     this.cursors = this.input.keyboard.createCursorKeys();
   },
+
+  /* creates, positions and displays brick layout*/
   createBricks() {
     this.brick7 = this.physics.add.group({
       key: "brick7",
@@ -150,11 +163,15 @@ levelTwo = new Phaser.Class({
       },
     });
   },
+
+  /* Enables game parameters so ball and player stay within the game boundaries*/
   createWorldCollsion() {
     this.player.setCollideWorldBounds(true);
     this.ball.setCollideWorldBounds(true);
     this.physics.world.checkCollision.down = false;
   },
+
+  /* Enables parameters for game collision events*/
   createGameCollision() {
     this.physics.add.collider(
       this.ball,
@@ -207,10 +224,14 @@ levelTwo = new Phaser.Class({
       this
     );
   },
+
+  /* Creates sound effects ready to be called upon on defined game collision events*/
   createSounds() {
     this.playerHitSound = "playerHit";
     this.brickHitSound = "brickHit";
   },
+
+  /* Creates killer bricks (falling bricks)*/
   createKillerBrick() {
     this.killerBrick = this.physics.add.group();
     this.physics.add.collider(
@@ -222,6 +243,7 @@ levelTwo = new Phaser.Class({
     );
   },
 
+  /* update function methods*/
   update() {
     this.updatedCursorMoves();
     this.updateBallMoves();
@@ -229,12 +251,15 @@ levelTwo = new Phaser.Class({
     this.updateLoseLives();
     this.updateWinLose();
   },
+
+  /* Enables keyboard controls*/
   updatedCursorMoves() {
     this.PlayerMoveleft = this.cursors.left.isDown;
     this.PlayerMoveRight = this.cursors.right.isDown;
     this.spacebarIsDown = this.cursors.space.isDown;
   },
 
+  /* Updates logic for ball movement within the game + starting parameters*/
   updateBallMoves() {
     if (this.gameHasStarted === false) {
       this.ball.setX(this.player.x);
@@ -249,6 +274,8 @@ levelTwo = new Phaser.Class({
     this.ball.setBounce(1, 1);
     this.ball.setFriction(0, 0);
   },
+
+  /* Updates logic for player movement & speed within the game + starting parameters*/
   updatePlayerMoves() {
     if (this.PlayerMoveleft) {
       this.player.setVelocityX(-700);
@@ -259,9 +286,12 @@ levelTwo = new Phaser.Class({
     }
     this.player.setImmovable(true);
   },
+
+  /* Updates logic for loosing lives & game over if all lifes lost*/
   updateLoseLives() {
     if (this.ball.y > this.player.y) {
       this.lives--;
+      this.sound.play("lifeLostSound");
       {
         if (this.lives > 0) {
           this.livesText.setText(`Lives: ${this.lives}`);
@@ -272,24 +302,31 @@ levelTwo = new Phaser.Class({
       }
     }
   },
+
+  /* calls gameLost and gameWon functions to determine game results and game next steps logic*/
   updateWinLose() {
     if (this.gameLost() === true) {
       this.ball.disableBody(true, true);
       this.gameHasStarted = false;
       this.player.setTint(0xff1111);
+      /* code from line 313 to line 316 taken from https://blog.ourcade.co/posts/2020/phaser-3-fade-out-scene-transition*/
       this.time.addEvent({
         delay: 1500,
         loop: false,
         callback: () => {
+          /* moves user to next scene in the game, passes previous games high score to new scene*/
           this.scene.start("levelLost", this.score);
         },
       });
     } else if (this.gameWon() === true) {
       this.ball.disableBody(true, true);
       this.gameHasStarted = false;
+      this.sound.play("gameWonSound");
       this.scene.start("levelComplete", this.score);
     }
   },
+
+  /* removes brick on collision event, updates scre, creates explosion animation effect*/
   smashBrick(ball, brick) {
     this.score += 25;
     this.gameScoreText.setText(`Score: ${this.score}`);
@@ -305,10 +342,13 @@ levelTwo = new Phaser.Class({
     this.anims.create(explode);
     this.brickExplode();
   },
+
+  /* creates sound effect on ball/brick collison, increases ball speed, creates parameters for falling brick logic*/
   ballHitPlayer(ball, player) {
     this.sound.play("playerHitSound");
     this.ball.setVelocityY(this.ball.body.velocity.y - 15);
 
+    /*Code from line 353 to 361 taken from https://phaser.io/tutorials/making-your-first-phaser-3-game/part10*/
     if (this.activeBricks() < 20) {
       const x =
         player.x < 400
@@ -322,32 +362,40 @@ levelTwo = new Phaser.Class({
     }
   },
 
+  /* Updates game logic on brick/player collision - ends game*/
   hitKillerBrick(player, killerBrick) {
     this.playerExplode();
     this.physics.pause();
+    this.sound.play("gameLostSound");
     killerBrick.disableBody(true);
     this.gameOver = true;
   },
 
+  /* places ball back above the player to resume game in event ball is lost*/
   ballReset() {
     this.ball.setVelocity(0);
     this.ball.setPosition(this.player.x, 565);
     this.gameHasStarted = false;
   },
 
+  /* Mothod creates explosion animation on ball/brick collision event*/
   brickExplode() {
     this.add.sprite(this.ball.x, this.ball.y, "boom").play("explode1");
   },
 
+  /* Mothod creates explosion animation on brick/player collision event*/
   playerExplode() {
     this.add.sprite(this.player.x, this.player.y, "boom").play("explode1");
   },
 
+  /* game lost function*/
   gameLost() {
     if (this.gameOver === true) {
       return true;
     }
   },
+
+  /* game Won function*/
   gameWon() {
     if (this.activeBricks() === 0) {
       return true;
