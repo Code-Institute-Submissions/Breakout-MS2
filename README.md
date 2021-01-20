@@ -1,4 +1,4 @@
-<span style="display:block;text-align:center">![Image Logo](assets/readme_images/breakout-revenge.png)</span>
+![Image Logo](assets/readme_images/breakout-revenge.png)
 
 <p align="center">I built this game for my second milestone project for the Code Institutes Full Stack Software Development Course. The goal of the project was to build an interactive frontend game where users could play against themselves in a battle to win the game. The game is a clone of the original Atari Breakout game but with a twist. In order to win the game, the player must smash all bricks without losing the ball. The player has three lives within each level - to make it little easier for them. 
 <p align="center">The twist to the game involves a bit of fight back. At some point in each game, Killer Red bricks will start to fall from the sky in a bit to kill the player. If the player gets hit by a brick - it’s instant GAME OVER! The bricks will fall from random points so it’s impossible to predict their next move.
@@ -57,28 +57,28 @@
 
 ### User Stories
 
-- As a player, I want to see the game instructions before I play, so that my game experience is fun and enjoyable.
-- As a player, I want to be able to see my score as a play, so that I can feel a sense of competition against myself.
-- As a player, I want to play a game that adds further challenge in each level so that I can remain interested in the game as I master each level.
-- As a player, I want to see my final score even when I lose the game, so that I can aim to beat that score next time.
-- As a player, I want the game to be unpredictable in some way, so that the game doesn't become too static or boring.
+> - As a player, I want to see the game instructions before I play, so that my game experience is fun and enjoyable.
+> - As a player, I want to be able to see my score as a play, so that I can feel a sense of competition against myself.
+> - As a player, I want to play a game that adds further challenge in each level so that I can remain interested in the game as I master each level.
+> - As a player, I want to see my final score even when I lose the game, so that I can aim to beat that score next time.
+> - As a player, I want the game to be unpredictable in some way, so that the game doesn't become too static or boring.
 
 ### Strategy
 
 #### External user’s goal
 
-- Play a game that is fun and interactive, that adds challenge to each level as the game progresses.
-- Play a single player game where I can compete against myself.
-- The game must be easy to play, using as little keyboard inputs as possible.
-- The game should include a score count and overall final score for each level - whether the game has been won or lost.
-- To sustain interest, the game should have multiple levels that become more challenging as the game progresses.
+> - Play a game that is fun and interactive, that adds challenge to each level as the game progresses.
+> - Play a single player game where I can compete against myself.
+> - The game must be easy to play, using as little keyboard inputs as possible.
+> - The game should include a score count and overall final score for each level - whether the game has been won or lost.
+> - To sustain interest, the game should have multiple levels that become more challenging as the game progresses.
 
 #### Site owner's goal
 
-- Create a game for single player game enthusiasts, where they need to achieve a certain goal in order to win the game.
-- Create a game that has multiple levels to ensure that the player’s interest in the game is sustained for as long as possible.
-- Create a game that provides additional challenge for each level introduced, making it harder to win as the player develops their game skills in each level.
-- Create a game that provides the environment for self competition, building the players enthusiasm to beat their score each time they lose/win.
+> - Create a game for single player game enthusiasts, where they need to achieve a certain goal in order to win the game.
+> - Create a game that has multiple levels to ensure that the player’s interest in the game is sustained for as long as possible.
+> - Create a game that provides additional challenge for each level introduced, making it harder to win as the player develops their game skills in each level.
+> - Create a game that provides the environment for self competition, building the players enthusiasm to beat their score each time they lose/win.
 
 ### Scope
 
@@ -105,23 +105,23 @@
 
 The structure of information of the game will follow a simple approach with 5 game scenes: These scense will follow a path dependant on the game outcome each time.
 
-#### Preload Scene
+#### _Preload Scene_
 
 - The game will start with a preload scene that allows the player time to read the game instructions. The game instructions will be presented below the preload screen in the form of modal. The use will then be able to mouse click to the next scene in order to begin the game.
 
-#### Level One Scene
+#### _Level One Scene_
 
 - The user will now be presented with the first level in the game. The game will only start when the user presses the spacebar - this instruction is presented to the user on screen, however, the visibility of this instruction disappears on the spacebar click event.
 
-#### Game Over Scene
+#### _Game Over Scene_
 
 - In the event that the user loses the game, a game over scene will display. This scene will display game over text, the users final score, and the ability to mouse click to try again.
 
-#### Level Complete Scene
+#### _Level Complete Scene_
 
 - In the event that the user wins the game, a level complete scene will display. This scene will display game win text, the users final score for the level completed, and the ability to mouse click to move onto the next level.
 
-#### Level Two Scene
+#### _Level Two Scene_
 
 - The level two scene will commence only when the first level has been completed. The game will only start when the user presses the spacebar - this instruction is presented to the user on screen, however, the visibility of this instruction disappears on the spacebar click event.
 
@@ -257,13 +257,13 @@ The following files were passed through JSHint with no warnings detected.
 
 ### User Story Testing Validation
 
-_As a player, I want to see the game instructions before I play, so that my game experience is fun and enjoyable._
+> _As a player, I want to see the game instructions before I play, so that my game experience is fun and enjoyable._
 
 - I’ve included a game instruction tab in the form of a modal which is embedded outside the game canvas and within the HTML structure.
 - To ensure consistency as the player moves through the game, the game instructions tab remains in the same place as the player navigates from level to level.
   ![User Story 1](assets/readme_images/UX-game-instructions.png)
 
-_As a player, I want to be able to see my score as a play, so that I can feel a sense of competition against myself._
+> _As a player, I want to be able to see my score as a play, so that I can feel a sense of competition against myself._
 
 - I have added a player score at the left top corner of the game.
 - The score is dynamic and increases each time the user smashes a brick.
@@ -271,7 +271,7 @@ _As a player, I want to be able to see my score as a play, so that I can feel a 
 
 ![User Story 2](assets/readme_images/UX-player-score.png)
 
-_As a player, I want to play a game that adds further challenge in each level so that I can remain interested in the game as I master each level._
+> _As a player, I want to play a game that adds further challenge in each level so that I can remain interested in the game as I master each level._
 
 - I have created a second level to the game that includes the following additional challenge:
 - - Increased brick count.
@@ -281,19 +281,19 @@ _As a player, I want to play a game that adds further challenge in each level so
 
 ![User Story 3](assets/readme_images/UX-level-two.png)
 
-_As a player, I want to see my final score even when I lose the game, so that I can aim to beat that score next time._
+> _As a player, I want to see my final score even when I lose the game, so that I can aim to beat that score next time._
 
 - The final score is pulled into both game over and level complete scenes. - This allows the user to see their overall final score for their previous attempt.
 
-### Game Over Scene
+### _Game Over Scene_
 
 ![User Story 4](assets/readme_images/UX-final-score.png)
 
-### Level Complete Scene
+### _Level Complete Scene_
 
 ![User Story 4](assets/readme_images/UX-final-score2.png)
 
-_As a player, I want the game to be unpredictable in some way, so that the game doesn't become too static or boring._
+> _As a player, I want the game to be unpredictable in some way, so that the game doesn't become too static or boring._
 
 - I have added some randomness to the game in the form of falling bricks, these bricks will kill the player instantly on impact and appear randomly throughout the game.
 - The speed of these falling bricks increase as the player progresses through each level.
@@ -306,7 +306,7 @@ In addition to testing on google chrome, I tested the game fully on the Safari a
 
 - Firefox: All tests successful.
 - Microsoft Explorer: All tests successful.
-- Safari: Game would not load in safari. Investigation to be completed to find the issues.
+- Safari: Game would not load in safari. Investigation to be completed to find the issues. The main issue identified is the brower 'crashing' after about 15 seconds of the game loading. The text on screen is also not rendering as expected.
 
 ### Site Performance Validation
 
@@ -352,17 +352,23 @@ After retesting, the SEO score improved to 100
 
 #### Phaser Debugging Tool:
 
-- As phaser uses a built in physics library to handle and resolve sprite collisions, movement etc. When setting the game config up, there is a debug option that when set to `true`, it displays boxes around each object in the game - the box is the physics body which determines collision impact points.
-
-- Moving objects will also display a green line when moving, this shows the direction the object is moving.
-
-- This allowed me to test all collision impacts to ensure they were impacting as expected. Phaser has a setCircle function that allows the developer to manipulate the collision parameters. For this game, I was happy that all impact collisions were performing as expected and felt no need to change these. Example below of the physics debugging tool.
+> - As phaser uses a built in physics library to handle and resolve sprite collisions, movement etc. When setting the game config up, there is a debug option that when set to `true`, it displays boxes around each object in the game - the box is the physics body which determines collision impact points.
+>
+> - Moving objects will also display a green line when moving, this shows the direction the object is moving.
+>
+> - This allowed me to test all collision impacts to ensure they were impacting as expected. Phaser has a setCircle function that allows the developer to manipulate the collision parameters. For this game, I was happy that all impact collisions were performing as expected and felt no need to change these. Example below of the physics debugging tool.
 
 ![phaser debug](assets/readme_images/Phaser_debug_tool.png)
 
 #### Console Log:
 
-- For general debugging throughout the game development I primarily used Console Log & Dev Tools Console
+- For general debugging throughout the game development I primarily used the console log, logging results of each new feature as I implemented them. Any error encountered was resolved through manual real time testing and code adaption to ensure results were returning as intended.
+
+Throughout the SFDC, I applied a 'testing by playing' methodology. As each new feature was introduced, I would test all elements of the game implemented up to that point to ensure all code was running as intended to ensure any new code introduced did not affect code previously written.
+
+#### Live Testing:
+
+> All manual UAT testing was also completed on the deployed version of the site.
 
 ---
 
@@ -390,29 +396,29 @@ The explosion animation that triggers on the ball / brick collision event is not
 
 ### Deployment issues encountered:
 
-When I was preparing for my first game deploy, a sizable issue was discovered.
-
-When setting up the game, I used the [phaser three master template](https://github.com/photonstorm/phaser3-project-template). This required Node.js to install all dependencies and run scripts via `npm` this required me to do the following:
-
-To set the project template up, I followed the following steps:
-
-1. Cloned the phaser 3 template repo
-1. Run `npm install` in the terminal
-1. Run `npm start`
-
-Running npm start allowed me to see the project http://localhost:8080 - which I used for testing fromout the game development.
-
-As I moved toward the end of the project, in order to deploy my site I had to run another npm command - `npm run build`. This packaged all of my code into a single bundle located in a `dist` folder.
-
-The `dist` folder contained the code for the game, but not the assets. After lots of troubleshooting and verifying my path directories I could not find a way to effectively get the assets into the `dist` folder. This would prevent me from deploying my site on GitHub Pages.
-
-Anyone else who had cloned my project at this stage would also not be able to see the project in any live web server without running the 'npm start' command
-
-As a workaround, I recreated the game using the phaser 3 jsDelivr CDN `<script src="//cdn.jsdelivr.net/npm/phaser@3.52.0/dist/phaser.min.js"></script>`
-
-I was able to get the game working in the same way. I then removed all `phaser 3 project template files`, `node modules` and the installed `webpack` and reconfigured the game accordingly.
-
-The changes I made to the project set up can be seen on this [commit](https://github.com/scotty-james/Breakout-MS2/commit/7d16611cfc24d363713970230c3874debe766f5f)
+> When I was preparing for my first game deploy, a sizable issue was discovered.
+>
+> When setting up the game, I used the [phaser three master template](https://github.com/photonstorm/phaser3-project-template). This required Node.js to install all dependencies and run scripts via `npm` this required me to do the following:
+>
+> To set the project template up, I followed the following steps:
+>
+> 1.  Cloned the phaser 3 template repo
+> 1.  Run `npm install` in the terminal
+> 1.  Run `npm start`
+>
+> Running npm start allowed me to see the project http://localhost:8080 - which I used for testing fromout the game development.
+>
+> As I moved toward the end of the project, in order to deploy my site I had to run another npm command - `npm run build`. This packaged all of my code into a single bundle located in a `dist` folder.
+>
+> The `dist` folder contained the code for the game, but not the assets. After lots of troubleshooting and verifying my path directories I could not find a way to effectively get the assets into the `dist` folder. This would prevent me from deploying my site on GitHub Pages.
+>
+> Anyone else who had cloned my project at this stage would also not be able to see the project in any live web server without running the 'npm start' command
+>
+> As a workaround, I recreated the game using the phaser 3 jsDelivr CDN `<script src="//cdn.jsdelivr.net/npm/phaser@3.52.0/dist/phaser.min.js"></script>`
+>
+> I was able to get the game working in the same way. I then removed all `phaser 3 project template files`, `node modules` and the installed `webpack` and reconfigured the game accordingly.
+>
+> The changes I made to the project set up can be seen on this [commit](https://github.com/scotty-james/Breakout-MS2/commit/7d16611cfc24d363713970230c3874debe766f5f)
 
 ---
 
@@ -465,13 +471,13 @@ The following steps were taken to deploy this website to Github pages from it’
 
 ### Content
 
-All content on the site was written by the website developer.
+All content on the site was written by the game developer.
 
 ### Media
 
 - [Canva.com](www.canva.com) was used to design my README.md logo.
 - [Open Game Art](https://opengameart.org/content/breakout-brick-breaker-tile-set-free) + [Kenny Puzzle Pack Assets](https://www.kenney.nl/assets/puzzle-pack): I used both these free asset packs for my game assets.
-- [Phaser GitHub Assets:](https://github.com/photonstorm/phaser3-examples/tree/master/public/assets) Used for all other assets in the game
+- [Phaser GitHub Assets:](https://github.com/photonstorm/phaser3-examples/tree/master/public/assets) Used for all other assets in the game -[Freesound.org](https://freesound.org/) I used freesound.org for all game audio assets
 
 ### Code
 
@@ -507,5 +513,5 @@ Resources used for general learning / problem solving
 
 ## <p align="center"> Acknowledgements
 
-- I would like to thank and acknowledge my mentor Spencer Barriball for the kind words of encouragement right from my very first planning call, and for providing inspiration for the project development and guidance throughout - thank you!
-- The Code Institute Slack Community which continues to be a huge treasure trove of knowledge when troubleshooting issues or looking for inspiration.
+> - I would like to thank and acknowledge my mentor Spencer Barriball for the kind words of encouragement right from my very first planning call, and for providing inspiration for the project development and guidance throughout - thank you!
+> - The Code Institute Slack Community which continues to be a huge treasure trove of knowledge when troubleshooting issues or looking for inspiration.

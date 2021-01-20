@@ -8,9 +8,16 @@ const phaserConfig = {
   parent: "game",
   width: 800,
   height: 600,
-  scene: [PreloadScene, levelOne, levelTwo, levelComplete, levelLost],
+  scene: [
+    PreloadScene,
+    levelOne,
+    levelTwo,
+    levelComplete,
+    levelLost,
+    gameComplete,
+  ],
   scale: {
-    mode: Phaser.Scale.FIT,
+    mode: Phaser.Scale.RESIZE,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   physics: {

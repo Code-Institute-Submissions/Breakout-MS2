@@ -322,7 +322,7 @@ levelTwo = new Phaser.Class({
       this.ball.disableBody(true, true);
       this.gameHasStarted = false;
       this.sound.play("gameWonSound");
-      this.scene.start("levelComplete", this.score);
+      this.scene.start("gameComplete", this.score);
     }
   },
 
