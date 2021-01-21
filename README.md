@@ -1,7 +1,7 @@
-![Image Logo](assets/readme_images/breakout-revenge.png)
+![Image Logo](assets/readme_images/readme_logo.png)
 
-<p align="center">I built this game for my second milestone project for the Code Institutes Full Stack Software Development Course. The goal of the project was to build an interactive frontend game where users could play against themselves in a battle to win the game. The game is a clone of the original Atari Breakout game but with a twist. In order to win the game, the player must smash all bricks without losing the ball. The player has three lives within each level - to make it little easier for them. 
-<p align="center">The twist to the game involves a bit of fight back. At some point in each game, Killer Red bricks will start to fall from the sky in a bit to kill the player. If the player gets hit by a brick - it’s instant GAME OVER! The bricks will fall from random points so it’s impossible to predict their next move.
+<p align="center">Welcome to Breakout Revenge! I built this game for my second milestone project for the Code Institutes Full Stack Software Development Course. The goal of the project was to build an interactive frontend game where users could play against themselves in a battle to win the game. The game is a clone of the original Atari Breakout game but with a twist. In order to win the game, the player must smash all bricks without losing the ball. The player has three lives within each level - to make it little easier for them. 
+<p align="center">The twist to the game involves a bit of fight back. At some point in each game, Killer Red bricks will start to fall from the sky in a bid to kill the player. If the player gets hit by a brick - it’s instant GAME OVER! The bricks will fall from random points so it’s impossible to predict their next move.
 <p align="center">The game has two levels at the moment, with more challenging levels planned for future releases.
 
 ![Responsive Designs](assets/readme_images/readme-image1.png)
@@ -125,6 +125,10 @@ The structure of information of the game will follow a simple approach with 5 ga
 
 > - The level two scene will commence only when the first level has been completed. The game will only start when the user presses the spacebar - this instruction is presented to the user on screen, however, the visibility of this instruction disappears on the spacebar click event.
 
+#### _Game End Scene_
+
+> - The game end scene will only appear when the second level has been completed - as there are no more levels at this point. The option is provided for the user to restart from the beginning. 
+
 ### Skeleton
 
 - The game has been designed to allow the user to flow through the game journey effortlessly.
@@ -204,6 +208,7 @@ I felt this font gave the game font a nice retro feel which was important in ord
 - Adding in additional user methods for controlling the game, such as using the mouse / touch as well as the keyboard.
 - Tiles sprite sheets to enable easier design and build of brick structures within the game.
 - More sound animations to support user engagement and anticipation levels as they progress through the game.
+- Addition of more randomness into the game, for example - direction of ball depending on where or what objects the ball impacts and bounces from. 
 
 ---
 
@@ -254,6 +259,7 @@ The following files were passed through JSHint with no warnings detected.
 - levelTwo.js
 - levelLost.js
 - levelComplete.js
+- gameEnd.js
 
 ### User Story Testing Validation
 
@@ -285,11 +291,11 @@ The following files were passed through JSHint with no warnings detected.
 
 - The final score is pulled into both game over and level complete scenes. This allows the user to see their overall final score for their previous attempt.
 
-### _Game Over Scene_
+#### _Game Over Scene_
 
 ![User Story 4](assets/readme_images/UX-final-score.png)
 
-### _Level Complete Scene_
+#### _Level Complete Scene_
 
 ![User Story 4](assets/readme_images/UX-final-score2.png)
 
@@ -322,7 +328,7 @@ After retesting, the SEO score improved to 100
 
 ![lightouse site report 2](assets/readme_images/lighthouse-report2.png)
 
-### Manual Game Testing
+### Final Manual UAT Testing
 
 | Functionality                                                                                    | UAT Result |
 | ------------------------------------------------------------------------------------------------ | ---------- |
@@ -392,7 +398,8 @@ All manual UAT testing was also completed on the deployed version of the site.
 
 ### Remaining Bugs:
 
-The explosion animation that triggers on the ball / brick collision event is not working as intended. Although the animation does look like an explosion, the spritesheet used should bundle all frames togethers, giving a single explosion animation effect. This will be fixed in a future release. FIX DEPLOYED 19/01/20
+> The explosion animation that triggers on the ball / brick collision event is not working as intended. Although the animation does look like an explosion, the spritesheet used should bundle all frames togethers, giving a single explosion animation effect. This will be fixed in a future release. 
+> FIX DEPLOYED 19/01/20: I was able to fix this by manipulating the X & Y axis of the explosion event which now creates the explosion event at the exact position of the ball on impact - previously, I had been trying to create the event on the XY axis of the actual brick that was being hit. 
 
 ### Deployment issues encountered:
 
@@ -477,12 +484,13 @@ All content on the site was written by the game developer.
 
 - [Canva.com](www.canva.com) was used to design my README.md logo.
 - [Open Game Art](https://opengameart.org/content/breakout-brick-breaker-tile-set-free) + [Kenny Puzzle Pack Assets](https://www.kenney.nl/assets/puzzle-pack): I used both these free asset packs for my game assets.
-- [Phaser GitHub Assets:](https://github.com/photonstorm/phaser3-examples/tree/master/public/assets) Used for all other assets in the game -[Freesound.org](https://freesound.org/) I used freesound.org for all game audio assets
+- [Phaser GitHub Assets:](https://github.com/photonstorm/phaser3-examples/tree/master/public/assets) Used for all other assets in the game. 
+- [Freesound.org](https://freesound.org/) I used freesound.org for all game audio assets
 
 ### Code
 
 - [Phaser 3 Project Template:](https://github.com/photonstorm/phaser3-project-template) This template provided the basic building blocks for the game, including the code written in the config.js file.
-- [Stackabuse Tutorial:](https://stackabuse.com/introduction-to-phaser-3-building-breakout/) I used this tutorial to build my first basic breakout game before starting my project.
+- [Stackabuse Tutorial:](https://stackabuse.com/introduction-to-phaser-3-building-breakout/) I used this tutorial to build my first basic breakout game before starting my project which I then used as the basic template to start building. Any code used has been heavily modified to suit the requirements and goals of this game.
 - [Switching between scenes:](https://www.thepolyglotdeveloper.com/2020/09/switch-between-scenes-phaser-game/) I used this tutorial to enable me to switch between scenes in the game when using the CDN instead of the uploaded project files I had used in the early part of developing the game.
 - [Phaser 3 Game Tutorial:](https://phaser.io/tutorials/making-your-first-phaser-3-game/part10) I used the code in this tutorial to create the parameters for the falling bricks within the game - the code was modified to suit this particular game. I also used this tutorial to build my first phaser 3 game as part of my prior learning before building the breakout clone.
 - [Stackoverflow:](https://stackoverflow.com/questions/57566322/how-do-i-scale-a-group-in-phaser-3) I used the instructions from this stackoverflow to set the scale/size of sprites within my game.
@@ -502,7 +510,7 @@ Resources used for general learning / problem solving
 - Code Institute Slack Community
 - Code Institute Course Content completed to date
 - Youtube - mostly [Ourcade](https://www.youtube.com/playlist?list=PLumYWZ2t7CRudKWUMB2X9ZavtfpJ-yu7Q) for phaser 3 tutorials and walk throughs which I found very useful
-- [Ourcade Game Development Blog](https://blog.ourcade.co/)
+- [Ourcade Game Development Blog](https://blog.ourcade.co/) - I found this a to be a really valuable resource for understanding the concepts around phaser 3. 
 - W3schools
 - Stackoverflow
 - Stackabuse
@@ -515,3 +523,9 @@ Resources used for general learning / problem solving
 
 > - I would like to thank and acknowledge my mentor Spencer Barriball for the kind words of encouragement right from my very first planning call, and for providing inspiration for the project development and guidance throughout - thank you!
 > - The Code Institute Slack Community which continues to be a huge treasure trove of knowledge when troubleshooting issues or looking for inspiration.
+
+---
+
+### <p align="center">Thank you!</p>
+
+![Game End Scene](assets/readme_images/game-end.png)

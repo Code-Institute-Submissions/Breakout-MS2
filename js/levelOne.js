@@ -292,7 +292,7 @@ levelOne = new Phaser.Class({
       this.ball.disableBody(true, true);
       this.gameHasStarted = false;
       this.player.setTint(0xff1111);
-      /* code from line 296 to line 29 taken from https://blog.ourcade.co/posts/2020/phaser-3-fade-out-scene-transition*/
+      /* code from line 296 to line 299 taken from https://blog.ourcade.co/posts/2020/phaser-3-fade-out-scene-transition*/
       this.time.addEvent({
         delay: 1500,
         loop: false,
@@ -331,11 +331,10 @@ levelOne = new Phaser.Class({
     this.sound.play("playerHitSound");
     this.ball.setVelocityY(this.ball.body.velocity.y - 10);
 
-    /*Code from line 336 to 344 taken from https://phaser.io/tutorials/making-your-first-phaser-3-game/part10*/
+    /*Code from line 336 to 343 taken from https://phaser.io/tutorials/making-your-first-phaser-3-game/part10*/
     if (this.activeBricks() < 20) {
       const x =
-        player.x < 400
-          ? Phaser.Math.Between(400, 800)
+        player.x < 400 ? Phaser.Math.Between(400, 800)
           : Phaser.Math.Between(0, 400);
 
       const killerBrick = this.killerBrick.create(x, 15, "killer");
@@ -380,7 +379,7 @@ levelOne = new Phaser.Class({
 
   /* game Won function*/
   gameWon() {
-    if (this.activeBricks() === 10) {
+    if (this.activeBricks() === 25) {
       return true;
     }
   },

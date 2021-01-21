@@ -43,10 +43,13 @@ h1 {
 .modal-content span {
   font-family: "Righteous", sans-serif;
   text-transform: uppercase;
-  font-size: 3rem;
+  font-size: 2.75rem;
   text-align: center;
   padding-top: 1rem;
   width: 100%;
+}
+.modal-footer button{
+  font-size: 1.75rem;
 }
 
 .modal-body li {

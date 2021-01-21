@@ -348,11 +348,10 @@ levelTwo = new Phaser.Class({
     this.sound.play("playerHitSound");
     this.ball.setVelocityY(this.ball.body.velocity.y - 15);
 
-    /*Code from line 353 to 361 taken from https://phaser.io/tutorials/making-your-first-phaser-3-game/part10*/
+    /*Code from line 353 to 360 taken from https://phaser.io/tutorials/making-your-first-phaser-3-game/part10*/
     if (this.activeBricks() < 20) {
       const x =
-        player.x < 400
-          ? Phaser.Math.Between(400, 800)
+        player.x < 400 ? Phaser.Math.Between(400, 800)
           : Phaser.Math.Between(0, 400);
 
       const killerBrick = this.killerBrick.create(x, 15, "killer");
@@ -397,7 +396,7 @@ levelTwo = new Phaser.Class({
 
   /* game Won function*/
   gameWon() {
-    if (this.activeBricks() === 0) {
+    if (this.activeBricks() === 45) {
       return true;
     }
   },

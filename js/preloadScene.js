@@ -15,20 +15,20 @@ this.PreloadScene = new this.Phaser.Class({
     };
   },
   preload() {
-    this.load.image("sky4", "assets/images/evening-sky.png");
-    this.load.image("background", "assets/images/background2.png");
-    this.load.image("space3", "assets/images/space3.png");
-    this.load.image("brick1", "assets/images/blue-tile.png");
-    this.load.image("brick2", "assets/images/green-tile.png");
-    this.load.image("brick3", "assets/images/purple-tile.png");
-    this.load.image("brick4", "assets/images/yellow-tile.png");
-    this.load.image("brick5", "assets/images/orange-tile.png");
-    this.load.image("brick6", "assets/images/blue-block.png");
-    this.load.image("brick7", "assets/images/green-tile.png");
-    this.load.image("brick8", "assets/images/purple-tile.png");
-    this.load.image("player", "assets/images/player-paddle.png");
-    this.load.image("ball", "assets/images/blue-ball.png");
-    this.load.image("killer", "assets/images/red-brick.png");
+    this.load.image("sky4", "assets/images/evening-sky.png"),alt="Sky Background";
+    this.load.image("background", "assets/images/background2.png"),alt="Purple squares";
+    this.load.image("space3", "assets/images/space3.png"),alt="Space Background";
+    this.load.image("brick1", "assets/images/blue-tile.png"),alt="Blue Tile";
+    this.load.image("brick2", "assets/images/green-tile.png"),alt="Green Tile";
+    this.load.image("brick3", "assets/images/purple-tile.png"),alt="Purple Tile";
+    this.load.image("brick4", "assets/images/yellow-tile.png"),alt="Yellow Tile";
+    this.load.image("brick5", "assets/images/orange-tile.png"),alt="Orange Tile";
+    this.load.image("brick6", "assets/images/blue-block.png"),alt="Blue Block";
+    this.load.image("brick7", "assets/images/green-tile.png"),alt="Green Tile";
+    this.load.image("brick8", "assets/images/purple-tile.png"),alt="Purple Tile";
+    this.load.image("player", "assets/images/player-paddle.png"),alt="Paddle";
+    this.load.image("ball", "assets/images/blue-ball.png"),alt="Blue Ball";
+    this.load.image("killer", "assets/images/red-brick.png"),alt="Red Brick";
     this.load.spritesheet("boom", "assets/images/explosion.png", {
       frameWidth: 64,
       frameHeight: 64,
@@ -53,7 +53,7 @@ this.PreloadScene = new this.Phaser.Class({
       .setOrigin(0.5);
 
     this.input.on("pointerdown", () => {
-      /* code from line 54 to line 58 taken from https://blog.ourcade.co/posts/2020/phaser-3-fade-out-scene-transition*/
+      /* code from line 57 to line 61 taken from https://blog.ourcade.co/posts/2020/phaser-3-fade-out-scene-transition*/
       this.cameras.main.fadeOut(1000, 0, 0, 0);
     });
     this.cameras.main.once(
