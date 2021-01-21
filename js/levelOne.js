@@ -380,7 +380,7 @@ levelOne = new Phaser.Class({
 
   /* game Won function*/
   gameWon() {
-    if (this.activeBricks() === 0) {
+    if (this.activeBricks() === 10) {
       return true;
     }
   },

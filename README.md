@@ -107,23 +107,23 @@ The structure of information of the game will follow a simple approach with 5 ga
 
 #### _Preload Scene_
 
-- The game will start with a preload scene that allows the player time to read the game instructions. The game instructions will be presented below the preload screen in the form of modal. The use will then be able to mouse click to the next scene in order to begin the game.
+> - The game will start with a preload scene that allows the player time to read the game instructions. The game instructions will be presented below the preload screen in the form of modal. The use will then be able to mouse click to the next scene in order to begin the game.
 
 #### _Level One Scene_
 
-- The user will now be presented with the first level in the game. The game will only start when the user presses the spacebar - this instruction is presented to the user on screen, however, the visibility of this instruction disappears on the spacebar click event.
+> - The user will now be presented with the first level in the game. The game will only start when the user presses the spacebar - this instruction is presented to the user on screen, however, the visibility of this instruction disappears on the spacebar click event.
 
 #### _Game Over Scene_
 
-- In the event that the user loses the game, a game over scene will display. This scene will display game over text, the users final score, and the ability to mouse click to try again.
+> - In the event that the user loses the game, a game over scene will display. This scene will display game over text, the users final score, and the ability to mouse click to try again.
 
 #### _Level Complete Scene_
 
-- In the event that the user wins the game, a level complete scene will display. This scene will display game win text, the users final score for the level completed, and the ability to mouse click to move onto the next level.
+> - In the event that the user wins the game, a level complete scene will display. This scene will display game win text, the users final score for the level completed, and the ability to mouse click to move onto the next level.
 
 #### _Level Two Scene_
 
-- The level two scene will commence only when the first level has been completed. The game will only start when the user presses the spacebar - this instruction is presented to the user on screen, however, the visibility of this instruction disappears on the spacebar click event.
+> - The level two scene will commence only when the first level has been completed. The game will only start when the user presses the spacebar - this instruction is presented to the user on screen, however, the visibility of this instruction disappears on the spacebar click event.
 
 ### Skeleton
 
@@ -148,11 +148,11 @@ All wireframes were created using [Balsamic](https://balsamiq.com/).
 
 The game design is inspired by 1970’s retro game Atari Breakout and the aim was to retain this classic retro feel, although for the game design I have added background scenes that change with each level. Inspiration from the background scenes came in the form of different Sky settings - for level 1, I choose an evening sky, for level 2, the background is in the stars.
 
-Level One Background
+#### _Level One Background_
 
 ![background 1](assets/images/evening-sky.png)
 
-Level Two Background
+#### _Level Two Background_
 
 ![background 1](assets/images/space3.png)
 
@@ -188,10 +188,10 @@ I felt this font gave the game font a nice retro feel which was important in ord
 - Sound effects that trigger on specific collision events.
 - A dynamic game-over scene which displays when the user loses the game, this scene displays the user's high score for the previous game session.
 - A dynamic level complete scene which displays when the user completes a level successfully, displaying the users high score for the previous level and allows entry into the next level on user action.
-- - Two levels both with different levels of challenge. Level 2 has the following:
-- - Increased brick count
-- - Ball moves at a faster speed
-- - Killer bricks fall at a faster speed
+  - Two levels both with different levels of challenge. Level 2 has the following:
+  - Increased brick count
+  - Ball moves at a faster speed
+  - Killer bricks fall at a faster speed
 
 ### Features Left to Implement
 
@@ -201,7 +201,7 @@ I felt this font gave the game font a nice retro feel which was important in ord
 - Ability to score bonus points for hitting specific objects within the game.
 - Stronger dynamically appearing animation to support bring the game more to life as each level progresses.
 - Ability to play the game on mobile.
-- Adding in additional user methods for controlling the game, such as using the mouse as well as the keyboard.
+- Adding in additional user methods for controlling the game, such as using the mouse / touch as well as the keyboard.
 - Tiles sprite sheets to enable easier design and build of brick structures within the game.
 - More sound animations to support user engagement and anticipation levels as they progress through the game.
 
@@ -257,13 +257,13 @@ The following files were passed through JSHint with no warnings detected.
 
 ### User Story Testing Validation
 
-> _As a player, I want to see the game instructions before I play, so that my game experience is fun and enjoyable._
+> #### <p align="center">_As a player, I want to see the game instructions before I play, so that my game experience is fun and enjoyable._
 
 - I’ve included a game instruction tab in the form of a modal which is embedded outside the game canvas and within the HTML structure.
 - To ensure consistency as the player moves through the game, the game instructions tab remains in the same place as the player navigates from level to level.
   ![User Story 1](assets/readme_images/UX-game-instructions.png)
 
-> _As a player, I want to be able to see my score as a play, so that I can feel a sense of competition against myself._
+> #### <p align="center">_As a player, I want to be able to see my score as a play, so that I can feel a sense of competition against myself._
 
 - I have added a player score at the left top corner of the game.
 - The score is dynamic and increases each time the user smashes a brick.
@@ -271,19 +271,19 @@ The following files were passed through JSHint with no warnings detected.
 
 ![User Story 2](assets/readme_images/UX-player-score.png)
 
-> _As a player, I want to play a game that adds further challenge in each level so that I can remain interested in the game as I master each level._
+> #### <p align="center">_As a player, I want to play a game that adds further challenge in each level so that I can remain interested in the game as I master each level._
 
 - I have created a second level to the game that includes the following additional challenge:
-- - Increased brick count.
-- - Bricks positioned at a lower point in the screen which will increase the impact count of the ball.
-- - On each impact, the ball velocity increases slightly.
-- - The general starting speed of the ball movement has been increased compared to level one.
+  - Increased brick count.
+  - Bricks positioned at a lower point in the screen which will increase the impact count of the ball.
+  - On each impact, the ball velocity increases slightly.
+  - The general starting speed of the ball movement has been increased compared to level one.
 
 ![User Story 3](assets/readme_images/UX-level-two.png)
 
-> _As a player, I want to see my final score even when I lose the game, so that I can aim to beat that score next time._
+> #### <p align="center">_As a player, I want to see my final score even when I lose the game, so that I can aim to beat that score next time._
 
-- The final score is pulled into both game over and level complete scenes. - This allows the user to see their overall final score for their previous attempt.
+- The final score is pulled into both game over and level complete scenes. This allows the user to see their overall final score for their previous attempt.
 
 ### _Game Over Scene_
 
@@ -293,7 +293,7 @@ The following files were passed through JSHint with no warnings detected.
 
 ![User Story 4](assets/readme_images/UX-final-score2.png)
 
-> _As a player, I want the game to be unpredictable in some way, so that the game doesn't become too static or boring._
+> #### <p align="center">_As a player, I want the game to be unpredictable in some way, so that the game doesn't become too static or boring._
 
 - I have added some randomness to the game in the form of falling bricks, these bricks will kill the player instantly on impact and appear randomly throughout the game.
 - The speed of these falling bricks increase as the player progresses through each level.
@@ -364,11 +364,11 @@ After retesting, the SEO score improved to 100
 
 - For general debugging throughout the game development I primarily used the console log, logging results of each new feature as I implemented them. Any error encountered was resolved through manual real time testing and code adaption to ensure results were returning as intended.
 
-Throughout the SFDC, I applied a 'testing by playing' methodology. As each new feature was introduced, I would test all elements of the game implemented up to that point to ensure all code was running as intended to ensure any new code introduced did not affect code previously written.
+Throughout the SDLC, I applied a 'testing by playing' methodology. As each new feature was introduced, I would test all elements of the game implemented up to that point to ensure all code was running as intended to ensure any new code introduced did not affect code previously written.
 
 #### Live Testing:
 
-> All manual UAT testing was also completed on the deployed version of the site.
+All manual UAT testing was also completed on the deployed version of the site.
 
 ---
 
