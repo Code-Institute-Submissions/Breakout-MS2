@@ -291,10 +291,10 @@ levelTwo = new Phaser.Class({
   updateLoseLives() {
     if (this.ball.y > this.player.y) {
       this.lives--;
-      this.sound.play("lifeLostSound");
       {
         if (this.lives > 0) {
           this.livesText.setText(`Lives: ${this.lives}`);
+          this.sound.play("lifeLostSound");
           this.ballReset();
         } else {
           this.gameOver = true;
@@ -349,7 +349,7 @@ levelTwo = new Phaser.Class({
     this.ball.setVelocityY(this.ball.body.velocity.y - 15);
 
     /*Code from line 353 to 360 taken from https://phaser.io/tutorials/making-your-first-phaser-3-game/part10*/
-    if (this.activeBricks() < 20) {
+    if (this.activeBricks() < 30) {
       const x =
         player.x < 400 ? Phaser.Math.Between(400, 800)
           : Phaser.Math.Between(0, 400);
@@ -396,7 +396,7 @@ levelTwo = new Phaser.Class({
 
   /* game Won function*/
   gameWon() {
-    if (this.activeBricks() === 45) {
+    if (this.activeBricks() === 0) {
       return true;
     }
   },

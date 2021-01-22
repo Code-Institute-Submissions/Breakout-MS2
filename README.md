@@ -398,8 +398,11 @@ All manual UAT testing was also completed on the deployed version of the site.
 
 ### Remaining Bugs:
 
-> The explosion animation that triggers on the ball / brick collision event is not working as intended. Although the animation does look like an explosion, the spritesheet used should bundle all frames togethers, giving a single explosion animation effect. This will be fixed in a future release. 
+> - The explosion animation that triggers on the ball / brick collision event is not working as intended. Although the animation does look like an explosion, the spritesheet used should bundle all frames togethers, giving a single explosion animation effect. This will be fixed in a future release. 
 > FIX DEPLOYED 19/01/20: I was able to fix this by manipulating the X & Y axis of the explosion event which now creates the explosion event at the exact position of the ball on impact - previously, I had been trying to create the event on the XY axis of the actual brick that was being hit. 
+>
+>- Sound effects are in operation for when the user loses a ball, and also when the player is 'killed' by a falling brick. When the player is killed by a falling brick, the gameover logic kicks in, calling the gameLost sound effect. When the player loses the ball for the 3rd time the gameover logic also kicks in, however, both the game over and lost life sound effects play at the same time. This does not create the desired effect and will be fixed in a future release. The fix will include removing the lost life sound effect on the 3rd ball lost event - creating a better UX for the user. For now, I have switched the sound off. 
+
 
 ### Deployment issues encountered:
 

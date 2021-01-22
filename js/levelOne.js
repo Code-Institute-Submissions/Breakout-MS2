@@ -274,10 +274,10 @@ levelOne = new Phaser.Class({
   updateLoseLives() {
     if (this.ball.y > this.player.y) {
       this.lives--;
-      this.sound.play("lifeLostSound");
       {
         if (this.lives > 0) {
           this.livesText.setText(`Lives: ${this.lives}`);
+          this.sound.play("lifeLostSound");
           this.ballReset();
         } else {
           this.gameOver = true;
@@ -379,7 +379,7 @@ levelOne = new Phaser.Class({
 
   /* game Won function*/
   gameWon() {
-    if (this.activeBricks() === 25) {
+    if (this.activeBricks() === 0) {
       return true;
     }
   },
